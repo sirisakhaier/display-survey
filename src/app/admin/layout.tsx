@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center space-y-3">
           <Loader2 className="w-8 h-8 animate-spin text-blue-700 mx-auto" />
-          <div className="text-sm font-medium text-slate-600">กำลังตรวจสอบสิทธิ์การใช้งาน...</div>
+          <div className="text-sm font-medium text-slate-600">Verifying access...</div>
         </div>
       </div>
     );
@@ -76,19 +76,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     {
-      name: 'แดชบอร์ด',
+      name: 'Dashboard',
       enName: 'Dashboard',
       href: '/admin/dashboard',
       icon: LayoutDashboard,
     },
     {
-      name: 'รายการที่บันทึก',
+      name: 'Entries',
       enName: 'Sell list',
       href: '/admin/entries',
       icon: FileSpreadsheet,
     },
     {
-      name: 'จัดการ Dimension',
+      name: 'Dimensions',
       enName: 'Modify dimension',
       href: '/admin/dimensions',
       icon: Database,
@@ -105,7 +105,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div>
             <div className="text-sm font-bold text-slate-900 leading-tight">Display Survey</div>
-            <div className="text-[10px] text-slate-500">ระบบบริหารจัดการ</div>
+            <div className="text-[10px] text-slate-500">Admin Panel</div>
           </div>
         </div>
 
@@ -142,7 +142,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <h2 className="text-sm font-bold text-slate-900 leading-tight">
                   Display Survey
                 </h2>
-                <p className="text-xs text-slate-500">ระบบบริหารจัดการ</p>
+                <p className="text-xs text-slate-500">Admin Panel</p>
               </div>
             </div>
 
@@ -159,7 +159,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <div className="truncate">
                   <div className="text-xs font-bold text-slate-900 truncate">{user.username}</div>
                   <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
-                    {user.role === 'admin' ? 'ผู้ดูแลระบบ (Admin)' : 'ดูอย่างเดียว (Viewer)'}
+                    {user.role === 'admin' ? 'Administrator' : 'Viewer'}
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-700 transition-colors"
           >
             <ExternalLink className="w-4 h-4 text-slate-400" />
-            เปิดหน้าบันทึกหน้าร้าน
+            Open Survey Page
           </Link>
           <button
             type="button"
@@ -208,7 +208,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             className="w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-red-600 hover:bg-red-50 transition-colors"
           >
             <LogOut className="w-4 h-4" />
-            ออกจากระบบ
+            Log Out
           </button>
         </div>
       </aside>
@@ -219,7 +219,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="bg-white w-4/5 max-w-xs h-full p-4 flex flex-col justify-between shadow-2xl">
             <div className="space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <div className="font-bold text-slate-900 text-sm">เมนูระบบ</div>
+                <div className="font-bold text-slate-900 text-sm">Menu</div>
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
@@ -256,14 +256,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 href="/"
                 className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-slate-600"
               >
-                <ExternalLink className="w-4 h-4" /> หน้าบันทึกหน้าร้าน
+                <ExternalLink className="w-4 h-4" /> Open Survey Page
               </Link>
               <button
                 type="button"
                 onClick={handleLogout}
                 className="w-full flex items-center gap-2 px-3 py-2 text-xs font-semibold text-red-600"
               >
-                <LogOut className="w-4 h-4" /> ออกจากระบบ
+                <LogOut className="w-4 h-4" /> Log Out
               </button>
             </div>
           </div>

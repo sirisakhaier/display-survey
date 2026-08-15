@@ -67,6 +67,12 @@ export default function AdminDimensionsPage() {
   const [showBulkStoreModal, setShowBulkStoreModal] = useState<boolean>(false);
   const [showBulkModelModal, setShowBulkModelModal] = useState<boolean>(false);
 
+  // Bulk modal React state (replaces getElementById)
+  const [bulkCustomer, setBulkCustomer] = useState<string>('');
+  const [bulkRegion, setBulkRegion] = useState<string>('');
+  const [bulkBrand, setBulkBrand] = useState<string>('');
+  const [bulkCategory, setBulkCategory] = useState<string>('');
+
   // Upload (Replace) Modal State
   const [showUploadModal, setShowUploadModal] = useState<boolean>(false);
   const [uploadType, setUploadType] = useState<'store' | 'model'>('store');
@@ -159,6 +165,14 @@ export default function AdminDimensionsPage() {
     if (activeTab === 'model') fetchModels();
   }, [modelPage, modelBrand, modelCategory, modelSubCategory, modelStatus, activeTab]);
 
+  // When category changes -> reset subcategory and brand filters
+  const handleModelCategoryChange = (cat: string) => {
+    setModelCategory(cat);
+    setModelSubCategory('all');
+    setModelBrand('all');
+    setModelPage(1);
+  };
+
   // 4. Fetch Logs
   const fetchLogs = async () => {
     setLoadingLogs(true);
@@ -243,9 +257,9 @@ export default function AdminDimensionsPage() {
       if (data.success) {
         setShowBulkStoreModal(false);
         setSelectedStoreIds([]);
-        fetchStores();
+        fetchStores(); // Refresh so updated items reflect (or disappear if filtered)
       } else {
-        alert(data.error || 'เกิดข้อผิดพลาด');
+        alert(data.error || 'Error updating status.');
       }
     } catch (e) {
       console.error(e);
@@ -270,9 +284,9 @@ export default function AdminDimensionsPage() {
       if (data.success) {
         setShowBulkModelModal(false);
         setSelectedModelIds([]);
-        fetchModels();
+        fetchModels(); // Refresh so updated items reflect
       } else {
-        alert(data.error || 'เกิดข้อผิดพลาด');
+        alert(data.error || 'Error updating model status.');
       }
     } catch (e) {
       console.error(e);
@@ -357,9 +371,9 @@ export default function AdminDimensionsPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">จัดการข้อมูล Dimension</h1>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Dimension Manager</h1>
           <p className="text-xs text-slate-500 mt-1">
-            บริหารจัดการตาราง Dimension_Store และ Dimension_Model รวมถึงการ Download / Upload Replace
+            Manage Dimension_Store and Dimension_Model tables — Download and Upload (Replace) CSV data
           </p>
         </div>
 
@@ -372,7 +386,7 @@ export default function AdminDimensionsPage() {
             className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 active:scale-95 transition-all shadow-sm"
           >
             <Download className="w-4 h-4 text-blue-700" />
-            ดาวน์โหลด CSV ({activeTab === 'model' ? 'Model' : 'Store'})
+            Download CSV ({activeTab === 'model' ? 'Model' : 'Store'})
           </button>
 
           {/* Upload & Replace CSV (Admin ONLY) */}
@@ -390,12 +404,12 @@ export default function AdminDimensionsPage() {
               className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 active:scale-95 transition-all shadow-sm"
             >
               <Upload className="w-4 h-4" />
-              Upload แทนที่ข้อมูล (Replace)
+              Upload & Replace
             </button>
           ) : (
             <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-semibold text-slate-400 bg-slate-100 border border-slate-200">
               <ShieldAlert className="w-3.5 h-3.5 text-amber-500" />
-              โหมดดูอย่างเดียว (Viewer)
+              Read-only (Viewer)
             </div>
           )}
         </div>
@@ -406,8 +420,8 @@ export default function AdminDimensionsPage() {
         <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200/80 flex items-start gap-3 text-amber-800 text-xs">
           <Info className="w-4 h-4 flex-shrink-0 mt-0.5 text-amber-600" />
           <div>
-            <span className="font-bold">โหมดสิทธิ์ Viewer (ดูข้อมูลอย่างเดียว):</span>{' '}
-            ท่านสามารถดูตารางข้อมูลและดาวน์โหลดไฟล์ CSV ได้ แต่ปุ่มแก้ไขสถานะ ลบ หรืออัปโหลดแทนที่ข้อมูลจะถูกปิดใช้งาน
+            <span className="font-bold">Viewer Access (Read-only):</span>{' '}
+            You can view tables and download CSV files. Edit, status toggle, and upload replace buttons are disabled.
           </div>
         </div>
       )}
@@ -424,7 +438,7 @@ export default function AdminDimensionsPage() {
           }`}
         >
           <StoreIcon className="w-4 h-4" />
-          สาขา / ร้านค้า (Store Dimension)
+          Store Dimension
         </button>
 
         <button
@@ -437,7 +451,7 @@ export default function AdminDimensionsPage() {
           }`}
         >
           <Tv className="w-4 h-4" />
-          รุ่นสินค้า (Model Dimension)
+          Model Dimension
         </button>
 
         <button
@@ -450,7 +464,7 @@ export default function AdminDimensionsPage() {
           }`}
         >
           <History className="w-4 h-4" />
-          ประวัติการแก้ไข (Audit Logs)
+          Audit Logs
         </button>
       </div>
 
@@ -468,7 +482,7 @@ export default function AdminDimensionsPage() {
                   type="text"
                   value={storeSearch}
                   onChange={(e) => setStoreSearch(e.target.value)}
-                  placeholder="ค้นหารหัสสาขา, ชื่อสาขา, หรือจังหวัด..."
+                  placeholder="Search by Store ID, name, or province..."
                   className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
@@ -477,19 +491,19 @@ export default function AdminDimensionsPage() {
                 onClick={() => { setStorePage(1); fetchStores(); }}
                 className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-colors"
               >
-                ค้นหา
+                Search
               </button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2 border-t border-slate-100 text-xs">
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">ลูกค้า</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Customer</label>
                 <select
                   value={storeCustomer}
                   onChange={(e) => { setStoreCustomer(e.target.value); setStorePage(1); }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกลูกค้า ({customerOptions.length})</option>
+                  <option value="all">All Customers ({customerOptions.length})</option>
                   {customerOptions.map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -497,13 +511,13 @@ export default function AdminDimensionsPage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">ภูมิภาค</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Region</label>
                 <select
                   value={storeRegion}
                   onChange={(e) => { setStoreRegion(e.target.value); setStorePage(1); }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกภูมิภาค</option>
+                  <option value="all">All Regions</option>
                   {regionOptions.map((r) => (
                     <option key={r} value={r}>{r}</option>
                   ))}
@@ -511,15 +525,15 @@ export default function AdminDimensionsPage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">สถานะ</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Status</label>
                 <select
                   value={storeStatus}
                   onChange={(e) => { setStoreStatus(e.target.value); setStorePage(1); }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกสถานะ</option>
-                  <option value="Active">Active (เปิดใช้งาน)</option>
-                  <option value="Not active">Not active (ปิดใช้งาน)</option>
+                  <option value="all">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Not active">Not active</option>
                 </select>
               </div>
 
@@ -528,11 +542,15 @@ export default function AdminDimensionsPage() {
                 {userRole === 'admin' ? (
                   <button
                     type="button"
-                    onClick={() => setShowBulkStoreModal(true)}
+                    onClick={() => {
+                      setBulkCustomer(customerOptions[0] || '');
+                      setBulkRegion(regionOptions[0] || '');
+                      setShowBulkStoreModal(true);
+                    }}
                     className="w-full py-1.5 px-3 rounded-xl text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-colors flex items-center justify-center gap-1.5"
                   >
                     <SlidersHorizontal className="w-3.5 h-3.5" />
-                    เปิด/ปิด สถานะแบบกลุ่ม (Bulk)
+                    Bulk Active / Inactive
                   </button>
                 ) : (
                   <div className="w-full py-1.5 px-3 rounded-xl text-xs font-medium text-slate-400 bg-slate-50 text-center border border-slate-100">
@@ -547,11 +565,11 @@ export default function AdminDimensionsPage() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
             {loadingStores ? (
               <div className="py-20 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-                <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> กำลังโหลดข้อมูลร้านค้า...
+                <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading stores...
               </div>
             ) : stores.length === 0 ? (
               <div className="py-16 text-center text-slate-400 text-sm">
-                ไม่พบข้อมูลสาขาที่ตรงกับเงื่อนไข
+                No stores found matching current filters.
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -570,13 +588,13 @@ export default function AdminDimensionsPage() {
                           className="rounded text-blue-600 focus:ring-blue-500"
                         />
                       </th>
-                      <th className="py-3 px-3">STORE_ID (PK)</th>
-                      <th className="py-3 px-3">ลูกค้า (Customer)</th>
-                      <th className="py-3 px-3">ชื่อสาขา (TH)</th>
-                      <th className="py-3 px-3">จังหวัด (TH)</th>
-                      <th className="py-3 px-3">ภูมิภาค (TH)</th>
-                      <th className="py-3 px-3">Store ID Customer</th>
-                      <th className="py-3 px-3 text-center">สถานะ (Active-Inactive)</th>
+                      <th className="py-3 px-3">STORE_ID</th>
+                      <th className="py-3 px-3">Customer</th>
+                      <th className="py-3 px-3">Store Name (TH)</th>
+                      <th className="py-3 px-3">Province</th>
+                      <th className="py-3 px-3">Region</th>
+                      <th className="py-3 px-3">Store ID (Customer)</th>
+                      <th className="py-3 px-3 text-center">Status</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
@@ -639,8 +657,8 @@ export default function AdminDimensionsPage() {
             {storeTotalPages > 1 && (
               <div className="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                 <div>
-                  แสดงหน้า <span className="font-semibold text-slate-900">{storePage}</span> จาก{' '}
-                  <span className="font-semibold text-slate-900">{storeTotalPages}</span> (ทั้งหมด {storeTotal} สาขา)
+                  Page <span className="font-semibold text-slate-900">{storePage}</span> of{' '}
+                  <span className="font-semibold text-slate-900">{storeTotalPages}</span> ({storeTotal} stores total)
                 </div>
                 <div className="flex gap-1.5">
                   <button
@@ -680,7 +698,7 @@ export default function AdminDimensionsPage() {
                   type="text"
                   value={modelSearch}
                   onChange={(e) => setModelSearch(e.target.value)}
-                  placeholder="ค้นหารหัสรุ่น (Model), แบรนด์, หรือหมวดหมู่..."
+                  placeholder="Search by Model code, brand, or category..."
                   className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
@@ -689,19 +707,19 @@ export default function AdminDimensionsPage() {
                 onClick={() => { setModelPage(1); fetchModels(); }}
                 className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-colors"
               >
-                ค้นหา
+                Search
               </button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2 border-t border-slate-100 text-xs">
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">หมวดหมู่สินค้า</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Category</label>
                 <select
                   value={modelCategory}
-                  onChange={(e) => { setModelCategory(e.target.value); setModelPage(1); }}
+                  onChange={(e) => handleModelCategoryChange(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกหมวดหมู่ ({categoryOptions.length})</option>
+                  <option value="all">All Categories ({categoryOptions.length})</option>
                   {categoryOptions.map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -709,13 +727,16 @@ export default function AdminDimensionsPage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">ประเภทย่อย (SubCategory)</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">
+                  SubCategory {modelCategory !== 'all' ? `(${modelCategory})` : ''}
+                </label>
                 <select
                   value={modelSubCategory}
                   onChange={(e) => { setModelSubCategory(e.target.value); setModelPage(1); }}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  disabled={modelCategory === 'all'}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option value="all">ทุกประเภทย่อย ({subCategoryOptions.length})</option>
+                  <option value="all">All SubCategories ({subCategoryOptions.length})</option>
                   {subCategoryOptions.map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))}
@@ -723,13 +744,13 @@ export default function AdminDimensionsPage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">แบรนด์</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Brand</label>
                 <select
                   value={modelBrand}
                   onChange={(e) => { setModelBrand(e.target.value); setModelPage(1); }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกแบรนด์ ({brandOptions.length})</option>
+                  <option value="all">All Brands ({brandOptions.length})</option>
                   {brandOptions.map((b) => (
                     <option key={b} value={b}>{b}</option>
                   ))}
@@ -737,15 +758,15 @@ export default function AdminDimensionsPage() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-medium text-slate-500 mb-1">สถานะ</label>
+                <label className="block text-[11px] font-medium text-slate-500 mb-1">Status</label>
                 <select
                   value={modelStatus}
                   onChange={(e) => { setModelStatus(e.target.value); setModelPage(1); }}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="all">ทุกสถานะ</option>
-                  <option value="Active">Active (เปิดใช้งาน)</option>
-                  <option value="Not active">Not active (ปิดใช้งาน)</option>
+                  <option value="all">All Status</option>
+                  <option value="Active">Active</option>
+                  <option value="Not active">Not active</option>
                 </select>
               </div>
 
@@ -754,11 +775,15 @@ export default function AdminDimensionsPage() {
                 {userRole === 'admin' ? (
                   <button
                     type="button"
-                    onClick={() => setShowBulkModelModal(true)}
+                    onClick={() => {
+                      setBulkBrand(brandOptions[0] || '');
+                      setBulkCategory(categoryOptions[0] || '');
+                      setShowBulkModelModal(true);
+                    }}
                     className="w-full py-1.5 px-3 rounded-xl text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-colors flex items-center justify-center gap-1.5"
                   >
                     <SlidersHorizontal className="w-3.5 h-3.5" />
-                    เปิด/ปิด สถานะแบบกลุ่ม (Bulk)
+                    Bulk Active / Inactive
                   </button>
                 ) : (
                   <div className="w-full py-1.5 px-3 rounded-xl text-xs font-medium text-slate-400 bg-slate-50 text-center border border-slate-100">
@@ -773,11 +798,11 @@ export default function AdminDimensionsPage() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
             {loadingModels ? (
               <div className="py-20 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-                <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> กำลังโหลดรายการสินค้า...
+                <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading models...
               </div>
             ) : models.length === 0 ? (
               <div className="py-16 text-center text-slate-400 text-sm">
-                ไม่พบรายการสินค้าที่ตรงกับเงื่อนไข
+                No models found matching current filters.
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -796,13 +821,13 @@ export default function AdminDimensionsPage() {
                           className="rounded text-blue-600 focus:ring-blue-500"
                         />
                       </th>
-                      <th className="py-3 px-3">Model (PK)</th>
+                      <th className="py-3 px-3">Model</th>
                       <th className="py-3 px-3">Brand</th>
                       <th className="py-3 px-3">Category</th>
                       <th className="py-3 px-3">SubCategory</th>
                       <th className="py-3 px-3">Remark</th>
-                      <th className="py-3 px-3">Update by</th>
-                      <th className="py-3 px-3 text-center">สถานะ (Active-Inactive)</th>
+                      <th className="py-3 px-3">Updated By</th>
+                      <th className="py-3 px-3 text-center">Status</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
@@ -865,8 +890,8 @@ export default function AdminDimensionsPage() {
             {modelTotalPages > 1 && (
               <div className="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                 <div>
-                  แสดงหน้า <span className="font-semibold text-slate-900">{modelPage}</span> จาก{' '}
-                  <span className="font-semibold text-slate-900">{modelTotalPages}</span> (ทั้งหมด {modelTotal} รุ่น)
+                  Page <span className="font-semibold text-slate-900">{modelPage}</span> of{' '}
+                  <span className="font-semibold text-slate-900">{modelTotalPages}</span> ({modelTotal} models total)
                 </div>
                 <div className="flex gap-1.5">
                   <button
@@ -900,24 +925,24 @@ export default function AdminDimensionsPage() {
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               <History className="w-4 h-4 text-blue-700" />
-              ประวัติการแก้ไขข้อมูล Dimension ล่าสุด (Audit Logs)
+              Dimension Change History (Audit Logs)
             </h3>
             <button
               type="button"
               onClick={fetchLogs}
               className="text-xs font-semibold text-blue-700 hover:underline flex items-center gap-1"
             >
-              <RotateCcw className="w-3 h-3" /> รีเฟรช
+              <RotateCcw className="w-3 h-3" /> Refresh
             </button>
           </div>
 
           {loadingLogs ? (
             <div className="py-12 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-blue-700" /> กำลังโหลดประวัติ...
+              <Loader2 className="w-4 h-4 animate-spin text-blue-700" /> Loading audit logs...
             </div>
           ) : logs.length === 0 ? (
             <div className="py-12 text-center text-slate-400 text-sm">
-              ยังไม่มีประวัติการแก้ไขข้อมูล
+              No audit log entries yet.
             </div>
           ) : (
             <div className="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden text-xs">
@@ -931,7 +956,7 @@ export default function AdminDimensionsPage() {
                       <span>{log.details}</span>
                     </div>
                     <div className="text-[11px] text-slate-500 mt-1">
-                      ดำเนินการโดย: <span className="font-medium text-slate-700">{log.user_name}</span>
+                      By: <span className="font-medium text-slate-700">{log.user_name}</span>
                     </div>
                   </div>
                   <div className="text-[11px] text-slate-400 font-mono flex-shrink-0">
@@ -959,13 +984,9 @@ export default function AdminDimensionsPage() {
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-blue-700" />
-                เปิด/ปิด สถานะร้านค้าแบบกลุ่ม (Bulk Store)
+                Bulk Store Status Update
               </h3>
-              <button
-                type="button"
-                onClick={() => setShowBulkStoreModal(false)}
-                className="text-slate-400 hover:text-slate-600"
-              >
+              <button type="button" onClick={() => setShowBulkStoreModal(false)} className="text-slate-400 hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -975,22 +996,16 @@ export default function AdminDimensionsPage() {
               {selectedStoreIds.length > 0 && (
                 <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-200">
                   <div className="font-bold text-blue-900 mb-2">
-                    1. จัดการตามสาขาที่เลือกไว้ ({selectedStoreIds.length} สาขา)
+                    1. Selected Stores ({selectedStoreIds.length} selected)
                   </div>
                   <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleBulkUpdateStores('Active', 'selected')}
-                      className="flex-1 py-2 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors"
-                    >
-                      เปิดใช้งานทั้งหมด (Active)
+                    <button type="button" onClick={() => handleBulkUpdateStores('Active', 'selected')}
+                      className="flex-1 py-2 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700">
+                      Set Active
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => handleBulkUpdateStores('Not active', 'selected')}
-                      className="flex-1 py-2 rounded-lg bg-slate-700 text-white font-bold hover:bg-slate-800 transition-colors"
-                    >
-                      ปิดใช้งานทั้งหมด (Not active)
+                    <button type="button" onClick={() => handleBulkUpdateStores('Not active', 'selected')}
+                      className="flex-1 py-2 rounded-lg bg-slate-700 text-white font-bold hover:bg-slate-800">
+                      Set Inactive
                     </button>
                   </div>
                 </div>
@@ -998,82 +1013,57 @@ export default function AdminDimensionsPage() {
 
               {/* Option 2: By Customer */}
               <div>
-                <label className="block font-bold text-slate-700 mb-1.5">2. จัดการทั้งระดับลูกค้า (Customer)</label>
+                <label className="block font-bold text-slate-700 mb-1.5">2. By Customer</label>
                 <div className="flex gap-2">
                   <select
-                    id="bulkCustomerSelect"
+                    value={bulkCustomer}
+                    onChange={(e) => setBulkCustomer(e.target.value)}
                     className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs"
                   >
                     {customerOptions.map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkCustomerSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateStores('Active', 'customer', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-                  >
-                    เปิด
+                  <button type="button" onClick={() => handleBulkUpdateStores('Active', 'customer', bulkCustomer)}
+                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700">
+                    Active
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkCustomerSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateStores('Not active', 'customer', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800"
-                  >
-                    ปิด
+                  <button type="button" onClick={() => handleBulkUpdateStores('Not active', 'customer', bulkCustomer)}
+                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800">
+                    Inactive
                   </button>
                 </div>
               </div>
 
               {/* Option 3: By Region */}
               <div>
-                <label className="block font-bold text-slate-700 mb-1.5">3. จัดการทั้งระดับภูมิภาค (Region)</label>
+                <label className="block font-bold text-slate-700 mb-1.5">3. By Region</label>
                 <div className="flex gap-2">
                   <select
-                    id="bulkRegionSelect"
+                    value={bulkRegion}
+                    onChange={(e) => setBulkRegion(e.target.value)}
                     className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs"
                   >
                     {regionOptions.map((r) => (
                       <option key={r} value={r}>{r}</option>
                     ))}
                   </select>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkRegionSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateStores('Active', 'region', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-                  >
-                    เปิด
+                  <button type="button" onClick={() => handleBulkUpdateStores('Active', 'region', bulkRegion)}
+                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700">
+                    Active
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkRegionSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateStores('Not active', 'region', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800"
-                  >
-                    ปิด
+                  <button type="button" onClick={() => handleBulkUpdateStores('Not active', 'region', bulkRegion)}
+                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800">
+                    Inactive
                   </button>
                 </div>
               </div>
             </div>
 
             <div className="pt-2 text-right">
-              <button
-                type="button"
-                onClick={() => setShowBulkStoreModal(false)}
-                className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200"
-              >
-                ปิด
+              <button type="button" onClick={() => setShowBulkStoreModal(false)}
+                className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200">
+                Close
               </button>
             </div>
           </div>
@@ -1089,13 +1079,9 @@ export default function AdminDimensionsPage() {
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-blue-700" />
-                เปิด/ปิด สถานะรุ่นสินค้าแบบกลุ่ม (Bulk Model)
+                Bulk Model Status Update
               </h3>
-              <button
-                type="button"
-                onClick={() => setShowBulkModelModal(false)}
-                className="text-slate-400 hover:text-slate-600"
-              >
+              <button type="button" onClick={() => setShowBulkModelModal(false)} className="text-slate-400 hover:text-slate-600">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1105,22 +1091,16 @@ export default function AdminDimensionsPage() {
               {selectedModelIds.length > 0 && (
                 <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-200">
                   <div className="font-bold text-blue-900 mb-2">
-                    1. จัดการตามรุ่นที่เลือกไว้ ({selectedModelIds.length} รุ่น)
+                    1. Selected Models ({selectedModelIds.length} models)
                   </div>
                   <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleBulkUpdateModels('Active', 'selected')}
-                      className="flex-1 py-2 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-colors"
-                    >
-                      เปิดใช้งานทั้งหมด (Active)
+                    <button type="button" onClick={() => handleBulkUpdateModels('Active', 'selected')}
+                      className="flex-1 py-2 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700">
+                      Set Active
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => handleBulkUpdateModels('Not active', 'selected')}
-                      className="flex-1 py-2 rounded-lg bg-slate-700 text-white font-bold hover:bg-slate-800 transition-colors"
-                    >
-                      ปิดใช้งานทั้งหมด (Not active)
+                    <button type="button" onClick={() => handleBulkUpdateModels('Not active', 'selected')}
+                      className="flex-1 py-2 rounded-lg bg-slate-700 text-white font-bold hover:bg-slate-800">
+                      Set Inactive
                     </button>
                   </div>
                 </div>
@@ -1128,82 +1108,43 @@ export default function AdminDimensionsPage() {
 
               {/* Option 2: By Brand */}
               <div>
-                <label className="block font-bold text-slate-700 mb-1.5">2. จัดการทั้งแบรนด์ (Brand)</label>
+                <label className="block font-bold text-slate-700 mb-1.5">2. By Brand</label>
                 <div className="flex gap-2">
-                  <select
-                    id="bulkBrandSelect"
-                    className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs"
-                  >
+                  <select value={bulkBrand} onChange={(e) => setBulkBrand(e.target.value)}
+                    className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                     {brandOptions.map((b) => (
                       <option key={b} value={b}>{b}</option>
                     ))}
                   </select>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkBrandSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateModels('Active', 'brand', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-                  >
-                    เปิด
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkBrandSelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateModels('Not active', 'brand', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800"
-                  >
-                    ปิด
-                  </button>
+                  <button type="button" onClick={() => handleBulkUpdateModels('Active', 'brand', bulkBrand)}
+                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700">Active</button>
+                  <button type="button" onClick={() => handleBulkUpdateModels('Not active', 'brand', bulkBrand)}
+                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800">Inactive</button>
                 </div>
               </div>
 
               {/* Option 3: By Category */}
               <div>
-                <label className="block font-bold text-slate-700 mb-1.5">3. จัดการทั้งหมวดหมู่ (Category)</label>
+                <label className="block font-bold text-slate-700 mb-1.5">3. By Category</label>
                 <div className="flex gap-2">
-                  <select
-                    id="bulkCategorySelect"
-                    className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs"
-                  >
+                  <select value={bulkCategory} onChange={(e) => setBulkCategory(e.target.value)}
+                    className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
                     {categoryOptions.map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkCategorySelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateModels('Active', 'category', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700"
-                  >
-                    เปิด
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const el = document.getElementById('bulkCategorySelect') as HTMLSelectElement;
-                      if (el) handleBulkUpdateModels('Not active', 'category', el.value);
-                    }}
-                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800"
-                  >
-                    ปิด
-                  </button>
+                  <button type="button" onClick={() => handleBulkUpdateModels('Active', 'category', bulkCategory)}
+                    className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700">Active</button>
+                  <button type="button" onClick={() => handleBulkUpdateModels('Not active', 'category', bulkCategory)}
+                    className="px-3 py-2 rounded-xl bg-slate-700 text-white font-bold hover:bg-slate-800">Inactive</button>
                 </div>
               </div>
             </div>
 
             <div className="pt-2 text-right">
-              <button
-                type="button"
-                onClick={() => setShowBulkModelModal(false)}
-                className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200"
-              >
-                ปิด
+              <button type="button" onClick={() => setShowBulkModelModal(false)}
+                className="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200">
+                Close
               </button>
             </div>
           </div>
@@ -1219,7 +1160,7 @@ export default function AdminDimensionsPage() {
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                 <Upload className="w-5 h-5 text-blue-700" />
-                อัปโหลดไฟล์ CSV เพื่อแทนที่ข้อมูล ({uploadType === 'store' ? 'Store' : 'Model'})
+                Upload CSV to Replace Data ({uploadType === 'store' ? 'Store' : 'Model'})
               </h3>
               <button
                 type="button"
@@ -1234,16 +1175,16 @@ export default function AdminDimensionsPage() {
             <div className="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-3 text-amber-800 text-xs">
               <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
-                <span className="font-bold">คำเตือนสำคัญ:</span> การอัปโหลดนี้จะเป็นการ{' '}
-                <span className="font-bold underline">แทนที่ (Replace) ข้อมูลทั้งหมด</span> ของตาราง{' '}
-                {uploadType === 'store' ? 'Dimension_Store' : 'Dimension_Model'} ด้วยข้อมูลจากไฟล์ใหม่
+                <span className="font-bold">Warning:</span> This action will{' '}
+                <span className="font-bold underline">completely replace all data</span> in the{' '}
+                {uploadType === 'store' ? 'Dimension_Store' : 'Dimension_Model'} table with the uploaded file.
               </div>
             </div>
 
-            {/* File Dropzone / Selector */}
+            {/* File Selector */}
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-2">
-                เลือกไฟล์ CSV สำหรับตาราง {uploadType === 'store' ? 'ร้านค้า (Store)' : 'รุ่นสินค้า (Model)'}
+                Select CSV file for {uploadType === 'store' ? 'Store Dimension' : 'Model Dimension'}
               </label>
               <input
                 type="file"
@@ -1257,7 +1198,7 @@ export default function AdminDimensionsPage() {
             {/* Validation State */}
             {validatingUpload && (
               <div className="py-6 text-center text-xs text-slate-500 flex items-center justify-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin text-blue-700" /> กำลังตรวจสอบความถูกต้องและคีย์ข้อมูลในไฟล์...
+                <Loader2 className="w-4 h-4 animate-spin text-blue-700" /> Validating file format and keys...
               </div>
             )}
 
@@ -1274,29 +1215,29 @@ export default function AdminDimensionsPage() {
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                   <div className="font-bold text-slate-900 text-sm flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    ผลการตรวจสอบความถูกต้องของไฟล์
+                    File Validation Result
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">จำนวนแถวทั้งหมดในไฟล์:</span>
-                    <span className="font-bold font-mono text-slate-900">{uploadPreview.totalRows} แถว</span>
+                    <span className="text-slate-500">Total rows in file:</span>
+                    <span className="font-bold font-mono text-slate-900">{uploadPreview.totalRows} rows</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Primary Key ที่ไม่ซ้ำกัน:</span>
-                    <span className="font-bold font-mono text-emerald-700">{uploadPreview.validCount} รายการ</span>
+                    <span className="text-slate-500">Unique Primary Keys:</span>
+                    <span className="font-bold font-mono text-emerald-700">{uploadPreview.validCount} records</span>
                   </div>
                 </div>
 
-                {/* Safety Check: Missing Historical Reference Alert */}
+                {/* Safety Check */}
                 {uploadPreview.hasMissingHistoricalWarning && (
                   <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300 text-amber-900 space-y-1.5">
                     <div className="font-bold flex items-center gap-2 text-amber-800">
                       <AlertTriangle className="w-4 h-4 text-amber-600" />
-                      แจ้งเตือน: พบ {uploadPreview.missingHistoricalCount} รายการที่มีประวัติการบันทึกแต่ไม่มีในไฟล์ใหม่
+                      Warning: {uploadPreview.missingHistoricalCount} records have existing survey history but are missing from the new file
                     </div>
                     <p className="text-[11px] text-amber-800/90 leading-relaxed">
-                      ตัวอย่างรหัส: <span className="font-mono">{uploadPreview.missingHistoricalSample.join(', ')}</span>
+                      Sample IDs: <span className="font-mono">{uploadPreview.missingHistoricalSample.join(', ')}</span>
                       <br />
-                      * ข้อมูลประวัติการสำรวจเดิมจะยังคงถูกเก็บรักษาไว้ แต่รหัสดังกล่าวจะไม่ปรากฏให้พนักงานเลือกบันทึกใหม่อีกต่อไป
+                      * Historical survey data will be preserved, but these IDs will no longer appear for staff to survey.
                     </p>
                   </div>
                 )}
@@ -1311,7 +1252,7 @@ export default function AdminDimensionsPage() {
                 disabled={replacing}
                 className="flex-1 py-2.5 px-4 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
               >
-                ยกเลิก
+                Cancel
               </button>
               <button
                 type="button"
@@ -1321,10 +1262,10 @@ export default function AdminDimensionsPage() {
               >
                 {replacing ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" /> กำลังแทนที่ข้อมูล...
+                    <Loader2 className="w-4 h-4 animate-spin" /> Replacing data...
                   </>
                 ) : (
-                  'ยืนยันแทนที่ข้อมูลทั้งหมด'
+                  'Confirm Replace All Data'
                 )}
               </button>
             </div>

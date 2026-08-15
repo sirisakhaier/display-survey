@@ -77,11 +77,15 @@ export async function GET(req: NextRequest) {
     // Get filter options
     const distinctBrands = db.prepare('SELECT DISTINCT Brand FROM models ORDER BY Brand ASC').all() as { Brand: string }[];
     const distinctCategories = db.prepare('SELECT DISTINCT Category FROM models ORDER BY Category ASC').all() as { Category: string }[];
-    const distinctSubCategories = db.prepare(`
-      SELECT DISTINCT SubCategory FROM models 
-      WHERE SubCategory IS NOT NULL AND SubCategory != '' 
-      ORDER BY SubCategory ASC
-    `).all() as { SubCategory: string }[];
+
+    // SubCategories filtered by selected category (so dropdown only shows relevant options)
+    const subCatQuery = category && category !== 'all'
+      ? `SELECT DISTINCT SubCategory FROM models WHERE Category = ? AND SubCategory IS NOT NULL AND SubCategory != '' ORDER BY SubCategory ASC`
+      : `SELECT DISTINCT SubCategory FROM models WHERE SubCategory IS NOT NULL AND SubCategory != '' ORDER BY SubCategory ASC`;
+    const distinctSubCategories = (category && category !== 'all'
+      ? db.prepare(subCatQuery).all(category)
+      : db.prepare(subCatQuery).all()
+    ) as { SubCategory: string }[];
 
     return NextResponse.json({
       success: true,
