@@ -1,0 +1,11 @@
+name = "display-survey"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = ".next"
+
+[vars]
+ENVIRONMENT = "production"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "display_survey_db"
+database_id = "display_survey_db_id"

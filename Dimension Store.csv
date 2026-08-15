@@ -1,0 +1,1057 @@
+Customer,Store ID Customer,STORE_ID,STORE_NAME,Store Name TH,Province TH,Region TH,Active-Inactive
+บิ๊กซี,15022:Koh Phangan,S00938,BC-KOH_PHA_NGAN-SURATTHANI,เกาะพะงัน,สุราษฎร์ธานี,ภาคใต้,Not active
+บิ๊กซี,11151:Samui,S00970,BC-SAMUI-SURATTHANI,เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+บิ๊กซี,11127:Chiangmai 1,S00926,BC-CHIANGMAI_1,เชียงใหม่ 1,เชียงใหม่,ภาคเหนือ,Active
+บิ๊กซี,11184:Chiangmai 2,S00927,BC-CHIANGMAI_2,เชียงใหม่ 2,เชียงใหม่,ภาคเหนือ,Active
+บิ๊กซี,11117:Chiangrai,S00751,BC-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+บิ๊กซี,11250:Chiangrai2,S00928,BC-CHIANGRAI_2,เชียงราย 2,เชียงราย,ภาคเหนือ,Active
+บิ๊กซี,11175:Chonburi CPN,S00921,BC-CENTRAL-CHONBURI_3,เซ็นทรัล ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11142:Phetchakasem 1,S00876,BC:PETCHKASEM_1,เพชรเกษม 1,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11179:Phetchakasem 2,S00865,BC:PETCHKASEM_2,เพชรเกษม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11120:Petchaburi,S00962,BC-PHETCHABURI,เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Not active
+บิ๊กซี,11159:Phechabun,S00961,BC-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+บิ๊กซี,11210:Mega Bangna,S00853,BC:MEGA_BANGNA,เมกาบางนา,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11231:Nong Khai,S00945,BC-MEGA_MARGET-NONGKHAI,เมกามาร์เก็ต หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11251:Khon Kaen (Mueang Kao),S00946,BC-MUEANG_KAO-KHONKAEN,เมืองเก่าขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11211:Loei,S00759,BC-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11144:Ekkamai,S00889,BC:EKKAMAI,เอกมัย,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11102:Chaengwattana 1,S00804,BC:CHANGWATTANA_1,แจ้งวัฒนะ 1,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11185:Chaengwattana 2,S00785,BC:CHANGWATTANA_2,แจ้งวัฒนะ 2,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11146:Phare,S00965,BC-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+บิ๊กซี,11126:Fashion Island,S00813,BC:FASHION_ISLAND,แฟชั่นไอส์แลนด์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11170:Laemthong,S00878,BC-LAEMTHONG-RAYONG,แหลมทอง,ระยอง,ภาคตะวันตกและตะวันออก,Not active
+บิ๊กซี,15044:Non Sung,S00955,BC-NON_SUNG-NAKHONRATCHASIMA,โนนสูง,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Not active
+บิ๊กซี,11228:Phon Phisai,S00964,BC-PHONPHISAI-NONGKHAI,โพนพิสัย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11252:Sai Noi,S00906,BC:SAI_NOI,ไทรน้อย,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11226:Kranuan,S00939,BC-KRANUAN-KHONKAEN,กระนวน,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11160:Krabi,S00796,BC-KRABI,กระบี่,กระบี่,ภาคใต้,Active
+บิ๊กซี,11221:Kanlapaphruek,S00892,BC:KALLAPRAPRUK,กัลปพฤกษ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11224:Kanchanaburi,S00845,BC-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11217:Kalasin,S00936,BC-KALASIN,กาฬสินธุ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11171:Kamphengphet,S00869,BC-KAMPHAENGPHET,กำแพงเพชร,กำแพงเพชร,ภาคเหนือ,Active
+บิ๊กซี,11110:Khonkaen,S00832,BC-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11242:Kham Ta Kla (Sakon Nakhon),S00937,BC-KHAM_TA_KLA-SAKONNAKHON,คำตากล้า,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11209:Chantaburi,S00925,BC-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11161:Navanakorn JUMBO,S00897,BC:JUMBO-NAVANAKORN,จัมโบ้ นวนคร,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11103:Radburana JUMBO,S01184,BC:JUMBO-RADBURANA,จัมโบ้ ราษฎร์บูรณะ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,14001:JBO Samrong,S00881,BC:JUMBO-SUMRONG,จัมโบ้ สำโรง,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,15002:BJR PhangNga,S00862,BC-JUNIOR-PHANGNGA,จูเนียร์ พังงา,พังงา,ภาคใต้,Not active
+บิ๊กซี,11137:Chachoengsao 1,S00922,BC-CHACHOENGSAO_1,ฉะเชิงเทรา 1,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11204:Chachoengsao 2,S00923,BC-CHACHOENGSAO_2,ฉะเชิงเทรา 2,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11152:Chonburi  1,S00929,BC-CHONBURI_1,ชลบุรี 1,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11181:Chonburi 2,S00930,BC-CHONBURI_2,ชลบุรี 2,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11158:Chaiyaphoom,S00924,BC-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11206:Chumporn,S00931,BC-CHUMPHON,ชุมพร,ชุมพร,ภาคใต้,Active
+บิ๊กซี,11125:Don Mueang,S00887,BC:DONMAUNG,ดอนเมือง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11239:Dan khun thot (Korat),S00932,BC-DANKHUNTHOT-NAKHONRATCHASIMA,ด่านขุนทด,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11132:Daokanong,S00888,BC:DOWKANONG,ดาวคะนอง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11220:Trang,S00980,BC-TRANG,ตรัง,ตรัง,ภาคใต้,Active
+บิ๊กซี,11207:Tak,S00978,BC-TAK,ตาก,ตาก,ภาคเหนือ,Active
+บิ๊กซี,11133:Tiwanon,S00791,BC:TIWANON,ติวานนท์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11238:Tha tako (Nakhonsawan),S00979,BC-THATAKO-NAKHONSAWAN,ท่าตะโก,นครสวรรค์,ภาคเหนือ,Active
+บิ๊กซี,11107:Nakornpathom,S00797,BC:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11223:Nakhonpanom,S00836,BC-NAKHONPHANOM,นครพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11111:Korat,S00949,BC-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11233:Korat 2,S00820,BC-NAKHONRATCHASIMA_2,นครราชสีมา 2,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11249:Nakornsrithammarat 2,S00951,BC-NAKHONSITHAMMARAT_2,นครศรีธรรมราช 2,นครศรีธรรมราช,ภาคใต้,Active
+บิ๊กซี,11135:Nakhonsawan 1,S00818,BC-NAKHONSAWAN_1,นครสวรรค์ 1,นครสวรรค์,ภาคเหนือ,Active
+บิ๊กซี,11214:Nakhonsawan 2,S00950,BC-NAKHONSAWAN_2,นครสวรรค์ 2,นครสวรรค์,ภาคเหนือ,Active
+บิ๊กซี,11256:Narathiwat,S00954,BC-NARATHIWAT,นราธิวาส,นราธิวาส,ภาคใต้,Active
+บิ๊กซี,11229:Na Thawi,S00948,BC-NA_THAWI-SONGKHLA,นาทวี,สงขลา,ภาคใต้,Active
+บิ๊กซี,11225:Nan,S00953,BC-NAN,น่าน,น่าน,ภาคเหนือ,Active
+บิ๊กซี,11236:Nam Yuen (Ubonratchathani),S00952,BC-NAMYUEN-UBONRATCHATHANI,น้ำยืน,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11255:Bowin,S00850,BC-BORWIN-CHONBURI,บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11183:Bangyai,S00854,BC:BANGYAI,บางใหญ่,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11130:Bangna,S00823,BC:BANGNA,บางนา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11195:Bangbon,S00810,BC:BANGBON,บางบอน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11196:Bangpakok,S00886,BC:BANGPAKOK,บางปะกอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11106:Bangplee,S00771,BC:BANGPLEE,บางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11157:Banpong,S00920,BC-BANPONG-RATCHABURI,บ้านโป่ง,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11230:Banphai,S00919,BC-BANPHAI-KHONKAEN,บ้านไผ่,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11235:Ban Dung (Udon Thani),S00918,BC-BANDUNG-UDONTHANI,บ้านดุง,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11208:Bangbueng,S00917,BC-BANBUENG-CHONBURI,บ้านบึง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11153:Buriram,S00773,BC-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11234:Pathum thani,S00899,BC:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,15007:Pracha uthit,S00900,BC:PRACHA_UTHID,ประชาอุทิศ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,15015:Pluak Daeng,S00864,BC-PLUAK_DAENG-RAYONG,ปลวกแดง,ระยอง,ภาคตะวันตกและตะวันออก,Not active
+บิ๊กซี,11139:Pattani,S00829,BC-PATTANI,ปัตตานี,ปัตตานี,ภาคใต้,Active
+บิ๊กซี,11253:Pakchong,S00958,BC-PAKCHONG-NAKHONRATCHASIMA,ปากช่อง,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11116:Rama2,S00844,BC:RAMA2,พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11197:Rama2_2,S00902,BC:RAMA2_2,พระราม 2 (2),กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11190:Rama 4,S00808,BC:RAMA4,พระราม 4,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11243:Phang Khon (Sakon Nakhon),S00960,BC-PHANG_KHON-SAKONNAKHON,พังโคน,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11104:Pattaya 1,S00959,BC-PATTAYA_1(NORTH)-CHONBURI,พัทยา 1 พัทยาเหนือ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11134:Pattaya 2 Horeca,S00753,BC-PATTAYA_2(SOUTH)-CHONBURI,พัทยา 2 พัทยาใต้,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11192:Pattaya 3,S00732,BC-PATTAYA_3(CENTER)-CHONBURI,พัทยา 3 พัทยากลาง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,15014:Phibulmangsaharn,S00963,BC-PHIBUNMANGSAHAN-UBONRATCHATHANI,พิบูลมังสาหาร,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11113:Pisanulok,S00762,BC-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+บิ๊กซี,11129:Phuket 1,S00786,BC-PHUKET_1,ภูเก็ต 1,ภูเก็ต,ภาคใต้,Active
+บิ๊กซี,11187:Phuket 2,S00966,BC-PHUKET_2,ภูเก็ต 2,ภูเก็ต,ภาคใต้,Active
+บิ๊กซี,11168:Mahachai,S00895,BC:MAHACHAI-SAMUTSAKHON,มหาชัย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11254:Mahachai2,S00894,BC:MAHACHAI_2-SAMUTSAKHON,มหาชัย 2,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11166:Mahasarakham,S00944,BC-MAHASARAKHAM,มหาสารคาม,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,15010:Lomsak,S00867,BC-MARKET-LOMSAK-PHETCHABUN,มาร์เก็ต หล่มสัก,เพชรบูรณ์,ภาคเหนือ,Not active
+บิ๊กซี,11213:Mukdahan,S00947,BC-MUKDAHARN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11163:Yasothon,S00985,BC-YASOTHON,ยโสธร,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11259:Yala,S00790,BC-YALA,ยะลา,ยะลา,ภาคใต้,Active
+บิ๊กซี,11202:Romklao,S00877,BC:ROMKRAW,ร่มเกล้า,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11215:Roiet,S00859,BC-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11227:Ranong,S00967,BC-RANONG,ระนอง,ระนอง,ภาคใต้,Active
+บิ๊กซี,11115:Rayong,S00750,BC-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11108:Rangsit 1,S00903,BC:RANGSIT_1,รังสิต 1,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11194:Rangsit 2,S01169,BC:RANGSIT2,รังสิต 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11198:Rangsit Klong 3,S00904,BC:RANGSIT_KLONG3,รังสิต คลอง 3,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11162:Rangsit  Klong 6,S00774,BC:RANGSIT_KLONG6,รังสิต คลอง 6,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11191:Ratchada,S00743,BC:RATCHADA,รัชดาภิเษก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11114:Rattanatibeth 1,S00764,BC:RATTANATHIBATE_1,รัตนาธิเบศร์ 1,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11189:Rattanatibeth 2,S00905,BC:RATTANATHIBATE_2,รัตนาธิเบศร์ 2,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11172:Rajdamri,S00901,BC:RADDUMRI,ราชดำริ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11147:Ratchaburi,S00861,BC-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11180:Ramintra,S00812,BC:RAMINTRA,รามอินทรา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11119:Lopburi 1,S00763,BC-LOPBURI_1,ลพบุรี 1,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11176:Lopburi 2,S00943,BC-LOPBURI_2,ลพบุรี 2,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11131:Ladphrao 1,S00875,BC:IMPERIAL-LADPRAO_1,ลาดพร้าว 1 อิมพีเรียล,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11174:Ladphrao 2,S00882,BC:LADPRAO_2,ลาดพร้าว 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11248:Latyao Nakornsawan,S00940,BC-LADYAO-NAKHONSAWAN,ลาดยาว,นครสวรรค์,ภาคเหนือ,Active
+บิ๊กซี,11118:Lampang,S00941,BC-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+บิ๊กซี,11150:Lumphun,S00942,BC-LAMPHUN,ลำพูน,ลำพูน,ภาคเหนือ,Active
+บิ๊กซี,11148:Lumlukka 1,S00828,BC:LAMLUKKA_1,ลำลูกกา 1,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11193:Lumlukka 2,S00893,BC:LAMLUKKA_2-KLONG4,ลำลูกกา 2 คลอง 4,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11101:Wongsawang,S00912,BC:WONGSAWANG,วงศ์สว่าง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11237:Wang num yen (Sakaeo),S00880,BC-WANGNAMYEN-SAKAEO,วังน้ำเย็น,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,15058:Wangsaphung,S00983,BC-WANGSAPHUNG-LOEI,วังสะพุง,เลย,ภาคตะวันออกเฉียงเหนือ,Not active
+บิ๊กซี,11165:Varinchamrab,S00982,BC-VARINCHAMRAB-UBONRATCHATHANI,วารินชำราบ,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11241:Wichian Buri (Phetchabun),S00984,BC-WICHENBURI-PHETCHABUN,วิเชียรบุรี,เพชรบูรณ์,ภาคเหนือ,Active
+บิ๊กซี,11178:Srinakarin,S00908,BC:SRINAKARIN,ศรีนครินทร์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11222:Sri Mahapot,S00827,BC-SRIMAHAPHOT-PRACHINBURI,ศรีมหาโพธ,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11167:Sisaket,S00868,BC-SISAKET,ศรีสะเกษ,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11145:Sakolnakorn,S00969,BC-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11212:Satun,S00973,BC-SATUN,สตูล,สตูล,ภาคใต้,Active
+บิ๊กซี,11123:Samutprakran,S00872,BC:SAMUTPRAKAN,สมุทรปราการ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11218:Samutsongkram,S00971,BC-SAMUTSONGKRAM,สมุทรสงคราม,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11164:Sakhew,S00968,BC-SAKAEO,สระแก้ว,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11258:Saraburi,S00858,BC-SARABURI,สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,15006:Suanluang,S00909,BC:SUANG_LUNG,สวนหลวง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11136:Saphankwai,S00757,BC:SAPANKWAI,สะพานควาย,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11244:Sattahip (Chonburi),S00972,BC-SATTAHIP-CHONBURI,สัตหีบ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,15003:Saimai,S00907,BC:SAIMAI,สายไหม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11138:Samrong 1,S00838,BC:IMPERIAL-SUMRONG_1,สำโรง 1 อิมพีเรียลสำโรง,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,15038:Sikhiew,S00974,BC-SI_KHIEW-NAKHONRATCHASIMA,สีคิ้ว,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Not active
+บิ๊กซี,11156:Sukothai,S00975,BC-SUKHOTHAI,สุโขทัย,สุโขทัย,ภาคเหนือ,Active
+บิ๊กซี,11257:Sungaikolok,S00814,BC-SU_NGAI_KOLOK-NARATHIWAT,สุไหงโกลก,นราธิวาส,ภาคใต้,Active
+บิ๊กซี,11128:Suksawat,S00782,BC:SUKSAWAD,สุขสวัสดิ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11143:Sukhapiban3_1,S00910,BC:SUKHAPIBAN3_1,สุขาภิบาล 3 (1),กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11177:Sukhapiban3_2,S01170,BC:SUKHAPIBAN3_2,สุขาภิบาล 3 (2),กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,15004:Sukhaphiban 5,S00911,BC:SUKHAPIBAN5,สุขาภิบาล 5,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11219:Suphanburi,S00976,BC-SUPHANBURI,สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11112:Suratthanee,S00777,BC-SURATTHANI,สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+บิ๊กซี,11140:Surin,S00879,BC-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11240:Suwannaphum (Roi Et),S00977,BC-SUWANNAPHUM-ROIET,สุวรรณภูมิ,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11200:Suwingtawong,S00842,BC:SUWINTAWONG,สุวินทวงศ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,15009:Hatairat,S00890,BC:HATAIRAT,หทัยราษฎร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,11247:Nong Ki Buriram,S00956,BC-NONG_KI-BURIRAM,หนองกี่,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11201:Nongchok,S00898,BC:NONGJOK,หนองจอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11246:Nong Bua (Nakornsawan),S00957,BC-NONGBUA-NAKHONSAWAN,หนองบัว,นครสวรรค์,ภาคเหนือ,Active
+บิ๊กซี,15064:Nam Daeng,S00896,BC:NAM_DAENG-BANGPLEE,หนามแดง,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+บิ๊กซี,15051:Huaitalaeng,S00866,BC-HUAI_TALAENG-BURIRAM,ห้วยแถลง,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Not active
+บิ๊กซี,11122:Huamark,S00816,BC:HUAMARK,หัวหมาก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11260:HMHUMA,S01709,BC-HUAHIN-PRACHUAPKHIRIKHAN,หัวหิน,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11154:Hangdong 1,S00934,BC-HANGDONG-CHIANGMAI_1,หางดง 1,เชียงใหม่,ภาคเหนือ,Active
+บิ๊กซี,11188:Hangdong 2,S00935,BC-HANGDONG-CHIANGMAI_2,หางดง 2,เชียงใหม่,ภาคเหนือ,Active
+บิ๊กซี,11121:Hatyai 1,S00781,BC-HADYAI_1-SONGKHLA,หาดใหญ่ 1,สงขลา,ภาคใต้,Active
+บิ๊กซี,11186:Hatyai 2,S00933,BC-HADYAI_2-SONGKHLA,หาดใหญ่ 2,สงขลา,ภาคใต้,Active
+บิ๊กซี,15013:Kamala,S01965,BC-KAMALA-PHUKET,หาดกมลา,ภูเก็ต,ภาคใต้,Active
+บิ๊กซี,11155:Ayuttaya Horeca,S00916,BC-AYUTTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11232:Aranyaprathet,S00915,BC-ARANYAPRATHET-SAKAEO,อรัญประเทศ,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11182:Onnuch,S00835,BC:ON_NUCH,อ่อนนุช,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11141:Aomyai,S00849,BC:AOMYAI,อ้อมใหญ่,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11216:Angthong,S00914,BC-ANGTHONG,อ่างทอง,อ่างทอง,ภาคตะวันตกและตะวันออก,Active
+บิ๊กซี,11169:Amnatchroen,S00913,BC-AMNATCHAROEN,อำนาจเจริญ,อำนาจเจริญ,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11199:Issaraphap,S00891,BC:ITSARAPAP,อิสรภาพ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+บิ๊กซี,11109:Udonthani 1,S00789,BC-UDONTHANI_1,อุดรธานี 1,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11205:Udonthani 2,S00981,BC-UDONTHANI_2,อุดรธานี 2,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+บิ๊กซี,11124:Ubon,S00775,BC-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,เชียงใหม่,S00413,DH-CHIANGMAI,เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+ดูโฮม,เชียงราย,S00367,DH-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+ดูโฮม,เทพารักษ์,S01912,DH:THEPHARAK-SAMUTPRAKAN,เทพารักษ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+ดูโฮม,เพชรเกษม,S00162,DH:PETCHKASEM,เพชรเกษม,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,แหลมฉบัง,S00131,DH-LAMCHABANG-CHONBURI,แหลมฉบัง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,กาญจนบุรี,S00268,DH-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,ขอนแก่น,S00217,DH-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,ชัยภูมิ,S00319,DH-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,นครราชสีมา,S00144,DH-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,นครสวรรค์,S01913,DH-NAKHONSAWAN,นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+ดูโฮม,บ่อวิน,S00265,DH-BORWIN-CHONBURI,บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,บางนา-ตราด,S00141,DH:BANGNA,บางนา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ดูโฮม,บางบัวทอง,S00551,DH:BANGBUATHONG-NONTHABURI,บางบัวทอง,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ดูโฮม,บางพูน,S00362,DH:BANG_PHUN-PATHUMTHANI,บางพูน,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ดูโฮม,บุรีรัมย์,S00332,DH-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,พิษณุโลก,S00167,DH-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+ดูโฮม,ภูเก็ต,S02243,DH-PHUKET,ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+ดูโฮม,มหาชัย,S01584,DH:MAHACHAI-SAMUTSAKHON,มหาชัย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,มาบตาพุด,S00429,DH-MABTAPUT-RAYONG,มาบตาพุด,ระยอง,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,รังสิต,S00229,DH:RANGSIT_KLONG7-PATHUMTHANI,รังสิต คลอง 7,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ดูโฮม,สุราษฎร์ธานี,S00252,DH-SURATTHANI,สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+ดูโฮม,สุรินทร์,S00281,DH-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,หาดใหญ่,S00298,DH-HADYAI-SONGKHLA,หาดใหญ่,สงขลา,ภาคใต้,Active
+ดูโฮม,ชลบุรี (อมตะนคร),S00189,DH-AMMATANAKHON-CHONBURI,อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,อยุธยา,S00363,DH-AYUTTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+ดูโฮม,อุดรธานี,S00238,DH-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+ดูโฮม,อุบลราชธานี,S00058,DH-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-187,S00125,GH-SAMUI-SURATTHANI,เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+โกลบอลเฮ้าส์,NEWGH04,S02349,GH-CHIANG_KAM-PHAYAO,เชียงคำ,พะเยา,ภาคเหนือ,Not active
+โกลบอลเฮ้าส์,GH-127,S00368,GH-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-176,S00407,GH-DECH_UDOM-UBONRATCHATHANI,เดชอุดม,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-211,S00563,GH:THE_NINE_TIWANONT,เดอะไนน์ติวานนท์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โกลบอลเฮ้าส์,GH-141,S00426,GH:THEPHARAK-SAMUTPRAKAN,เทพารักษ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โกลบอลเฮ้าส์,GH-131,S00508,GH-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-160,S00279,GH-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-197,S00478,GH-LENG_NOK_THA-YASOTHON,เลิงนกทา,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-104,S00380,GH-WIANG_KUM_KAM-CHIANGMAI,เวียงกุมกาม,เชียงใหม่,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-189,S00475,GH-WIANG_PA_PAO-CHIANGRAI,เวียงป่าเป้า,เชียงราย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-213,S02228,GH-WIANGSA-NAN,เวียงสา,น่าน,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-125,S00328,GH-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-214,S02046,GH-MAESOD-TAK,แม่สอด,ตาก,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-166,S00314,GH-MAESAI-CHIANGRAI,แม่สาย,เชียงราย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-169,S00345,GH-MAEHONGSON,แม่ฮ่องสอน,แม่ฮ่องสอน,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-171,S00374,GH-CHOK_CHAI-NAKHONRATCHASIMA,โชคชัย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-195,S00437,GH-PONE_THONG-ROIET,โพนทอง,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-216,S02270,GH-PHONPHISAI-NONGKHAI,โพนพิสัย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-179,S00435,GH:SAINOI-NONTHABUTI,ไทรน้อย,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โกลบอลเฮ้าส์,GH-185,S00438,GH-KRABINBURI-PRACHINBURI,กบินทร์บุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-183,S00441,GH:KATUMBAN-SAMUTSAKHON,กระทุ่มแบน,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-203,S00412,GH-KRANUAN-KHONKAEN,กระนวน,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-177,S00379,GH-KANTARARAK-SISAKET,กันทรลักษ์,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-155,S00492,GH-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-109,S00348,GH-KALASIN,กาฬสินธุ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-130,S00469,GH-KAMPHAENGPHET,กำแพงเพชร,กำแพงเพชร,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-186,S00339,GH-KUCHINARAI-KALASIN,กุฉินารายณ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-102,S00353,GH-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-191,S00501,GH-JANA-SONGKHLA,จะนะ,สงขลา,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-135,S00514,GH-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-106,S00452,GH-CHONBURI,ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-172,S00440,GH-CHAINAT,ชัยนาท,ชัยนาท,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-118,S00418,GH-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-163,S00425,GH-CHUMPAE-KHONKAEN,ชุมแพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-200,S00506,GH-CHUMPHON,ชุมพร,ชุมพร,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-174,S00355,GH-DANKHUNTHOT-NAKHONRATCHASIMA,ด่านขุนทด,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,#N/A,S02347,GH-TRAKANPHUETPHON-UBONRATCHATHANI,ตระการพืชผล,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+โกลบอลเฮ้าส์,GH-217,S02355,GH-TRAKANPHUETPHON-UBONRATCHATHANI,ตระการพืชผล,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-136,S00260,GH-TRAT,ตราด,ตราด,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-146,S00358,GH-NAKHONNAYOK,นครนายก,นครนายก,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-107,S00494,GH:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-117,S00276,GH-NAKHONPHANOM,นครพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-115,S00285,GH-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-152,S00400,GH-NAKHONSITHAMMARAT,นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-110,S00512,GH-NAKHONSAWAN,นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-202,S01183,GH-NARATHIWAT,นราธิวาส,นราธิวาส,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-178,S00444,GH-NANGRONG-BURIRUM,นางรอง,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-126,S00408,GH-NAN,น่าน,น่าน,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-113,S00581,GH-BAN_PHAI-KHONKAEN,บ้านไผ่,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-210,S01239,GH-BANDUNG-UDONTHANI,บ้านดุง,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-137,S00256,GH-BAN_TAK-UDONTHANI,บ้านตาด,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-215,S02348,GH-BANPHUE-UDONTHANI,บ้านผือ,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-153,S00384,GH-BUENGKAN,บึงกาฬ,บึงกาฬ,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-139,S00496,GH-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-150,S00378,GH:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โกลบอลเฮ้าส์,GH-123,S00598,GH-PRACHUAPKHIRIKHAN,ประจวบคีรีขันธ์,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-140,S00376,GH-PRANBURI-PRACHUAPKHIRIKHAN,ปราณบุรี,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-198,S00395,GH-PATTANI,ปัตตานี,ปัตตานี,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-173,S00468,GH-FANG-CHIANGMAI,ฝาง,เชียงใหม่,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-184,S00316,GH-PHAYAKKHAPHUMPHISAI-MAHASARAKHAM,พยัคฆภูมิพิสัย,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-193,S00311,GH-PRON_CHAROEN-BUENGKAN,พรเจริญ,บึงกาฬ,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-138,S00330,GH-PHAYAO,พะเยา,พะเยา,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-168,S00197,GH-PHANG_KHON-SAKONNAKHON,พังโคน,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-161,S00453,GH-PHATTHALUNG,พัทลุง,พัทลุง,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-188,S00479,GH-PAN-CHIANGRAI,พาน,เชียงราย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-192,S00448,GH-PHICHIT,พิจิตร,พิจิตร,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-201,S00396,GH-PHIMAI-NAKHONRATCHASIMA,พิมาย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-120,S00365,GH-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-164,S00212,GH-PHUKET,ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-112,S00354,GH-MAHASARAKHAM,มหาสารคาม,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-122,S00419,GH-MUKDAHAN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-158,S00185,GH-YASOTHON,ยโสธร,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-101,S00361,GH-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-194,S00269,GH-RANONG,ระนอง,ระนอง,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-105,S00421,GH-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-108,S00258,GH-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-132,S00525,GH-LOPBURI,ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-199,S02247,GH-LADYAO-NAKHONSAWAN,ลาดยาว,นครสวรรค์,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-207,S00588,GH-LAM_PHAI_MAT-BURIRAM,ลำปลายมาศ,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-124,S00544,GH-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-121,S00528,GH-LAMPHUN,ลำพูน,ลำพูน,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-208,S02310,GH-WANGTHONG-PHITSANULOK,วังทอง,พิษณุโลก,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-151,S00537,GH:SALAYA-NAKHONPATHOM,ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-116,S00387,GH-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-175,S00460,GH-SATUN,สตูล,สตูล,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-212,S02246,GH-SOMDEJ-KALASIN,สมเด็จ,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-144,S00397,GH-SAMUTSONGKHRAM,สมุทรสงคราม,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-209,S00558,GH-SAWANKHALOK-SUKHOTHAI,สวรรคโลก,สุโขทัย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-206,S00515,GH-SAWANGDAEDIN-SAKONNAKHON,สว่างแดนดิน,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-156,S00334,GH-SINGBURI,สิงห์บุรี,สิงห์บุรี,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-128,S00423,GH-SUKHOTHAI,สุโขทัย,สุโขทัย,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-154,S00524,GH-SURATTHANI,สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+โกลบอลเฮ้าส์,GH-119,S00510,GH-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-114,S00096,GH-NONGKHAI,หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-142,S00381,GH-NONGBUALAMPHU,หนองบัวลำภู,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-182,S00320,GH-NONGHAN-UDONTHANI,หนองหาน,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-145,S00450,GH-AYUTTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,NEWGH05,S02350,GH-ARANYAPRATHET-SAKAEO,อรัญประเทศ,สระแก้ว,ภาคตะวันตกและตะวันออก,Not active
+โกลบอลเฮ้าส์,GH-159,S00443,GH-ANGTHONG,อ่างทอง,อ่างทอง,ภาคตะวันตกและตะวันออก,Active
+โกลบอลเฮ้าส์,GH-103,S00541,GH-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โกลบอลเฮ้าส์,GH-162,S00385,GH-UTTARADIT,อุตรดิตถ์,อุตรดิตถ์,ภาคเหนือ,Active
+โกลบอลเฮ้าส์,GH-129,S00455,GH-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S088,S00584,HP:GATEWAY_EKAMAI,เกตเวย์ เอกมัย,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S096,S00539,HP:GATEWAY_BANGSUE,เกตเวย์ บางซื่อ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S802,S00883,HP:GATEWAY_BANGSUE(POWER_LIFE),เกตเวย์ บางซื่อ (เพาเวอร์ไลฟ์),กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S114,S02210,HP-PHANGAN-SURATTHANI,เกาะพะงัน,สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,S604,S00570,HP-KHO_LANTA-KRABI,เกาะลันตา,กระบี่,ภาคใต้,Active
+โฮมโปร,S025,S00224,HP-SAMUI-SURATTHANI,เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,S117,S02256,HP-SAMUI_2-SURATTHANI,เกาะสมุย 2,สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,S036,S00015,HP-KHAOYAI-NAKHONRATCHASIMA,เขาใหญ่,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S108,S00059,HP-CHAOFHA-PHUKET,เจ้าฟ้า,ภูเก็ต,ภาคใต้,Active
+โฮมโปร,S112,S00484,HP-CHOENG_THALE-PHUKET,เชิงทะเล,ภูเก็ต,ภาคใต้,Active
+โฮมโปร,S065,S00259,HP-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+โฮมโปร,S603,S00277,HP-TERMINAL21-NAKHONRATCHASIMA,เทอร์มินอล 21 โคราช (โฮมลีฟวิ่ง),นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S021,S00060,HP:PHETKASEM,เพชรเกษม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S078,S00115,HP-PHETCHABURI,เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S063,S00139,HP-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+โฮมโปร,S010,S00192,HP:PLEONJIT,เพลินจิต,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M022,S00092,HP.MH-CHIANGMAI,เมกาโฮม-เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+โฮมโปร,M012,S00225,HP.MH-CHIANGRAI,เมกาโฮม-เชียงราย,เชียงราย,ภาคเหนือ,Active
+โฮมโปร,M026,S02241,HP.MH-WIANG_SA-SURATTHANI,เมกาโฮม-เวียงสระ,สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,M002,S00029,HP.MH-MAESOD-TAK,เมกาโฮม-แม่สอด,ตาก,ภาคเหนือ,Active
+โฮมโปร,M008,S00107,HP.MH-ROJANA-AYUTTHAYA,เมกาโฮม-โรจนะ,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M005,S00087,HP.MH-KRABINBURI-PRACHINBURI,เมกาโฮม-กบินทร์บุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M016,S00245,HP.MH-CHACHOENGSAO,เมกาโฮม-ฉะเชิงเทรา,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M020,S00075,HP.MH:TIWANON-NONTHABURI,เมกาโฮม-ติวานนท์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M025,S00151,HP.MH-TUNGSONG-NAKHONSITHAMMARAT,เมกาโฮม-ทุ่งสง,นครศรีธรรมราช,ภาคใต้,Active
+โฮมโปร,M021,S00194,HP.MH:NAKHONPATHOM,เมกาโฮม-นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M011,S00173,HP.MH-NAKHONPHANOM,เมกาโฮม-นครพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,M010,S00755,HP.MH-NAKHONRATCHASIMA,เมกาโฮม-นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,M004,S00022,HP.MH-BORWIN-CHONBURI,เมกาโฮม-บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M023,S00120,HP.MH-BANGSAN-CHONBURI,เมกาโฮม-บางแสน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M014,S00157,HP.MH:BANGNA_TRAD,เมกาโฮม-บางนาตราด,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M019,S00121,HP.MH:BANGPLEE,เมกาโฮม-บางพลี,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M013,S00123,HP.MH-BANCHANG-RAYONG,เมกาโฮม-บ้านฉาง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M024,S00037,HP.MH-PLUAK_DAENG-RAYONG,เมกาโฮม-ปลวกแดง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M015,S00112,HP.MH-PATTAYA-CHONBURI,เมกาโฮม-พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,M006,S00077,HP.MH:MINBURI,เมกาโฮม-มีนบุรี,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M001,S00039,HP.MH:RANGSIT,เมกาโฮม-รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M710,S01829,HP.MH:RANGSIT(M710),เมกาโฮม-รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M018,S00101,HP.MH:RATTHANATHIBET,เมกาโฮม-รัตนาธิเบศร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,M017,S00072,HP.MH-SURATTHANI,เมกาโฮม-สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,M003,S00073,HP.MH-NONGKHAI,เมกาโฮม-หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,M009,S00746,HP.MH-HADYAI-SONGKHLA,เมกาโฮม-หาดใหญ่,สงขลา,ภาคใต้,Active
+โฮมโปร,M007,S00014,HP.MH-ARANYAPRATHET,เมกาโฮม-อรัญประเทศ,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S048,S00002,HP:MEGA_BANGNA,เมกาบางนา,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S066,S00026,HP-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S017,S00023,HP:EKKAMAI_RAMINTRA,เอกมัย-รามอินทรา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S019,S00267,HP:CHANGWATTANA,แจ้งวัฒนะ,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S060,S00153,HP-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+โฮมโปร,S004,S00533,HP:CENTRAL_FASHION_ISLAND,แฟชั่นไอส์แลนด์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S097,S00004,HP:FASHION_ISLAND,แฟชั่นไอส์แลนด์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S113,S01828,HP-MAE_SAI-CHIANGRAI,แม่สาย,เชียงราย,ภาคเหนือ,Active
+โฮมโปร,S116,S02242,HP-LAEM_CHABANG-CHONBURI,แหลมฉบัง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S087,S00689,HP:LOTUS_BANGKAE,โลตัส บางแค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S034,S00036,HP-KRABI,กระบี่,กระบี่,ภาคใต้,Active
+โฮมโปร,S091,S00084,HP:KALLAPRAPRUK,กัลปพฤกษ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S059,S00286,HP-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S608,S00843,HP:KAMPHAENG_SAEN-NAKHONPATHOM,กำแพงแสน,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+โฮมโปร,S610,S01685,HP-KHANOM-NAKHONSITHAMMARAT,ขนอม,นครศรีธรรมราช,ภาคใต้,Not active
+โฮมโปร,S027,S00038,HP-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S098,S00034,HP:CHARANSANITWONG,จรัญสนิทวงศ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S612,S01441,HP-CHOMBUENG-RATCHABURI,จอมบึง,ราชบุรี,ภาคตะวันตกและตะวันออก,Not active
+โฮมโปร,S055,S00027,HP-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S035,S00009,HP-CHALONG-PHUKET,ฉลอง,ภูเก็ต,ภาคใต้,Active
+โฮมโปร,S042,S00025,HP-CHACHOENGSAO,ฉะเชิงเทรา,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S030,S00196,HP-CHONBURI,ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S609,S00852,HP-CHA_AM-PHETCHABURI,ชะอำ,เพชรบุรี,ภาคตะวันตกและตะวันออก,Not active
+โฮมโปร,S606,S01174,HP-CHAIBADAN-LOPBURI,ชัยบาดาล,ลพบุรี,ภาคตะวันตกและตะวันออก,Not active
+โฮมโปร,S082,S00013,HP:CHAIYAPHRUEK,ชัยพฤกษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S064,S00275,HP-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S056,S00049,HP-CHUMPHON,ชุมพร,ชุมพร,ภาคใต้,Active
+โฮมโปร,S106,S00091,HP:SEACON_BANGKAE,ซีคอนบางแค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S047,S00067,HP-TRANG,ตรัง,ตรัง,ภาคใต้,Active
+โฮมโปร,S074,S00068,HP-THALANG-PHUKET,ถลาง,ภูเก็ต,ภาคใต้,Active
+โฮมโปร,S110,S00184,HP-THAB_MA-RAYONG,ทับมา,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S037,S00080,HP:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S038,S00124,HP-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S041,S00351,HP-NAKHONSITHAMMARAT,นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+โฮมโปร,S051,S00198,HP-NAKHONSAWAN,นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+โฮมโปร,S084,S00164,HP-BANGSARAY-CHONBURI,บางเสร่,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S607,S02218,HP:BANGCHAK_KLUY_NUM_TAI,บางจาก กล้วยน้ำไท,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S605,S00846,HP:BANGJAK-BANGBUATHONG,บางจาก บางบัวทอง,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S103,S00011,HP:BANGNA_TRAD_KM_1,บางนา กม.1,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S107,S00070,HP:BANGBUATHONG-NONTHABURI,บางบัวทอง,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S012,S00201,HP-BIG_C-CHIANGMAI,บิ๊กซี เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+โฮมโปร,S018,S00081,HP-BIG_C-PATTAYA_CENTER-CHONBURI,บิ๊กซี พัทยากลาง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S049,S00061,HP-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S068,S00239,HP-PRACHUAPKHIRIKHAN,ประจวบคีรีขันธ์,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S015,S00040,HP:PRACHACHUEN,ประชาชื่น,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S057,S00182,HP-PRACHINBURI,ปราจีนบุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S014,S00003,HP:RAMA2,พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S083,S00054,HP:RAMA3,พระราม 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S085,S00052,HP:RAMA9,พระราม 9,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S075,S00033,HP-NORTH_PATTAYA-CHONBURI,พัทยาเหนือ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S079,S00117,HP-PHATTHALUNG,พัทลุง,พัทลุง,ภาคใต้,Active
+โฮมโปร,S006,S00031,HP:PARADISE_PARK,พาราไดซ์พาร์ค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S026,S00359,HP-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+โฮมโปร,S115,S02211,HP:PHUTTAMONTHON_SAI_4-NAKHONPATHOM,พุทธมณฑล สาย 4,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S061,S00024,HP:PHUTTAMONTHON_SAI_5-NAKHONPATHOM,พุทธมณฑล สาย 5,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S104,S00001,HP:FUTURE_PARK-RANGSIT,ฟิวเจอร์พาร์ค รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S001,S00884,HP:FUTURE_PARK-RANGSIT(S001),ฟิวเจอร์พาร์ค รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S011,S00065,HP-PHUKET,ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+โฮมโปร,S052,S00016,HP:MAHACHAI-SAMUTSAKHON,มหาชัย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S093,S00640,HP:MARKET_PLACE-NANG_LIN_JEE,มาร์เก็ตเพลส นางลิ้นจี่,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S099,S00132,HP-MUKDAHAN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S111,S00476,HP-RUAMCHOK-CHIANGMAI,รวมโชค,เชียงใหม่,ภาคเหนือ,Active
+โฮมโปร,S043,S00089,HP-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S031,S00111,HP-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S101,S00032,HP:RANGSIT_KLONG4,รังสิต คลอง 4,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S009,S00074,HP:RATCHADA,รัชดาภิเษก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S002,S00083,HP:RATTANATHIBATE-NONTHABURI,รัตนาธิเบศร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+โฮมโปร,S054,S00018,HP-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S022,S00028,HP:RATCHAPRUK,ราชพฤกษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S013,S00078,HP:RAMKAMHANG,รามคำแหง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S045,S00394,HP-LOPBURI,ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S105,S00012,HP:LADKRABANG,ลาดกระบัง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S016,S00045,HP:LADPRAO,ลาดพร้าว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S067,S00391,HP-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+โฮมโปร,S109,S00343,HP-LAMPHUN,ลำพูน,ลำพูน,ภาคเหนือ,Active
+โฮมโปร,S039,S00055,HP:LAMLUKKA-PATHUMTHANI,ลำลูกกา,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S086,S00020,HP:SRINAKARIN,ศรีนครินทร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S073,S00105,HP-SRIRACHA-CHONBURI,ศรีราชา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S046,S00069,HP-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S077,S00227,HP-SAMUTSONGKHRAM,สมุทรสงคราม,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S062,S00063,HP-SARABURI,สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S071,S00010,HP-SANSAI-CHAINGMAI,สันทราย,เชียงใหม่,ภาคเหนือ,Active
+โฮมโปร,S100,S00614,HP:SAMYAN_MITRTOWN,สามย่านมิตรทาวน์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S076,S00341,HP-SUKHOTHAI,สุโขทัย,สุโขทัย,ภาคเหนือ,Active
+โฮมโปร,S102,S00006,HP:SUKSAWAD,สุขสวัสดิ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S040,S00467,HP:SUKHAPIBAN3,สุขาภิบาล 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S044,S00318,HP-SUPHANBURI,สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S058,S00041,HP-SURATTHANI,สุราษฎร์ธานี (เลี่ยงเมือง),สุราษฎร์ธานี,ภาคใต้,Active
+โฮมโปร,S069,S00056,HP-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S024,S00005,HP:SUVARNBHUMI,สุวรรณภูมิ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โฮมโปร,S611,S01188,HP-NONGHAN-UDONTHANI,หนองหาน,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+โฮมโปร,S072,S00160,HP-HUATALEY-NAKHONRATCHASIMA,หัวทะเล,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S023,S00017,HP-HUAHIN-PRACHUAPKHIRIKHAN,หัวหิน,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S032,S00044,HP-HANGDONG-CHIANGMAI,หางดง,เชียงใหม่,ภาคเหนือ,Active
+โฮมโปร,S020,S00155,HP-HADYAI-SONGKHLA,หาดใหญ่,สงขลา,ภาคใต้,Active
+โฮมโปร,S050,S00119,HP-HADYAI_2-SONGKHLA,หาดใหญ่ 2 กาญจนวนิช ,สงขลา,ภาคใต้,Active
+โฮมโปร,S081,S00050,HP-AMATANAKORN-CHONBURI,อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S033,S00046,HP-AYUTTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โฮมโปร,S028,S00064,HP-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โฮมโปร,S053,S00127,HP-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5041,S00669,LT-SAMUI-SURATTHANI,เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+โลตัส,5115,S00652,LT-CHIANG_KONG-CHIANGRAI,เชียงของ,เชียงราย,ภาคเหนือ,Active
+โลตัส,5526,S00718,LT-CHIANG_KAM-PHAYAO,เชียงคำ,พะเยา,ภาคเหนือ,Active
+โลตัส,5137,S00803,LT-CHIANG_YUEN-MAHASARAKHAM,เชียงยืน,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5520,S00592,LT-DECH_UDOM-UBONRATCHATHANI,เดชอุดม,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5124,S00638,LT-THE_WALK-NAKHONSAWAN,เดอะวอคก์ นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+โลตัส,5072,S00520,LT-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+โลตัส,5089,S00660,LT-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5182,S01035,LT:LIAP_KHLONG_2,เลียบคลอง 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5118,S00360,LT-WIENG_SA-SURATTHANI,เวียงสระ,สุราษฎร์ธานี,ภาคใต้,Active
+โลตัส,5071,S00605,LT-SENA-AYUTTHAYA,เสนา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5108,S00583,LT-SERMTHAI_COMPLEX-MAHASAKHAM,เสริมไทย,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5139,S00647,LT-KAENG_KHRO-CHAIYAPHUM,แก่งค้อ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5117,S00712,LT-KLANG-RAYONG,แกลง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5021,S00564,LT:CHANGWATTANA,แจ้งวัฒนะ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5503,S00710,LT-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+โลตัส,5126,S00636,LT-MAE_KRI-PATTALUNG,แม่ขรี,พัทลุง,ภาคใต้,Active
+โลตัส,5521,S00802,LT-MAE_CHAN-CHIANGRAI,แม่จัน,เชียงราย,ภาคเหนือ,Active
+โลตัส,5111,S00734,LT-MAESOD-TAK,แม่สอด,ตาก,ภาคเหนือ,Active
+โลตัส,5513,S00645,LT-MAESAI-CHAINGRAI,แม่สาย,เชียงราย,ภาคเหนือ,Active
+โลตัส,5080,S00382,LT-LAMCHABANG-CHONBURI,แหลมฉบัง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5157,S00761,LT-KOSUMPISAI-MAHASAKHAM,โกสุมพิสัย,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5141,S00586,LT-CHOK_CHAI-NAKHONRATCHASIMA,โชคชัย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5132,S00686,LT-CHANDEE-NAKHONSITHAMMARAT,โชคดี,นครศรีธรรมราช,ภาคใต้,Active
+โลตัส,5165,S00724,LT-NONTHAI-NAKHONRATCHASIMA,โนนไทย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5158,S00531,LT-PHONTHONG-ROIET,โพนทอง,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5123,S00642,LT-ROJANA-AYUTTHAYA,โรจนะ,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,6659,S02262,LT-OASIS_SARAPHI-CHIANGMAI,โอเอซิสสารภี,เชียงใหม่,ภาคเหนือ,Not active
+โลตัส,5101,S00822,LT-CHAIYA-SURATTHANI,ไชยา,สุราษฎร์ธานี,ภาคใต้,Not active
+โลตัส,5185,S00848,LT:ICS_BANGKOK,ไอคอนสยาม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โลตัส,5535,S00599,LT-KANUWORALUKBURI-KAMPHAENGPHET,กนุวรลักษณ์,กำแพงเพชร,ภาคเหนือ,Active
+โลตัส,5537,S00701,LT-KRABINBURI-PRACHINBURI,กบินทร์บุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5532,S00521,LT:KRATUMBAN-SAMUTSAKHON,กระทุ่มแบน,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5064,S00383,LT-KRABI,กระบี่,กระบี่,ภาคใต้,Active
+โลตัส,5523,S00694,LT-KANTARARAK-SISAKET,กันทรลักษ์,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5042,S00504,LT-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5092,S00304,LT-KALASIN,กาฬสินธุ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5527,S00691,LT:KAMPANGSAN-NAKHONPATHOM,กำแพงแสน,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5149,S00608,LT-KUCHINARAI-KALASIN,กุฉินารายณ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5107,S00546,LT-KUMPAWAPEE-UDONTHANI,กุมภวาปี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5003,S00579,LT-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5530,S00673,LT-KHU_KHUN-SISAKET,ขุขัน,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5130,S00735,LT:KLONGLUANG-PATHUMTHANI,คลองหลวง,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,6494,S00873,LT-KUAN_KANUN-PHATTHALUNG,ควนขนุน,พัทลุง,ภาคใต้,Active
+โลตัส,5034,S00495,LT-KAMTIANG-CHIANGMAI,คำเที่ยง,เชียงใหม่,ภาคเหนือ,Active
+โลตัส,5048,S00502,LT:CHARUNSANITWONG,จรัญสนิทวงศ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5170,S00666,LT-CHOMTHONG-CHIANGMAI,จอมทอง,เชียงใหม่,ภาคเหนือ,Active
+โลตัส,5146,S00536,LT-JOR_HOR-NAKHONRATCHASIMA,จอหอ,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5128,S00740,LT-JANA-SONGKHLA,จะนะ,สงขลา,ภาคใต้,Active
+โลตัส,5136,S00700,LT-CHATURAT-CHAIYAPHUM,จัตุรัส,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5044,S00567,LT-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5121,S00566,LT-CHALONG-PHUKET,ฉลอง,ภูเก็ต,ภาคใต้,Active
+โลตัส,5025,S00242,LT-CHONBURI,ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5181,S00994,LT-CHA_AM-PHETCHABURI,ชะอำ,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5505,S00375,LT-CHAINAT,ชัยนาท,ชัยนาท,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5053,S00766,LT-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5091,S00303,LT-CHUMPAE-KHONKAEN,ชุมแพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5088,S00571,LT-CHUMPHON,ชุมพร,ชุมพร,ภาคใต้,Active
+โลตัส,5061,S00272,LT:CITY_PARK-BANGPLEE,ซิตี้พาร์คบางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5001,S00594,LT:SEACON_SQUARE,ซีคอนศรีนครินทร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5154,S00729,LT-DAN_KHUN_THOD-NAKORN RATCHASIMA,ด่านขุนทด,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,6428,S00741,LT-TRAKARN_PEUTPON-UBONRATCHATHANI,ตระการพืชผล,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5035,S00439,LT-TRANG,ตรัง,ตรัง,ภาคใต้,Active
+โลตัส,5093,S00587,LT-TRAT,ตราด,ตราด,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5096,S00765,LT-TAK,ตาก,ตาก,ภาคเหนือ,Active
+โลตัส,5140,S00607,LT-TAKLI-NAKHONSAWAN,ตาคลี,นครสวรรค์,ภาคเหนือ,Active
+โลตัส,5095,S00503,LT-THA_LANG-PHUKET,ถลาง,ภูเก็ต,ภาคใต้,Active
+โลตัส,5135,S00807,LT-THATUM-SURIN,ท่าตูม,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5110,S00486,LT-THATHONG-PHITSANULOK,ท่าทอง,พิษณุโลก,ภาคเหนือ,Active
+โลตัส,5519,S00708,LT-THABOR-NONGKHAI,ท่าบ่อ,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5099,S00720,LT-THAYANG-PETCHBURI,ท่ายางทาวน์,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5518,S00573,LT-THASALA-NAKHONSITHAMMARAT,ท่าศาลา,นครศรีธรรมราช,ภาคใต้,Active
+โลตัส,5156,S00621,LT-THALUANG-PHICHIT,ท่าหลวง,พิจิตร,ภาคเหนือ,Active
+โลตัส,5076,S00500,LT-TUNGSONG-NAKHONSITHAMMARAT,ทุ่งสง,นครศรีธรรมราช,ภาคใต้,Active
+โลตัส,5528,S00624,LT-TADPAN0M-NAKHONPHANOM,ธาตพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5063,S00606,LT:NAKORNCHAISRI-NAKHONPATHOM,นครชัยศรี,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5125,S00670,LT-NAKHONNAYOK,นครนายก,นครนายก,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5043,S00643,LT:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5509,S00542,LT-NAKHONPHANOM,นครพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5024,S00415,LT-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5008,S00294,LT-NAKHONSITHAMMARAT,นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+โลตัส,5104,S00752,LT:NAKORN_IN_BANGKRUAY-NONTHABURI,นครอินทร์ บางกรวย,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5060,S00620,LT:NAVANAKORN,นวนคร,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5184,S00704,LT-NORTH_RATCHAPRUEK-NONTHABURI,นอร์ทราชพฤษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5147,S00650,LT-NANG_RUNG-BURIRAM,นางรอง,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5084,S00522,LT-NADEE-UDONTHANI_2,นาดี อุดรธานี 2,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5507,S00719,LT-NAN,น่าน,น่าน,ภาคเหนือ,Active
+โลตัส,5145,S00633,LT-NIKOMPATTANA-RAYONG,นิคมพัฒนา,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5168,S00831,LT-BORABUE-MAHASAKHAM,บอระบือ,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5090,S00221,LT-BORWIN-CHONBURI,บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5119,S00739,LT-BUAYAI-NAKHONRATCHASIMA,บัวใหญ่,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5129,S00637,LT:BANGLEN-NAKHONPATHOM,บางเลน,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5019,S00722,LT:BANGKAE,บางแค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+โลตัส,5045,S00344,LT:BANGYAI,บางใหญ่,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5162,S00548,LT:BANGKRUY_SAINOI-NONTHABURI,บางกรวยไทรน้อย,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5175,S00715,LT:BANGKADI_INDUSTRIAL-PATHUMTHANI,บางกะดี อุตสาหกรรม,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5038,S00474,LT:BANGKAPI,บางกะปิ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5032,S00472,LT:BANGNA,บางนา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5180,S00725,LT-BANG_BO-SAMUTPRAKAN,บางบ่อ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5114,S00805,LT-BANGPAKONG-CHACHOENGSAO,บางปะกง,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5036,S00604,LT:BANGPAKOK,บางปะกอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5067,S00811,LT-BANG_PA_IN-AYUTTHAYA,บางปะอิน,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5065,S00477,LT:BANGPU,บางปู,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5054,S00557,LT:BANGPLEE,บางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5077,S00481,LT-BANPONG-RATCHABURI,บ้านโป่ง,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5070,S00825,LT-BANCHANG-RAYONG,บ้านฉาง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5155,S00787,LT-BAN_THA_KHUN-SURATTHANI,บ้านตาขุน,สุราษฎร์ธานี,ภาคใต้,Active
+โลตัส,5102,S00254,LT-BANBUENG-CHONBURI,บ้านบึง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,6442,S00758,LT-BANPHUE-UDONTHANI,บ้านผือ,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5056,S00617,LT:BAAN_FAH_KLONG6,บ้านฟ้า,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5098,S00582,LT-BAAN_SILA-KHONKAEN,บ้านศิลา,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5169,S00742,LT-BAN_SUAN-CHONBURI,บ้านสวน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5536,S00760,LT-BUENGKAN,บึงกาฬ,บึงกาฬ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5138,S00736,LT-BUENG_SAM_PHAN-PHETCHABUN,บึงสามพราน,เพชรบูรณ์,ภาคเหนือ,Active
+โลตัส,5052,S00373,LT:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5151,S00687,LT-PRAKHONCHAI-BURIRAM,ประโคนชัย,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5164,S00815,LT-PRATAI-NAKHONRATCHASIMA,ประไท,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5534,S00696,LT-PRACHUAPKHIRIKHAN,ประจวบคีรีขันธ์,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5030,S00488,LT:PRACHACHUEN,ประชาชื่น,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5100,S00697,LT-PRACHINBURI,ปราจีนบุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5078,S00665,LT-PRANBURI-PRACHUAPKHIRIKHAN,ปราณบุรี,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5134,S00618,LT-PRASAT_SURIN,ปราสาท,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5153,S00596,LT-PAK_THONG_CHAI-NAKORNRATCHASIMA,ปักธงชัย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5066,S00513,LT-PAKCHONG-NAKHONRATCHASIMA,ปากช่อง,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5068,S00778,LT:PINKLAO,ปิ่นเกล้า,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5062,S00569,LT-FANG-CHIANGMAI,ฝาง,เชียงใหม่,ภาคเหนือ,Active
+โลตัส,5525,S00623,LT-PANOMSARAKARM-CHACHOENGSAO,พนมสารคาม,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5161,S00616,LT-PANUS_NIKHOM-CHONBURI,พนัสนิคม,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5144,S00717,LT-PHAYAKKHAPHUM_PHISAI-MAHASARAKHAM,พยัคฆภูมิพิสัย,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5049,S00461,LT:RAMA1,พระราม 1,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5009,S00392,LT:RAMA2,พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5028,S00534,LT:RAMA3,พระราม 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5020,S00597,LT:RAMA4,พระราม 4,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,3582,S00860,LT:PRUKSA_AVENUE_SRINAKARIN,พฤกษาอเวนิว ศรีนครินทร์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+โลตัส,5514,S00639,LT-PHAYAO,พะเยา,พะเยา,ภาคเหนือ,Active
+โลตัส,5112,S00635,LT:PHATTHANAKAN,พัฒนาการ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5033,S00693,LT-NORTH_PATTAYA-CHONBURI,พัทยาเหนือ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5004,S00489,LT-SOUTH_PATTAYA-CHONBURI,พัทยาใต้,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5079,S00457,LT-PHATTHALUNG,พัทลุง,พัทลุง,ภาคใต้,Active
+โลตัส,5163,S00654,LT-PHIBUN_MANGSAHARN-UBONRATCHATHANI,พิบูลมังสาหาร,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5142,S00663,LT-PHIMAI-NAKHONRATCHASIMA,พิมาย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5006,S00342,LT-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+โลตัส,5015,S00705,LT:FORTUNE,ฟอร์จูนทาว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5017,S00451,LT-PHUKET,ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+โลตัส,5127,S00749,LT:MAHACHAI_2-SAMUTSAKHON,มหาชัย 2,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5167,S00695,LT-MAP_TA_PHUT-RAYONG,มาบตาพุด,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5010,S00507,LT:MINBURI,มีนบุรี,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5506,S00798,LT-MUKDAHAN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5150,S00692,LT-YASOTHON,ยโสธร,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5187,S00987,LT-YALA,ยะลา,ยะลา,ภาคใต้,Not active
+โลตัส,5116,S00459,LT-RUAMCHOK-CHIANGMAI,รวมโชค,เชียงใหม่,ภาคเหนือ,Active
+โลตัส,5501,S00684,LT-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5074,S00682,LT-RANONG,ระนอง,ระนอง,ภาคใต้,Active
+โลตัส,5039,S00538,LT-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5037,S00278,LT:RANGSIT,รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5050,S00662,LT:RANGSIT_KLONG4,รังสิต คลอง 4,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5058,S00399,LT:RANGSIT_KLONG7,รังสิต คลอง 7,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5027,S00590,LT:RATTANATHIBATE,รัตนาธิเบศร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5047,S00471,LT-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5018,S00301,LT:RAMINTRA,รามอินทรา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5057,S00754,LT-LOPBURI,ลพบุรี พลาซ่า,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5082,S00738,LT-LAMAI-SAMUI-SURATTHANI,ละไม เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+โลตัส,5177,S00988,LT:LADKRABANG,ลาดกระบัง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5040,S00516,LT:LADPRAO,ลาดพร้าว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,6638,S01303,LT-LAD_YAO-NAKHONSAWAN,ลาดยาว,นครสวรรค์,ภาคเหนือ,Active
+โลตัส,5188,S02194,LT-LAMNARAI-LOPBURI,ลำนาราย,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5152,S00574,LT-LAM_PLAI_MAT-BURIRAM,ลำปลายมาศ,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5504,S00721,LT-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+โลตัส,5081,S00709,LT:LAMLUKKA_KLONG2,ลำลูกกา คลอง 2,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+โลตัส,6564,S00612,LT-WANGNAMYEN-SAKAEO,วังน้ำเย็น,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5051,S00794,LT:WANG_HIN,วังหิน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5172,S00727,LT-WAPI_PATHUM-MAHASAKHAM,วาปีปทุม,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5103,S00628,LT-WARINCHAMRAB-UBONRATCHATHANI,วารินชำราบ,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5173,S00681,LT-SI_THEP-PHETCHABUN,ศรีเทพ,เพชรบูรณ์,ภาคเหนือ,Active
+โลตัส,5186,S00610,LT-SI_KHIO-NAKORNRATCHASIMA,ศรีค้อ,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5016,S00530,LT:SRINAKARIN,ศรีนครินทร์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5522,S00756,LT-SRIMAHAPHOT-PRACHINBURI,ศรีมหาโพธ,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5189,S02251,LT-SRIRACHA-CHONBURI,ศรีราชา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5075,S00716,LT-SISAKET,ศรีสะเกษ,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5069,S00646,LT:SALAYA:NAKHONPATHOM,ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5511,S00611,LT-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5120,S00585,LT-SONGKHLA,สงขลา,สงขลา,ภาคใต้,Active
+โลตัส,5085,S00593,LT-SATUN,สตูล,สตูล,ภาคใต้,Active
+โลตัส,5166,S00840,LT-U-THAPAO_AIRPORT-CHONBURI,สนามบินอู่ตะเภา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5160,S00655,LT-SOMDET-KALASIN,สมเด็จ,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5510,S00819,LT-SAMUTSONGKRAM,สมุทรสงคราม,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5005,S00210,LT-SARABURI,สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5517,S00589,LT-SAWANGDANDIN-SAKONNAKHON,สว่างแดนดิน,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5106,S00333,LT-SADAO-SONGKHLA,สะเดา,สงขลา,ภาคใต้,Active
+โลตัส,5143,S00779,LT-SATUEK-BURIRAM,สะตึก,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5131,S00748,LT-SUNGKLA-SURIN,สังขละ,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5516,S00730,LT-SATTAHIP-CHONBURI,สัตหีบ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5524,S00664,LT-SAMCHUK-SUPHANBURI,สามชุก,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5059,S00799,LT:SAMPRAN-NAKHONPATHOM,สามพราน,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5073,S00509,LT-SINGBURI,สิงห์บุรี,สิงห์บุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5133,S00672,LT-SICHON-NAKHONSITHAMMARAT,สิชล,นครศรีธรรมราช,ภาคใต้,Active
+โลตัส,5087,S00543,LT:SUKHAPIBAN3,สุขาภิบาล 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5012,S00324,LT:SUKHAPIBAN1,สุขาภิบาล I,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5022,S00428,LT:SUKHUMVIT50,สุขุมวิท 50,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5007,S00577,LT-SUPHANBURI,สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5013,S00454,LT-SURATTHANI,สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+โลตัส,5508,S00744,LT-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5105,S00619,LT-NONG_RUA-KHONKAEN,หนองเรือ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5533,S00545,LT:NONGJOK,หนองจอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5148,S00770,LT-NONG_CHANG-UTHAITHANI,หนองช้าง,อุทัยธานี,ภาคเหนือ,Active
+โลตัส,5109,S00572,LT-NONGBUALUMPHU,หนองบัวลำภู,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5122,S00403,LT-LOMSAK-PHETCHABUN,หล่มสัก,เพชรบูรณ์,ภาคเหนือ,Active
+โลตัส,5023,S00446,LT:LAKSI,หลักสี่,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+โลตัส,5529,S00677,LT-LUNGSUAN-CHUMPHON,หลังสวน,ชุมพร,ภาคใต้,Active
+โลตัส,5097,S00402,LT-HUA_THALA-NAKHONRATCHASIMA_2,หัวทะเล โคราช 2,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5055,S00390,LT-HUAHIN-PRACHUAPKHIRIKHAN,หัวหิน,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5011,S00465,LT-HANGDONG-CHIANGMAI,หางดง,เชียงใหม่,ภาคเหนือ,Active
+โลตัส,5031,S00456,LT-HADYAI-SONGKHLA,หาดใหญ่,สงขลา,ภาคใต้,Active
+โลตัส,5094,S00483,LT-HADYAI2-SONGKHLA,หาดใหญ่ 2,สงขลา,ภาคใต้,Active
+โลตัส,5174,S00780,LT-ONGKARAK-NAKHONNAYOK,องครักษ์,นครนายก,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5083,S00487,LT-AMATANAKORN-CHONBURI,อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5014,S00466,LT-AYUTTHAYA_PARK-AYUTTHAYA,อยุธยาพาร์ค,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5086,S00366,LT-ARANYAPRATHET-SAKAEO,อรัญประเทศ,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5046,S00434,LT-ASAWANN_SHOPPING-NONGKHAI,อัสวัน หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5171,S00783,LT-ANGTHONG,อ่างทอง,อ่างทอง,ภาคตะวันตกและตะวันออก,Active
+โลตัส,5029,S00411,LT-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5502,S00499,LT-UTTARADIT,อุตรดิตถ์,อุตรดิตถ์,ภาคเหนือ,Active
+โลตัส,5531,S00772,LT-UTHUMPORNPISAI-SISAKET,อุทุมพรพิสัย,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5026,S00747,LT-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+โลตัส,5159,S00561,LT-U_THONG-SUPHANBURI,อู่ทอง,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,64,S01710,MK-KOH_PHANGAN-SURATTHANI,เกาะพะงัน,สุราษฎร์ธานี,ภาคใต้,Not active
+แม๊คโคร,31,S01105,MK-SAMUI-SURATTHANI,เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+แม๊คโคร,6,S00138,MK-CHIANGMAI,เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+แม๊คโคร,23,S00213,MK-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+แม๊คโคร,111,S00847,MK:PETCHKASEM,เพชรเกษม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,36,S00261,MK-PHETCHABURI,เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,56,S00262,MK-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+แม๊คโคร,55,S00191,MK-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,153,S00667,MK-WEING_SA-SURATTHANI,เวียงสระ,สุราษฎร์ธานี,ภาคใต้,Active
+แม๊คโคร,2,S00302,MK:CHANGWATTANA,แจ้งวัฒนะ,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,100,S00326,MK-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+แม๊คโคร,142,S01686,MK:PREAKASA-SAUTPRAKAN,แพรกษา,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,50,S00133,MK-MAE RIM-CHIANGMAI,แม่ริม,เชียงใหม่,ภาคเหนือ,Active
+แม๊คโคร,73,S00211,MK-MAESOD-TAK,แม่สอด,ตาก,ภาคเหนือ,Active
+แม๊คโคร,67,S00094,MK-MAESAI-CHIANGRAI,แม่สาย,เชียงราย,ภาคเหนือ,Active
+แม๊คโคร,109,S01194,MK-LAMCHABANG-CHONBURI,แหลมฉบัง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,175,S02358,MK-HAPPITAT-SAMUTPRAKAN,แฮปปี้แทท (ฟอเรสเทียส์ - บางนา),สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,128,S00629,MK-KRABINBURI-PRACHINBURI,กบินทร์บุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,35,S00675,MK-KRABI,กระบี่,กระบี่,ภาคใต้,Active
+แม๊คโคร,78,S01706,MK:KANLAPAPHRUEK,กัลปพฤกษ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,46,S00204,MK-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,116,S00228,MK-KALASIN,กาฬสินธุ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,45,S00237,MK-KAMPHAENGPHET,กำแพงเพชร,กำแพงเพชร,ภาคเหนือ,Active
+แม๊คโคร,12,S00220,MK-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,136,S01945,MK-KHONKAEN_2,ขอนแก่น 2,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,161,S00491,MK-BAN_NOND_MUANG-KHONKAEN_3,ขอนแก่น 3 (บ้านโนนม่วง),ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,54,S00233,MK:KHLONG_LUANG,คลองหลวง,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,17,S00168,MK:CHARUNSANITWONG,จรัญสนิทวงศ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,167,S00788,MK-JOMTHONG-CHIANGMAI,จอมทอง,เชียงใหม่,ภาคเหนือ,Active
+แม๊คโคร,171,S01708,MK-JORHOR-NAKHONRATCHASIMA,จอหอ,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,26,S00216,MK-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,40,S00288,MK-CHACHOENGSAO,ฉะเชิงเทรา,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,5,S00234,MK-CHONBURI,ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,125,S01440,MK-CHAAM-PHETCHABURI,ชะอำ,เพชรบุรี,ภาคตะวันตกและตะวันออก,Not active
+แม๊คโคร,164,S00540,MK-CHAINAT,ชัยนาท,ชัยนาท,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,37,S00274,MK-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,61,S00114,MK-CHUMPAE-KHONKAEN,ชุมแพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,43,S00824,MK-CHUMPHON,ชุมพร,ชุมพร,ภาคใต้,Active
+แม๊คโคร,29,S00231,MK-TRANG,ตรัง,ตรัง,ภาคใต้,Active
+แม๊คโคร,60,S00784,MK-TRAT,ตราด,ตราด,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,75,S00603,MK-THALANG-PHUKET,ถลาง,ภูเก็ต,ภาคใต้,Active
+แม๊คโคร,85,S00518,MK-THUNGSONG-NAKHONSITHAMMARAT,ทุ่งสง,นครศรีธรรมราช,ภาคใต้,Active
+แม๊คโคร,82,S00800,MK-NAKHONNAYOK,นครนายก,นครนายก,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,19,S00145,MK:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,63,S00601,MK-NAKHONPHANOM,นครพนม,นครพนม,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,7,S00291,MK-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,102,S00723,MK-NAKHONRATCHASIMA_2,นครราชสีมา 2,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,157,S00699,MK-SAVE_ONE-NAKHONRATCHASRIMA_3,นครราชสีมา 3 (เซฟวัน),นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,22,S00134,MK-NAKHONSITHAMMARAT,นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+แม๊คโคร,16,S00099,MK-NAKHONSAWAN,นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+แม๊คโคร,158,S00473,MK-PHROMNIMIT-NAKHONSAWAN_2,นครสวรรค์ 2 (พรหมนิมิต),นครสวรรค์,ภาคเหนือ,Active
+แม๊คโคร,83,S00497,MK:NAKORN_IN-NONTHABURI,นครอินทร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,103,S00205,MK-NAN,น่าน,น่าน,ภาคเหนือ,Active
+แม๊คโคร,131,S00535,MK-BORWIN-CHONBURI,บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,4,S00200,MK:BANGBON,บางบอน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,115,S00841,MK:BANGBUATHONG-NONTHABURI,บางบัวทอง,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,57,S00140,MK:BANGPLEE,บางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,172,S02245,MK-BANPHAI-KHONKAEN,บ้านไผ่,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,168,S01186,MK-BANBUENG-CHONBURI,บ้านบึง,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,65,S00165,MK-BUENGKAN,บึงกาฬ,บึงกาฬ,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,32,S00215,MK-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,120,S00745,MK:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,110,S00188,MK-PRACHUAPKHIRIKHAN,ประจวบคีรีขันธ์,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,122,S01438,MK:PRACHAUTHIT,ประชาอุทิศ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,154,S00690,MK-PRACHINBURI,ปราจีนบุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,39,S00299,MK-PRANBURI-PRACHUAPKHIRIKHAN,ปราณบุรี,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,74,S00578,MK-PAKCHONG-NAKHONRATCHASRIMA,ปากช่อง,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,81,S00317,MK-FANG-CHIANGMAI,ฝาง,เชียงใหม่,ภาคเหนือ,Active
+แม๊คโคร,87,S00312,MK-PHAYAO,พะเยา,พะเยา,ภาคเหนือ,Active
+แม๊คโคร,169,S01265,MK-PHANGNGA,พังงา,พังงา,ภาคใต้,Active
+แม๊คโคร,44,S00523,MK-PATTAYA-CHONBURI,พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,69,S00290,MK-PHATTHALUNG,พัทลุง,พัทลุง,ภาคใต้,Active
+แม๊คโคร,119,S00136,MK-PHICHIT,พิจิตร,พิจิตร,ภาคเหนือ,Active
+แม๊คโคร,11,S00232,MK-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+แม๊คโคร,89,S00793,MK-PHITSANULOK_2,พิษณุโลก 2,พิษณุโลก,ภาคเหนือ,Active
+แม๊คโคร,27,S00702,MK-PHUKET,ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+แม๊คโคร,160,S00683,MK:MAHACHAI-SAMUTSAKHON,มหาชัย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,80,S00253,MK-MAHASARAKHAM,มหาสารคาม,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,58,S00186,MK-MUKDAHAN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,79,S00263,MK-YASOTHON,ยโสธร,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,28,S00130,MK-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,76,S00218,MK-RANONG,ระนอง,ระนอง,ภาคใต้,Active
+แม๊คโคร,15,S00098,MK-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,8,S00432,MK:RANGSIT,รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,166,S01212,MK-RAWAI_2-PHUKET,ราไวย์ 2,ภูเก็ต,ภาคใต้,Not active
+แม๊คโคร,49,S00097,MK-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,133,S02236,MK:RAMKAMHANG_24,รามคำแหง 24,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,42,S00792,MK:RAMINTRA,รามอินทรา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,47,S00159,MK-LOPBURI,ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,1,S00199,MK:LADPRAO,ลาดพร้าว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,52,S00223,MK-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+แม๊คโคร,34,S00325,MK-LAMPHUN,ลำพูน,ลำพูน,ภาคเหนือ,Active
+แม๊คโคร,106,S00240,MK-WARINCHAMRAB-UBONRATCHATHANI,วารินชำราบ,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,3,S00156,MK:SRINAKARIN,ศรีนครินทร์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,33,S00226,MK-SISAKET,ศรีสะเกษ,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,68,S00085,MK:SALAYA-NAKHONPATHOM,ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,24,S00183,MK-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,163,S00863,MK-SONGKHLA,สงขลา,สงขลา,ภาคใต้,Not active
+แม๊คโคร,59,S00154,MK-SATUN,สตูล,สตูล,ภาคใต้,Active
+แม๊คโคร,156,S00630,MK:SAMUTPRAKAN,สมุทรปราการ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,152,S00297,MK-SAMUTSONGKHRAM,สมุทรสงคราม,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,72,S00436,MK:SAMUTSAKHON,สมุทรสาคร,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,30,S00187,MK-SAKAEO,สระแก้ว,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,38,S00431,MK-SARABURI,สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,132,S00874,MK-SATTAHIP-CHONBURI,สัตหีบ,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,18,S00149,MK:SATHORN,สาทร,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,21,S00685,MK:SAMSEN,สามเสน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,114,S00644,MK-SINGBURI,สิงห์บุรี,สิงห์บุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,70,S00207,MK-SUKHOTHAI,สุโขทัย,สุโขทัย,ภาคเหนือ,Active
+แม๊คโคร,25,S00214,MK-SUPHANBURI,สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,13,S00321,MK-SURATTHANI,สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+แม๊คโคร,20,S00247,MK-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,48,S00244,MK-NONGKHAI,หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,108,S00851,MK:NONGJOK,หนองจอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+แม๊คโคร,107,S00305,MK-NONGBUALAMPHU,หนองบัวลำภู,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,53,S00806,MK-HUAHIN-PRACHUAPKHIRIKHAN,หัวหิน,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,41,S00768,MK-HANG_DONG-CHIANGMAI_2,หางดง เชียงใหม่ 2,เชียงใหม่,ภาคเหนือ,Active
+แม๊คโคร,9,S00161,MK-HADYAI-SONGKHLA,หาดใหญ่,สงขลา,ภาคใต้,Active
+แม๊คโคร,134,S01684,MK-AMATANAKHON-CHONBURI,อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Not active
+แม๊คโคร,162,S00562,MK-AMATANAKHON_2-CHONBURI,อมตะนคร 2,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,51,S00371,MK-AYUTTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,149,S00336,MK:AOMNOI-SAMUTSAKHON,อ้อมน้อย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+แม๊คโคร,170,S01439,MK-AMNATCHAROEN,อำนาจเจริญ,อำนาจเจริญ,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,117,S01707,MK:UDOMSUK,อุดมสุข,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+แม๊คโคร,10,S00179,MK-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,159,S00632,MK-BAN_LUEAM(UDON2)-UDONTHANI,อุดรธานี 2 (บ้านเลื่อม),อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+แม๊คโคร,146,S00338,MK-UTTARADIT,อุตรดิตถ์,อุตรดิตถ์,ภาคเหนือ,Active
+แม๊คโคร,14,S00266,MK-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,204,S00834,PB:SB_CDC,SB CDC,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,205,S01200,PB:SB_RAMA2,SB พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,169,S00110,PB-UPC-CHIANGMAI,UPC เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+เพาเวอร์บาย,145,S00170,PB-UPC-CHANTHABURI,UPC จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,132,S00062,PB-UPC-PATTAYA-CHONBURI,UPC พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,159,S00575,PB:UPC-RATCHAPRUEK,UPC ราชพฤกษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,144,S00283,PB-UPC-LOPBURI,UPC ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,148,S00657,PB-UPC-UDONTHANI,UPC อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,183,S00648,PB:CENTURY-ONNUT,เซ็นจูรี่ อ่อนนุช,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,158,S00357,PB-CPN-SAMUI-SURATTHANI,เซ็นทรัล เกาะสมุย,สุราษฎร์ธานี,ภาคใต้,Active
+เพาเวอร์บาย,120,S00560,PB-CPN-CHIANGRAI,เซ็นทรัล เชียงราย,เชียงราย,ภาคเหนือ,Active
+เพาเวอร์บาย,171,S00129,PB:CPN-WEST_GATE,เซ็นทรัล เวสเกต,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,255,S00152,PB:CPN-WEST_VILLE,เซ็นทรัล เวสวิลล์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,110,S00651,PB:CPN-CHANGWATTANA,เซ็นทรัล แจ้งวัฒนะ,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,53,S00565,PB-CPN-AIRPORT-CHIANGMAI,เซ็นทรัล แอร์พอร์ต,เชียงใหม่,ภาคเหนือ,Active
+เพาเวอร์บาย,261,S02229,PB-CPN-KRABI,เซ็นทรัล กระบี่,กระบี่,ภาคใต้,Active
+เพาเวอร์บาย,115,S00420,PB-CPN-KHONKAEN,เซ็นทรัล ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,262,S02346,PB-CPN_KHONKAEN_CAMPUS-KHONKAEN,เซ็นทรัล ขอนแก่นแคมปัส,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,245,S00095,PB-CPN-CHANTHABURI,เซ็นทรัล จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,112,S00021,PB-CPN-CHONBURI,เซ็นทรัล ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,10,S00350,PB:CPN-CHIDLOM,เซ็นทรัล ชิดลม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,257,S00826,PB:CPN-NAKHONPATHOM,เซ็นทรัล นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,180,S00035,PB-CPN-NAKHONRATCHASIMA,เซ็นทรัล นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,177,S00679,PB-CPN-NAKHONSITHAMMARAT,เซ็นทรัล นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+เพาเวอร์บาย,256,S00767,PB-CPN-NAKHONSAWAN,เซ็นทรัล นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+เพาเวอร์บาย,50,S00641,PB-CPN_NORTH_VILLE-NONTHABURI,เซ็นทรัล นอร์ทวิลล์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,27,S00109,PB:CPN-BANGNA,เซ็นทรัล บางนา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,11,S01106,PB:CPN-PINKLAO,เซ็นทรัล ปิ่นเกล้า,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,39,S00042,PB:CPN-RAMA2,เซ็นทรัล พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,15,S00019,PB:CPN-RAMA3,เซ็นทรัล พระราม 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,131,S00086,PB:CPN-RAMA9,เซ็นทรัล พระราม 9,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,129,S00203,PB-CPN-PHITSANULOK,เซ็นทรัล พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+เพาเวอร์บาย,21,S00169,PB:CPN-FUTURE_PARK-RANGSIT,เซ็นทรัล ฟิวเจอร์พาร์ครังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,182,S00393,PB:CPN-MAHACHAI-SAMUTSAKHON,เซ็นทรัล มหาชัย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,170,S00076,PB-CPN-RAYONG,เซ็นทรัล ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,26,S00202,PB:CPN-RAMINTRA,เซ็นทรัล รามอินทรา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,12,S00175,PB:CPN-LADPRAO,เซ็นทรัล ลาดพร้าว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,142,S00658,PB-CPN-LAMPANG,เซ็นทรัล ลำปาง,ลำปาง,ภาคเหนือ,Active
+เพาเวอร์บาย,229,S00093,PB-CPN-SRIRACHA-CHONBURI,เซ็นทรัล ศรีราชา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,160,S00071,PB:CPN-SALAYA,เซ็นทรัล ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,141,S00171,PB-CPN-SURATTHANI,เซ็นทรัล สุราษฎร์ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+เพาเวอร์บาย,231,S00464,PB-CPN-AYUTTHAYA,เซ็นทรัล อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,174,S00163,PB:CPN-EAST_VILLE,เซ็นทรัล อีสวิลล์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,71,S00113,PB-CPN-UDONTHANI,เซ็นทรัล อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,147,S00172,PB-CPN-UBONRATCHATHANI,เซ็นทรัล อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,154,S00082,PB-CPN_FESTIVAL-CHIANGMAI,เซ็นทรัลเฟสติวัล เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+เพาเวอร์บาย,111,S00090,PB-CPN_FESTIVAL-PATTAYA_BEACH,เซ็นทรัลเฟสติวัล พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,65,S00410,PB-CPN_FESTIVAL-PHUKET,เซ็นทรัลเฟสติวัล ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+เพาเวอร์บาย,156,S00282,PB-CPN_FESTIVAL-HADYAI-SONGKHLA,เซ็นทรัลเฟสติวัล หาดใหญ่,สงขลา,ภาคใต้,Active
+เพาเวอร์บาย,96,S00430,PB:CPN_WORLD,เซ็นทรัลเวิล์ด,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,240,S00206,PB:THE_FORTH-SAI_4-NAKHONPATHOM,เดอะโฟสท์ สาย 4,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,216,S00595,PB-THE_CHILLED_PATTAYA-CHONBURI,เดอะชิลล์ พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,239,S00554,PB:TERMINAL_21_RAMA3,เทอร์มินอล 21 พระราม 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,134,S00051,PB:MEGA_BANGNA,เมกาบางนา,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,167,S00733,PB-SERMTHAI-MAHASARAKHAM,เสริมไทย,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,243,S00463,PB:JAZZ-KUBON,แจ๊สคู้บอน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,28,S00008,PB:FASHION_ISLAND,แฟชั่นไอส์แลนด์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,222,S00600,PB-LAEMTHONG_BANGSAEN-CHONBURI,แหลมทอง บางแสน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,249,S00485,PB-GOP-CHANDEE-NAKHONSITHAMMARAT,โกเพาเวอร์ โชคดี,นครศรีธรรมราช,ภาคใต้,Not active
+เพาเวอร์บาย,235,S00532,PB-GOP-KRANUAN-KHONKAEN,โกเพาเวอร์ กระนวน,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,246,S00553,PB-GOP-KHONKAEN,โกเพาเวอร์ ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,233,S00552,PB-GOP-CHUMPARE-KHONKAEN,โกเพาเวอร์ ชุมแพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,248,S00511,PB-GOP-THASALA-NAKHONSITHAMMARAT,โกเพาเว่อร์ ท่าศาลา,นครศรีธรรมราช,ภาคใต้,Not active
+เพาเวอร์บาย,244,S00424,PB-GOP-BAN_PHUE-UDONTHANI,โกเพาเวอร์ บ้านผือ,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,254,S00885,PB-GOP-PAKPANANG-NAKHONSITHAMMARAT,โกเพาเวอร์ ปากพนัง,นครศรีธรรมราช,ภาคใต้,Not active
+เพาเวอร์บาย,59,S00568,PB-GOP-PATTAYA-CHONBURI,โกเพาเวอร์ พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,238,S00482,PB-GOP-UD_TOWN-UDONTHANI,โกเพาเวอร์ ยูดีทาวน์ อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,252,S00498,PB-GOP-RONPHIBUN,โกเพาเว่อร์ ร่อนพิบูลย์,นครศรีธรรมราช,ภาคใต้,Not active
+เพาเวอร์บาย,234,S00529,PB-GOP-SRIBOONROEN-NONGBUALAMPHU,โกเพาเวอร์ ศรีบุญเรือง,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,247,S00559,PB-GOP-NONGBUALAMPHU,โกเพาเวอร์ หนองบัวลำภู,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,119,S00219,PB-GOP-HUAHIN-PRACHUAPKHIRIKHAN,โกเพาเวอร์ หัวหิน,ประจวบคีรีขันธ์,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,237,S00703,PB-GOP-AMATA_NAKHON-CHONBURI,โกเพาเวอร์ อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,179,S00680,PB-RBS-PHETCHABURI,โรบินสัน เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,175,S00517,PB-RBS-MAESOD-TAK,โรบินสัน แม่สอด,ตาก,ภาคเหนือ,Active
+เพาเวอร์บาย,146,S00331,PB-RBS-KANCHANABURI,โรบินสัน กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,184,S00676,PB-RBS-KAMPHAENGPHET,โรบินสัน กำแพงเพชร,กำแพงเพชร,ภาคเหนือ,Active
+เพาเวอร์บาย,105,S00856,PB-RBS-JANGSILON-PHUKET,โรบินสัน จังซีลอน,ภูเก็ต,ภาคใต้,Not active
+เพาเวอร์บาย,73,S00714,PB-RBS-CHANTHABURI,โรบินสัน จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,162,S00377,PB-RBS-CHACHOENGSAO,โรบินสัน ฉะเชิงเทรา,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,188,S00100,PB-RBS-LIFE_STYLE-CHONBURI,โรบินสัน ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,195,S00631,PB-RBS-CHAIYAPHUM,โรบินสัน ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,23,S00048,PB:RBS-SEACON-SRINAKARIN,โรบินสัน ซีคอน ศรีนครินทร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,117,S00251,PB-RBS-TRANG,โรบินสัน ตรัง,ตรัง,ภาคใต้,Active
+เพาเวอร์บาย,250,S00057,PB-RBS-THALANG-PHUKET,โรบินสัน ถลาง,ภูเก็ต,ภาคใต้,Active
+เพาเวอร์บาย,211,S00580,PB-RBS-BORWIN-CHONBURI,โรบินสัน บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,7,S00668,PB:RBS-BANGRAK,โรบินสัน บางรัก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,241,S00126,PB-RBS-BANCHANG-RAYONG,โรบินสัน บ้านฉาง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,172,S00416,PB-RBS-BURIRAM,โรบินสัน บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,165,S00550,PB-RBS-PRACHINBURI,โรบินสัน ปราจีนบุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,168,S00698,PB-RBS-MUKDAHARN,โรบินสัน มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,163,S00293,PB-RBS-ROIET,โรบินสัน ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,29,S00707,PB:RBS-RANGSIT,โรบินสัน รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,36,S00776,PB:RBS-RATTANATHIBATE,โรบินสัน รัตนาธิเบศร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,34,S00649,PB-RBS-RATCHABURI,โรบินสัน ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,251,S00401,PB:RBS-RATCHAPRUK,โรบินสัน ราชพฤกษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,178,S00591,PB-RBS-LOPBURI,โรบินสัน ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,207,S00398,PB:RBS-LADKABANG,โรบินสัน ลาดกระบัง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,33,S00634,PB-RBS-SRIRACHA-CHONBURI,โรบินสัน ศรีราชา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,173,S00622,PB:RBS-SRISAMAN,โรบินสัน ศรีสมาน,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,150,S00731,PB-RBS-SAKONNAKHON,โรบินสัน สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,164,S00047,PB:RBS-SAMUTPRAKAN,โรบินสัน สมุทรปราการ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,155,S00106,PB-RBS-SARABURI,โรบินสัน สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,137,S00208,PB-RBS-SUPHANBURI,โรบินสัน สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,157,S00209,PB-RBS-SURIN,โรบินสัน สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,63,S00728,PB-RBS-HADYAI-SONGKHLA,โรบินสัน หาดใหญ่,สงขลา,ภาคใต้,Active
+เพาเวอร์บาย,100,S00626,PB-RBS-AYUTTHAYA,โรบินสัน อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,201,S01206,PB_LT:-SENA,โลตัส เสนา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,196,S01202,PB-LT-CHOCKCHAI-NAKHONRATCHASIMA,โลตัส โชคชัย,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,200,S01203,PB_LT:KHLONG_LUANG-PATHUMTHANI,โลตัส คลองหลวง,ปทุมธานี,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,199,S01204,PB_LT:NAKHON_CHAISI-NAKHONPATHOM,โลตัส นครชัยศรี,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,197,S01201,PB_LT:BANGLEN-NAKHONPATHOM,โลตัส บางเลน,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,209,S00713,PB:LT-BANGYAI-NONTHABURI,โลตัส บางใหญ่,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,226,S00602,PB:LT-BANGKAPI,โลตัส บางกะปิ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,210,S00678,PB:LT-LADPRAO,โลตัส ลาดพร้าว,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,202,S01205,PB_LT:-SALAYA-NAKHONPATHOM,โลตัส ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,192,S00855,PB:LT-LAKSI,โลตัส หลักสี่,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,193,S00871,PB-LOTUS-UBONRATCHATHANI,โลตัส อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,218,S00352,PB-CHAI_SANG-SINGBURI,ไชยแสง,สิงห์บุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,225,S00688,PB-KALASIN_PLAZA-KALASIN,กาฬสินธุ์พลาซ่า,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,217,S00609,PB-JAMPHA-LAMPHUN,จำปา,ลำพูน,ภาคเหนือ,Active
+เพาเวอร์บาย,140,S00043,PB:SEACON-BANGKAE,ซีคอนบางแค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,79,S00737,PB-TUK_COM_PATTAYA-CHONBURI,ตึกคอมพัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,77,S00116,PB-TAWEEKIT-BURIRAM,ทวีกิจ,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,253,S00830,PB:TOPS_CLUB-RAMA2,ท๊อปคลับ พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,198,S00615,PB-TOPS_PLAZA-PHOL-KHONKAEN,ท๊อปพลาซ่า ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,186,S00613,PB-TOPS_PLAZA-PHAYAO,ท็อปพลาซ่า พะเยา,พะเยา,ภาคเหนือ,Active
+เพาเวอร์บาย,185,S00671,PB-TOPS_PLAZA-PHICHIT,ท็อปพลาซ่า พิจิตร,พิจิตร,ภาคเหนือ,Active
+เพาเวอร์บาย,194,S00576,PB-TOPS_PLAZA-SINGBURI,ท็อปพาซ่า สิงห์บุรี,สิงห์บุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,109,S00627,PB-BNB-PHUKET,บ้านแอนด์บียอน ภูเก็ต,ภูเก็ต,ภาคใต้,Not active
+เพาเวอร์บาย,152,S00445,PB-BNB-MITTRAPHAP-KHONKAEN,บ้านแอนด์บียอน มิตรภาพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,113,S01199,PB:BNB-RATCHAPRUK,บ้านแอนด์บียอน ราชพฤกษ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,232,S00462,PB-BIG_C-PHETCHABURI,บิ๊กซี เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,176,S00549,PB:BC-NAKHONPATHOM,บิ๊กซี นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,45,S00519,PB-BIG_C-NAKHONSAWAN,บิ๊กซี นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+เพาเวอร์บาย,22,S00053,PB:BIG_C-BANGPLEE,บิ๊กซี บางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,228,S00527,PB:BC-RAMA2,บิ๊กซี พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,212,S00659,PB-BIG_C-PHANGNGA,บิ๊กซี พังงา,พังงา,ภาคใต้,Active
+เพาเวอร์บาย,47,S00656,PB-BIG_C-LOPBURI,บิ๊กซี ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,230,S00526,PB:BC-LUMLUKKA,บิ๊กซี ลำลูกกา,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,18,S00547,PB:BC-WONGSAWANG,บิ๊กซี วงศ์สว่าง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,88,S00118,PB:BIG_C-SUKSAWAT,บิ๊กซี สุขสวัสดิ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์บาย,104,S00653,PB-BIG_C-UDONTHANI,บิ๊กซี อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Not active
+เพาเวอร์บาย,107,S01197,PB-BGC-CHONBURI,บีจีซี ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,78,S01198,PB-BGC-RAYONG,บีจีซี ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,236,S00556,PB-PASSION-RAYONG,พาสชั่นระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,220,S00661,PB-MARK_FOUR-PHRAE,มาร์คโฟว์แพร่,แพร่,ภาคเหนือ,Not active
+เพาเวอร์บาย,214,S00726,PB-LEE_SUBSIN-SONGKHLA,ลีทรัพสินย์ สงขลา,สงขลา,ภาคใต้,Active
+เพาเวอร์บาย,219,S00386,PB-VITEETHEP-NAKHONSAWAN,วิถีเทพ,นครสวรรค์,ภาคเหนือ,Not active
+เพาเวอร์บาย,206,S00625,PB:WISDOM_101_PHRAKHANONG,วิสด้อม 101,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์บาย,221,S00769,PB-SPACE_304-PRACHINBURI,สเปส 304 ปราจีนบุรี,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Not active
+เพาเวอร์บาย,143,S00135,PB-STL-CHONBURI,สแตนอโลน ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+เพาเวอร์บาย,224,S00674,PB-ASSAWAN-NONGKHAI,อัสวัน หนองคาย,หนองคาย,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์บาย,227,S00458,PB:IMPERIAL-SAMRONG,อิมพีเรียลสำโรง,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์มอลล์,33KB,S00222,PM-NAKHONRATCHASIMA,เดอะมอลล์ โคราช,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+เพาเวอร์มอลล์,15KB,S00349,PM:NGAMWONGWAN,เดอะมอลล์ งามวงศ์วาน,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์มอลล์,14KB,S00370,PM:THAPRA,เดอะมอลล์ ท่าพระ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์มอลล์,16KB,S00190,PM:BANGKAE,เดอะมอลล์ บางแค,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์มอลล์,17KB,S00066,PM:BANGKAPI,เดอะมอลล์ บางกะปิ,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์มอลล์,13KB,S00795,PM:RAMKAMHANG,เดอะมอลล์ รามคำแหง,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+เพาเวอร์มอลล์,30KB,S00327,PM:EMPORIUM,เอ็มโพเรียม,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+เพาเวอร์มอลล์,34KB,S00449,PM:SIAM_PARAGON,สยามพารากอน,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60934,S00079,TW-CHIANGMAI,เชียงใหม่,เชียงใหม่,ภาคเหนือ,Active
+ไทยวัสดุ,60958,S00250,TW-CHIANGRAI,เชียงราย,เชียงราย,ภาคเหนือ,Active
+ไทยวัสดุ,60021,S01628,TW-CENTRAL_CHANTHABURI-CHANTHABURI,เซ็นทรัล จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Not active
+ไทยวัสดุ,60016,S00490,TW-FESTIVAL-PHUKET,เซ็นทรัลเฟสติวัล ภูเก็ต,ภูเก็ต,ภาคใต้,Active
+ไทยวัสดุ,60976,S00404,TW-PHETCHABURI,เพชรบุรี,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60940,S00356,TW-PHETCHABUN,เพชรบูรณ์,เพชรบูรณ์,ภาคเหนือ,Active
+ไทยวัสดุ,60025,S00195,TW:MUEANG_EK-PATHUMTHANI,เมืองเอก,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60991,S00230,TW-LOEI,เลย,เลย,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60996,S00347,TW-KLAENG-RAYONG,แกลง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60962,S00493,TW:CHANGWATTANA,แจ้งวัฒนะ,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,61600,S00433,TW-PHRAE,แพร่,แพร่,ภาคเหนือ,Active
+ไทยวัสดุ,60986,S00236,TW-MAE_CHAN-CHIANGRAI,แม่จัน,เชียงราย,ภาคเหนือ,Active
+ไทยวัสดุ,60018,S01627,TW:BAANANDBEYOND-LOTUS_BANGYAI,โลตัส บางใหญ่,นนทบุรี,กรุงเทพฯและภาคกลาง,Not active
+ไทยวัสดุ,60937,S00158,TW-KANCHANABURI,กาญจนบุรี,กาญจนบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,61601,S00809,TW-KALASIN,กาฬสินธุ์,กาฬสินธุ์,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60987,S00422,TW-KAMPHAENGPHET,กำแพงเพชร,กำแพงเพชร,ภาคเหนือ,Active
+ไทยวัสดุ,60030,S00369,TW-KUT_SA-UDONTHANI,กุดสะ,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60928,S00364,TW-KHONKAEN,ขอนแก่น,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60932,S00180,TW-CHANTHABURI,จันทบุรี,จันทบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60024,S00104,TW-CHALONG-PHUKET,ฉลอง,ภูเก็ต,ภาคใต้,Active
+ไทยวัสดุ,60938,S00146,TW-CHACHOENGSAO,ฉะเชิงเทรา,ฉะเชิงเทรา,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60956,S00409,TW-CHONBURI,ชลบุรี,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60930,S00270,TW-CHA_AM-PHETCHABURI,ชะอำ,เพชรบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60989,S00329,TW-CHAINAT,ชัยนาท,ชัยนาท,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60966,S00322,TW:CHAIYAPRUK,ชัยพฤกษ์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60983,S00310,TW-CHAIYAPHUM,ชัยภูมิ,ชัยภูมิ,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60945,S00300,TW-TRANG,ตรัง,ตรัง,ภาคใต้,Active
+ไทยวัสดุ,60946,S00346,TW-TAK,ตาก,ตาก,ภาคเหนือ,Active
+ไทยวัสดุ,60955,S00102,TW-THA_LANG-PHUKET,ถลาง,ภูเก็ต,ภาคใต้,Active
+ไทยวัสดุ,61602,S02168,TW-NAKHONNAYOK,นครนายก,นครนายก,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60971,S00103,TW:NAKHONPATHOM,นครปฐม,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60970,S00296,TW-NAKHONRATCHASIMA,นครราชสีมา,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60978,S00143,TW-NAKHONSITHAMMARAT,นครศรีธรรมราช,นครศรีธรรมราช,ภาคใต้,Active
+ไทยวัสดุ,60993,S00447,TW-NAKHONSAWAN,นครสวรรค์,นครสวรรค์,ภาคเหนือ,Active
+ไทยวัสดุ,60029,S00235,TW:NAKHON_IN,นครอินทร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60960,S00306,TW:NAVAMIN,นวมินทร์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60984,S00295,TW-NAN,น่าน,น่าน,ภาคเหนือ,Active
+ไทยวัสดุ,60980,S00388,TW-BORWIN-CHONBURI,บ่อวิน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60022,S00307,TW-BANGSEN-CHONBURI,บางแสน,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60028,S00405,TW:BANGYAI,บางใหญ่,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60920,S00030,TW:BANGNA,บางนา,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60985,S00505,TW:BANGBON,บางบอน,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60918,S00292,TW:BANGBUATHONG,บางบัวทอง,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60959,S00284,TW:BANGPLEE,บางพลี,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60973,S00406,TW-BANCHANG-RAYONG,บ้านฉาง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60924,S00315,TW-BURIRAM,บุรีรัมย์,บุรีรัมย์,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60953,S00427,TW:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60808,S02300,TW:PATHUMTHANI,ปทุมธานี,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60975,S00108,TW-PAKCHONG-NAKHONRATCHASIMA,ปากช่อง,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60964,S00177,TW:RAMA2,พระราม 2,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60031,S00372,TW:RAMA3,พระราม 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60014,S01625,TW-PATTAYA-CHONBURI,พัทยา,ชลบุรี,ภาคตะวันตกและตะวันออก,Not active
+ไทยวัสดุ,60954,S00128,TW-SOUTH-PATAYA-CHONBURI,พัทยาใต้,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60921,S00181,TW-PHITSANULOK,พิษณุโลก,พิษณุโลก,ภาคเหนือ,Active
+ไทยวัสดุ,60925,S00280,TW-MAHACHAI,มหาชัย,สมุทรสงคราม,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60942,S00174,TW-MAHASARAKHAM,มหาสารคาม,มหาสารคาม,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60950,S00555,TW-MITTRAPHAP-KHONKAEN,มิตรภาพ,ขอนแก่น,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60944,S00323,TW-MUKDAHAN,มุกดาหาร,มุกดาหาร,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60992,S00178,TW-YASOTHON,ยโสธร,ยโสธร,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60935,S00340,TW-ROIET,ร้อยเอ็ด,ร้อยเอ็ด,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60939,S00166,TW-RAYONG,ระยอง,ระยอง,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60963,S00470,TW:RANGSIT,รังสิต,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60023,S00137,TW:RANGSIT_KLONG4,รังสิต คลอง 4,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60032,S00857,TW:RATTANATIBETH-NONTHABURI,รัตนาธิเบศร์,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,61604,S02311,TW-RATCHABURI,ราชบุรี,ราชบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60017,S01626,TW:RAJCHAPRUKE,ราชพฤกษ์,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Not active
+ไทยวัสดุ,60929,S00122,TW-LOPBURI,ลพบุรี,ลพบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60923,S00273,TW-LAMPANG,ลำปาง,ลำปาง,ภาคเหนือ,Active
+ไทยวัสดุ,60968,S00271,TW:LUMLUKA,ลำลูกกา,ปทุมธานี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60972,S00335,TW-SRIMAHAPHOT-PRACHINBURI,ศรีมหาโพธ,ปราจีนบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60961,S00246,TW-SIRACHA-CHONBURI,ศรีราชา,ชลบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60020,S00417,TW:SRISAMAN-NONTHABURI,ศรีสมาน,นนทบุรี,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60990,S00289,TW-SISAKET,ศรีสะเกษ,ศรีสะเกษ,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60941,S00248,TW:SALAYA-NAKHONPATHOM,ศาลายา,นครปฐม,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60926,S00147,TW-SAKONNAKHON,สกลนคร,สกลนคร,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60982,S00414,TW-SONGKHLA,สงขลา,สงขลา,ภาคใต้,Active
+ไทยวัสดุ,60949,S01629,TW-AIR_PORT-CHIANGMAI,สนามบินเชียงใหม่,เชียงใหม่,ภาคเหนือ,Not active
+ไทยวัสดุ,60026,S00150,TW:SAMUTPRAKAN,สมุทรปราการ,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60995,S00337,TW-SAKAEO,สระแก้ว,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60952,S00243,TW-SARABURI,สระบุรี,สระบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60027,S00193,TW-SANSAI-CHIANGMAI,สันทราย,เชียงใหม่,ภาคเหนือ,Active
+ไทยวัสดุ,60979,S00148,TW:SUKSAWAT,สุขสวัสดิ์,สมุทรปราการ,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60919,S00176,TW:SUKAPIBAN3,สุขาภิบาล 3,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60936,S00088,TW-SUPHANBURI,สุพรรณบุรี,สุพรรณบุรี,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60927,S00264,TW-SURATTHANI,สุราษฎร์ ธานี,สุราษฎร์ธานี,ภาคใต้,Active
+ไทยวัสดุ,60922,S00241,TW-SURIN,สุรินทร์,สุรินทร์,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60974,S00706,TW:NONGCHOK,หนองจอก,กรุงเทพมหานคร,กรุงเทพฯและภาคกลาง,Active
+ไทยวัสดุ,60951,S00257,TW-NONGBUALAMPHU,หนองบัวลำภู,หนองบัวลำภู,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60988,S00287,TW-HUA_TALAE-NAKHONRATCHASIMA,หัวทะเล,นครราชสีมา,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60931,S00249,TW-HATYAI-SONGKHLA,หาดใหญ่,สงขลา,ภาคใต้,Active
+ไทยวัสดุ,60977,S00986,TW-AMMATANAKHON-CHONBURI,อมตะนคร,ชลบุรี,ภาคตะวันตกและตะวันออก,Not active
+ไทยวัสดุ,60981,S00255,TW-AYUTHAYA,อยุธยา,พระนครศรีอยุธยา,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60994,S00309,TW-ARANYAPRATHET-SAKAEO,อรัญประเทศ,สระแก้ว,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60969,S00480,TW:AOM_NOI-SAMUTSAKHON,อ้อมน้อย,สมุทรสาคร,ภาคตะวันตกและตะวันออก,Active
+ไทยวัสดุ,60947,S00313,TW-UDONTHANI,อุดรธานี,อุดรธานี,ภาคตะวันออกเฉียงเหนือ,Active
+ไทยวัสดุ,60997,S00389,TW-UTHAITHANI,อุทัยธานี,อุทัยธานี,ภาคเหนือ,Active
+ไทยวัสดุ,60933,S00442,TW-UBONRATCHATHANI,อุบลราชธานี,อุบลราชธานี,ภาคตะวันออกเฉียงเหนือ,Active
