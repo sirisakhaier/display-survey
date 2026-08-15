@@ -96,7 +96,7 @@ export default function AdminDashboardPage() {
     return (
       <div className="py-24 text-center">
         <Loader2 className="w-8 h-8 animate-spin text-blue-700 mx-auto mb-3" />
-        <p className="text-sm text-slate-500">กำลังประมวลผลข้อมูลแดชบอร์ด...</p>
+        <p className="text-sm text-slate-500">Loading dashboard data...</p>
       </div>
     );
   }
@@ -114,7 +114,7 @@ export default function AdminDashboardPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">แดชบอร์ดสรุปภาพรวม</h1>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Overview Dashboard</h1>
           <p className="text-xs text-slate-500 mt-1">
             Display Survey Analytics & Store Coverage Dashboard
           </p>
@@ -125,19 +125,19 @@ export default function AdminDashboardPage() {
       <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
         <div className="flex items-center gap-2 text-xs font-bold text-slate-700 uppercase tracking-wider">
           <Filter className="w-4 h-4 text-blue-700" />
-          ตัวกรองข้อมูล (Filters)
+          Filters
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           {/* Customer */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-500 mb-1">ห้าง / ลูกค้า</label>
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">Customer</label>
             <select
               value={selectedCustomer}
               onChange={(e) => setSelectedCustomer(e.target.value)}
               className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
             >
-              <option value="all">ทุกลูกค้า (All Customers)</option>
+              <option value="all">All Customers</option>
               {customers.map((c) => (
                 <option key={c} value={c}>{c}</option>
               ))}
@@ -146,13 +146,13 @@ export default function AdminDashboardPage() {
 
           {/* Region */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-500 mb-1">ภูมิภาค</label>
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">Region</label>
             <select
               value={selectedRegion}
               onChange={(e) => setSelectedRegion(e.target.value)}
               className="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
             >
-              <option value="all">ทุกภูมิภาค (All Regions)</option>
+              <option value="all">All Regions</option>
               {regions.map((r) => (
                 <option key={r} value={r}>{r}</option>
               ))}
@@ -161,7 +161,7 @@ export default function AdminDashboardPage() {
 
           {/* Start Date */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-500 mb-1">ตั้งแต่วันที่</label>
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">From Date</label>
             <input
               type="date"
               value={startDate}
@@ -172,7 +172,7 @@ export default function AdminDashboardPage() {
 
           {/* End Date */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-500 mb-1">ถึงวันที่</label>
+            <label className="block text-[11px] font-medium text-slate-500 mb-1">To Date</label>
             <input
               type="date"
               value={endDate}
@@ -189,7 +189,7 @@ export default function AdminDashboardPage() {
               className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              ล้างตัวกรอง
+              Clear Filters
             </button>
           </div>
         </div>
@@ -200,7 +200,7 @@ export default function AdminDashboardPage() {
         {/* Card 1: Total Display Units */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500">จำนวน Display รวม</span>
+            <span className="text-xs font-semibold text-slate-500">Total Display Units</span>
             <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
               <Tv className="w-4 h-4" />
             </div>
@@ -208,13 +208,13 @@ export default function AdminDashboardPage() {
           <div className="mt-3 text-2xl sm:text-3xl font-extrabold text-blue-700 font-mono">
             {summary.totalDisplayUnits.toLocaleString()}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">เครื่องที่ตั้งโชว์ในสาขา</div>
+          <div className="text-[11px] text-slate-500 mt-1">Units on display at stores</div>
         </div>
 
         {/* Card 2: Survey Coverage */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500">อัตราการสำรวจ (Coverage)</span>
+            <span className="text-xs font-semibold text-slate-500">Survey Coverage</span>
             <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -223,14 +223,14 @@ export default function AdminDashboardPage() {
             {summary.coveragePercentage}%
           </div>
           <div className="text-[11px] text-slate-500 mt-1">
-            {summary.surveyedStoresCount} จาก {summary.totalActiveStores} สาขา Active
+            {summary.surveyedStoresCount} of {summary.totalActiveStores} Active stores
           </div>
         </div>
 
         {/* Card 3: Surveyed Stores */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500">สาขาที่บันทึกแล้ว</span>
+            <span className="text-xs font-semibold text-slate-500">Stores Surveyed</span>
             <div className="w-8 h-8 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4" />
             </div>
@@ -238,13 +238,13 @@ export default function AdminDashboardPage() {
           <div className="mt-3 text-2xl sm:text-3xl font-extrabold text-purple-700 font-mono">
             {summary.surveyedStoresCount.toLocaleString()}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">สาขาที่มีข้อมูลการสำรวจ</div>
+          <div className="text-[11px] text-slate-500 mt-1">Stores with survey data</div>
         </div>
 
         {/* Card 4: Pending Stores */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500">สาขาที่ยังไม่บันทึก</span>
+            <span className="text-xs font-semibold text-slate-500">Stores Not Surveyed</span>
             <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
               <Clock className="w-4 h-4" />
             </div>
@@ -252,7 +252,7 @@ export default function AdminDashboardPage() {
           <div className="mt-3 text-2xl sm:text-3xl font-extrabold text-amber-600 font-mono">
             {summary.pendingStoresCount.toLocaleString()}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">สาขาที่รอการเข้าสำรวจ</div>
+          <div className="text-[11px] text-slate-500 mt-1">Stores pending survey</div>
         </div>
       </div>
 
@@ -262,7 +262,7 @@ export default function AdminDashboardPage() {
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
             <Award className="w-4 h-4 text-blue-700" />
-            สัดส่วนจำนวน Display แยกตามแบรนด์ (Top Brands)
+            Display Units by Brand (Top Brands)
           </h3>
           {data?.brandBreakdown?.length > 0 ? (
             <div className="h-72 w-full">
@@ -272,7 +272,7 @@ export default function AdminDashboardPage() {
                   <XAxis type="number" tick={{ fontSize: 11 }} />
                   <YAxis type="category" dataKey="Brand" tick={{ fontSize: 11 }} width={80} />
                   <Tooltip 
-                    formatter={(value: any) => [`${value} เครื่อง`, 'จำนวน Display']}
+                    formatter={(value: any) => [`${value} units`, 'Display Units']}
                     contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', fontSize: '12px' }}
                   />
                   <Bar dataKey="total_qty" fill="#005bac" radius={[0, 6, 6, 0]} />
@@ -281,7 +281,7 @@ export default function AdminDashboardPage() {
             </div>
           ) : (
             <div className="h-72 flex items-center justify-center text-slate-400 text-xs">
-              ยังไม่มีข้อมูลการสำรวจ
+              No survey data available
             </div>
           )}
         </div>
@@ -290,7 +290,7 @@ export default function AdminDashboardPage() {
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
             <Tv className="w-4 h-4 text-blue-700" />
-            สัดส่วนจำนวน Display แยกตามหมวดหมู่สินค้า
+            Display Units by Category
           </h3>
           {data?.categoryBreakdown?.length > 0 ? (
             <div className="h-72 w-full flex items-center">
@@ -311,7 +311,7 @@ export default function AdminDashboardPage() {
                     ))}
                   </Pie>
                   <Tooltip 
-                    formatter={(value: any) => [`${value} เครื่อง`, 'จำนวน Display']}
+                    formatter={(value: any) => [`${value} units`, 'Display Units']}
                     contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0', fontSize: '12px' }}
                   />
                   <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '11px' }} />
@@ -320,7 +320,7 @@ export default function AdminDashboardPage() {
             </div>
           ) : (
             <div className="h-72 flex items-center justify-center text-slate-400 text-xs">
-              ยังไม่มีข้อมูลการสำรวจ
+              No survey data available
             </div>
           )}
         </div>
@@ -332,16 +332,16 @@ export default function AdminDashboardPage() {
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
             <Building2 className="w-4 h-4 text-blue-700" />
-            สรุปความคืบหน้าแยกตามห้าง / ลูกค้า (Customer Breakdown)
+            Progress by Customer
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
                 <tr className="border-b border-slate-200 text-slate-500 font-semibold">
-                  <th className="py-2.5 px-2">ลูกค้า</th>
-                  <th className="py-2.5 px-2 text-right">สาขาทั้งหมด</th>
-                  <th className="py-2.5 px-2 text-right">บันทึกแล้ว</th>
-                  <th className="py-2.5 px-2 text-right">Display รวม</th>
+                  <th className="py-2.5 px-2">Customer</th>
+                  <th className="py-2.5 px-2 text-right">Total Stores</th>
+                  <th className="py-2.5 px-2 text-right">Surveyed</th>
+                  <th className="py-2.5 px-2 text-right">Total Display</th>
                   <th className="py-2.5 px-2 text-right">Coverage</th>
                 </tr>
               </thead>
@@ -374,17 +374,17 @@ export default function AdminDashboardPage() {
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
           <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
             <MapPin className="w-4 h-4 text-blue-700" />
-            Top 10 สาขาที่มีจำนวน Display สูงสุด
+            Top 10 Stores by Display
           </h3>
           {data?.topStores?.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-500 font-semibold">
-                    <th className="py-2.5 px-2">สาขา</th>
-                    <th className="py-2.5 px-2">ลูกค้า</th>
-                    <th className="py-2.5 px-2">จังหวัด</th>
-                    <th className="py-2.5 px-2 text-right">ยอดรวม Display</th>
+                    <th className="py-2.5 px-2">Store</th>
+                    <th className="py-2.5 px-2">Customer</th>
+                    <th className="py-2.5 px-2">Province</th>
+                    <th className="py-2.5 px-2 text-right">Total Display</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
@@ -397,7 +397,7 @@ export default function AdminDashboardPage() {
                       <td className="py-2.5 px-2 text-slate-600">{s.Customer}</td>
                       <td className="py-2.5 px-2 text-slate-500">{s.Province_TH}</td>
                       <td className="py-2.5 px-2 text-right font-mono font-bold text-blue-700">
-                        {s.total_units} เครื่อง
+                        {s.total_units} units
                       </td>
                     </tr>
                   ))}
@@ -406,7 +406,7 @@ export default function AdminDashboardPage() {
             </div>
           ) : (
             <div className="py-12 text-center text-slate-400 text-xs">
-              ยังไม่มีข้อมูลการสำรวจ
+              No survey data available
             </div>
           )}
         </div>
