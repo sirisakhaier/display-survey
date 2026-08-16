@@ -4,78 +4,239 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   HAIER BRAND DESIGN SYSTEM
+   Primary: #0060AF (Haier Blue)
+   Dark mode: deep navy backgrounds
+   ============================================================ */
+
 :root {
   --font-prompt: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-sarabun: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
-  --haier-blue: #005bac;
-  --haier-dark: #003870;
-  --haier-light: #e8f2fc;
-  --haier-accent: #0284c7;
+
+  /* Haier Official Brand Colors */
+  --haier-blue: #0060AF;
+  --haier-blue-dark: #004d8f;
+  --haier-blue-deeper: #003870;
+  --haier-blue-light: #e0eef9;
+  --haier-blue-mid: #0075d4;
+
+  /* Light Mode Surfaces */
+  --bg-primary: #f0f6fc;
+  --bg-card: #ffffff;
+  --bg-header: rgba(255,255,255,0.93);
+  --border-color: #cce0f3;
+  --text-primary: #0a1929;
+  --text-secondary: #4a6080;
+  --text-muted: #7a96b0;
+  --accent-color: var(--haier-blue);
+
+  /* Step indicator active */
+  --step-active: var(--haier-blue);
+  --step-done: #16a34a;
+}
+
+/* ============================================================
+   DARK MODE VARIABLES
+   ============================================================ */
+.dark {
+  --bg-primary: #0d1b2a;
+  --bg-card: #152033;
+  --bg-header: rgba(13, 27, 42, 0.95);
+  --border-color: #1e3a5f;
+  --text-primary: #e8f2fc;
+  --text-secondary: #8ab4d4;
+  --text-muted: #5a83a8;
+  --accent-color: #3b9ede;
+  --haier-blue-light: #0d2540;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   font-family: var(--font-prompt);
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* ============================================================
+   DARK MODE TAILWIND OVERRIDES
+   ============================================================ */
+.dark .bg-white { background-color: var(--bg-card) !important; }
+.dark .bg-slate-50 { background-color: #0f1f30 !important; }
+.dark .bg-slate-100 { background-color: #162030 !important; }
+.dark .border-slate-100 { border-color: #1a2e45 !important; }
+.dark .border-slate-200 { border-color: #1e3a5f !important; }
+.dark .border-slate-200\/80 { border-color: rgba(30,58,95,0.8) !important; }
+.dark .text-slate-900 { color: #e8f2fc !important; }
+.dark .text-slate-800 { color: #cde0f0 !important; }
+.dark .text-slate-700 { color: #a8c8e8 !important; }
+.dark .text-slate-600 { color: #8ab4d4 !important; }
+.dark .text-slate-500 { color: #6a9dbf !important; }
+.dark .text-slate-400 { color: #4a7a9b !important; }
+.dark .bg-blue-50 { background-color: #0d2540 !important; }
+.dark .bg-blue-50\/70 { background-color: rgba(13,37,64,0.7) !important; }
+.dark .border-blue-200 { border-color: #1e4e80 !important; }
+.dark .bg-emerald-50 { background-color: #0d2a1a !important; }
+.dark .bg-amber-50 { background-color: #2a1f0d !important; }
+.dark .bg-red-50 { background-color: #2a0d0d !important; }
+.dark .bg-slate-50\/80 { background-color: rgba(13,27,42,0.8) !important; }
+.dark select,
+.dark input[type="text"],
+.dark input[type="number"],
+.dark input[type="date"],
+.dark input[type="tel"] {
+  background-color: #0f1f30 !important;
+  color: #e8f2fc !important;
+  border-color: #1e3a5f !important;
 }
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+.dark select:focus,
+.dark input:focus {
+  background-color: #0d1b2a !important;
+  border-color: #3b9ede !important;
 }
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
+.dark option {
+  background-color: #152033;
+  color: #e8f2fc;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.dark .bg-slate-200 { background-color: #1a2e45 !important; }
+.dark .text-blue-700 { color: #4db8ff !important; }
+.dark .bg-blue-700 { background-color: #0060AF !important; }
+.dark .ring-blue-100 { --tw-ring-color: rgba(0,96,175,0.3) !important; }
+.dark .divide-slate-100 > * + * { border-color: #1a2e45 !important; }
+.dark .hover\:bg-slate-50:hover { background-color: #0f1f30 !important; }
+.dark .hover\:bg-slate-100:hover { background-color: #162030 !important; }
+.dark .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; }
+
+/* ============================================================
+   HAIER HEADER STYLES
+   ============================================================ */
+.haier-header {
+  background: var(--haier-blue);
+  border-bottom: 3px solid var(--haier-blue-dark);
 }
 
-/* Touch feedback for mobile */
-.touch-press {
-  transition: transform 0.08s ease, box-shadow 0.08s ease;
-}
-.touch-press:active {
-  transform: scale(0.97);
-}
-
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+.dark .haier-header {
+  background: #003870;
+  border-bottom: 3px solid #002550;
 }
 
 .glass-header {
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--bg-header);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Animation utilities */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   HAIER BRAND BUTTONS
+   ============================================================ */
+.btn-haier {
+  background: var(--haier-blue);
+  color: white;
+  border: none;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-haier:hover {
+  background: var(--haier-blue-dark);
+  box-shadow: 0 4px 15px rgba(0, 96, 175, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-haier:active {
+  transform: scale(0.97);
+}
+
+/* ============================================================
+   DARK MODE TOGGLE
+   ============================================================ */
+.dark-toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+
+.dark-toggle.is-dark {
+  background: rgba(59, 158, 222, 0.5);
+  border-color: rgba(59,158,222,0.6);
+}
+
+.dark-toggle-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.dark-toggle.is-dark .dark-toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #0060AF44; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #0060AF88; }
+
+/* ============================================================
+   TOUCH & ANIMATION
+   ============================================================ */
+.touch-press { transition: transform 0.08s ease, box-shadow 0.08s ease; }
+.touch-press:active { transform: scale(0.97); }
+
 @keyframes countPulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.18); }
   100% { transform: scale(1); }
 }
+.animate-pulse-quick { animation: countPulse 0.25s ease-in-out; }
 
-.animate-pulse-quick {
-  animation: countPulse 0.25s ease-in-out;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.animate-fadeIn { animation: fadeIn 0.25s ease-out; }
 
-/* Hide spin buttons for number inputs */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+/* ============================================================
+   HAIER STEP INDICATOR
+   ============================================================ */
+.step-active { background: var(--haier-blue) !important; color: white !important; }
+.step-done { background: #16a34a !important; color: white !important; }
+
+/* ============================================================
+   HIDE NUMBER SPIN BUTTONS
+   ============================================================ */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-input[type=number] {
-  -moz-appearance: textfield;
-}
+input[type=number] { -moz-appearance: textfield; }
