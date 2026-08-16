@@ -599,77 +599,66 @@ export default function UserSurveyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col pb-24 md:pb-12 font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 flex flex-col pb-24 md:pb-12 font-sans">
 
-      {/* ============================================================
-          HAIER BRANDED HEADER
-          ============================================================ */}
-      <header className="haier-header sticky top-0 z-30 shadow-lg">
-        {/* Top blue bar with logo + company info */}
-        <div className="px-4 py-3 sm:px-6">
-          <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
+      {/* App Top Navigation Bar */}
+      <header className="sticky top-0 z-30 glass-header px-4 py-3 sm:px-6 shadow-sm">
+        <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
 
-            {/* Left: Logo + Company Name */}
-            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-              {/* Haier Logo in white box */}
-              <div className="w-16 h-10 sm:w-20 sm:h-12 bg-white rounded-lg flex items-center justify-center p-1.5 shadow-sm flex-shrink-0 overflow-hidden">
-                <Image
-                  src="/haier-logo.jpg"
-                  alt="Haier"
-                  width={72}
-                  height={44}
-                  className="object-contain w-full h-full"
-                  priority
-                />
-              </div>
-              {/* Company + App Name */}
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <h1 className="text-base sm:text-lg font-bold text-white leading-tight tracking-wide">
-                    Haier Thailand
-                  </h1>
-                  <span className="hidden sm:inline-block text-[10px] font-semibold text-blue-200 bg-white/15 px-2 py-0.5 rounded-full border border-white/25 whitespace-nowrap">
-                    Sell Out Team
-                  </span>
-                </div>
-                <p className="text-[11px] text-blue-200 leading-tight mt-0.5">
-                  Display Model Survey
-                </p>
-              </div>
+          {/* Left: Haier Logo (no background) + Company Name */}
+          <div className="flex items-center gap-3 min-w-0">
+            {/* Logo directly, no wrapper box */}
+            <div className="h-9 w-auto flex-shrink-0 overflow-hidden rounded-lg">
+              <Image
+                src="/haier-logo.jpg"
+                alt="Haier"
+                width={64}
+                height={36}
+                className="h-9 w-auto object-contain rounded-lg"
+                priority
+              />
             </div>
-
-            {/* Right: Dark mode toggle + Admin link */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-              {/* Dark Mode Toggle */}
-              <button
-                type="button"
-                onClick={toggleDarkMode}
-                title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                className={`dark-toggle ${darkMode ? 'is-dark' : ''}`}
-                aria-label="Toggle dark mode"
-              >
-                <span className="dark-toggle-thumb" />
-                <span className="absolute inset-0 flex items-center justify-between px-1.5 pointer-events-none">
-                  <Sun className="w-2.5 h-2.5 text-yellow-300" />
-                  <Moon className="w-2.5 h-2.5 text-blue-200" />
+            {/* Company + App Name */}
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <h1 className="text-base font-bold text-slate-900 leading-tight">
+                  Haier Thailand
+                </h1>
+                <span className="hidden sm:inline-block text-[10px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200 whitespace-nowrap">
+                  Sell Out Team
                 </span>
-              </button>
-
-              {/* Admin Login */}
-              <Link
-                href="/login"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-white/15 hover:bg-white/25 border border-white/30 transition-all whitespace-nowrap"
-              >
-                <Shield className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Admin</span>
-                <span className="sm:hidden">Admin</span>
-              </Link>
+              </div>
+              <p className="text-xs text-slate-500 leading-tight">Display Model Survey</p>
             </div>
           </div>
-        </div>
 
-        {/* Thin accent stripe at bottom of header */}
-        <div className="h-0.5 bg-gradient-to-r from-blue-300/30 via-white/20 to-blue-300/30" />
+          {/* Right: Dark mode toggle + Admin link */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            {/* Dark Mode Toggle */}
+            <button
+              type="button"
+              onClick={toggleDarkMode}
+              title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              className={`dark-toggle ${darkMode ? 'is-dark' : ''}`}
+              aria-label="Toggle dark mode"
+            >
+              <span className="dark-toggle-thumb" />
+              <span className="absolute inset-0 flex items-center justify-between px-1.5 pointer-events-none">
+                <Sun className="w-2.5 h-2.5 text-amber-500" />
+                <Moon className="w-2.5 h-2.5 text-slate-600" />
+              </span>
+            </button>
+
+            {/* Admin Login */}
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors whitespace-nowrap"
+            >
+              <Shield className="w-3.5 h-3.5" />
+              Admin
+            </Link>
+          </div>
+        </div>
       </header>
 
       {/* Main Container */}
