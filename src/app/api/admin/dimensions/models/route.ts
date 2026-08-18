@@ -200,6 +200,15 @@ export async function PATCH(req: NextRequest) {
       `).run(status, updatedBy, now, category);
       updatedCount = res.changes;
       logDetail = `Bulk update all models in Category [${category}] to ${status} (${updatedCount} models)`;
+    }
+    // 5. All Models
+    else if (body.all) {
+      const res = db.prepare(`
+        UPDATE models 
+        SET Active_Inactive = ?, Update_by = ?, Update_date = ?
+      `).run(status, updatedBy, now);
+      updatedCount = res.changes;
+      logDetail = `Bulk update ALL models to ${status} (${updatedCount} models)`;
     } else {
       return NextResponse.json(
         { success: false, error: 'กรุณาระบุรุ่น แบรนด์ หรือหมวดหมู่ที่ต้องการแก้ไข' },

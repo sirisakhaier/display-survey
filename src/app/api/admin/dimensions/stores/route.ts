@@ -167,6 +167,12 @@ export async function PATCH(req: NextRequest) {
       const res = db.prepare('UPDATE stores SET Active_Inactive = ? WHERE Region_TH = ?').run(status, region);
       updatedCount = res.changes;
       logDetail = `Bulk update all stores in Region [${region}] to ${status} (${updatedCount} stores)`;
+    }
+    // 5. All Stores
+    else if (body.all) {
+      const res = db.prepare('UPDATE stores SET Active_Inactive = ?').run(status);
+      updatedCount = res.changes;
+      logDetail = `Bulk update ALL stores to ${status} (${updatedCount} stores)`;
     } else {
       return NextResponse.json(
         { success: false, error: 'กรุณาระบุสาขา ลูกค้า หรือภูมิภาคที่ต้องการแก้ไข' },

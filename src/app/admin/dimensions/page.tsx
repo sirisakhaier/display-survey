@@ -33,6 +33,7 @@ export default function AdminDimensionsPage() {
   const [customerStats, setCustomerStats] = useState<any[]>([]);
   const [categoryStats, setCategoryStats] = useState<any[]>([]);
   const [loadingBulkStats, setLoadingBulkStats] = useState<boolean>(false);
+  const [bulkCustomerSearch, setBulkCustomerSearch] = useState<string>('');
 
   // Store Tab State
   const [stores, setStores] = useState<any[]>([]);
@@ -959,175 +960,240 @@ export default function AdminDimensionsPage() {
       )}
 
       {/* ========================================================= */}
-      {/* TAB 3: BULK CUSTOMER / CATEGORY MANAGER & CROSS-TABLE     */}
+      {/* TAB 3: BULK MATRIX (CUSTOMER ROWS x CATEGORY COLUMNS)      */}
       {/* ========================================================= */}
       {activeTab === 'bulk' && (
-        <div className="space-y-6 animate-fadeIn">
-          {/* Header Note */}
-          <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/80 flex items-start gap-3 text-xs text-blue-900">
-            <SlidersHorizontal className="w-5 h-5 flex-shrink-0 text-blue-700 mt-0.5" />
+        <div className="space-y-4 animate-fadeIn">
+          {/* Header & Quick Global Actions */}
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <span className="font-bold text-sm block text-blue-950 mb-0.5">
-                Bulk Customer / Category Status Manager & Cross-Table Check
-              </span>
-              Inspect real-time store counts per Customer and model counts per Category. Perform 1-click bulk status activations or deactivations across entire customer stores or product categories.
+              <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <SlidersHorizontal className="w-5 h-5 text-blue-700" />
+                Customer × Category Bulk Status Matrix
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Click any Customer row button or Category column header to toggle Active/Inactive across the entire table.
+              </p>
+            </div>
+
+            {/* Quick Actions & Search */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative">
+                <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  value={bulkCustomerSearch}
+                  onChange={(e) => setBulkCustomerSearch(e.target.value)}
+                  placeholder="Search Customer..."
+                  className="pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white w-40 sm:w-48"
+                />
+              </div>
+
+              {userRole === 'admin' && (
+                <>
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      if (!confirm('Activate ALL Stores and ALL Models across the entire system?')) return;
+                      await Promise.all([
+                        fetch('/api/admin/dimensions/stores', {
+                          method: 'PATCH',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ all: true, status: 'Active' }),
+                        }),
+                        fetch('/api/admin/dimensions/models', {
+                          method: 'PATCH',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ all: true, status: 'Active' }),
+                        }),
+                      ]);
+                      fetchBulkSummary();
+                    }}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-all shadow-sm"
+                  >
+                    Activate All
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      if (!confirm('Deactivate ALL Stores and ALL Models across the entire system?')) return;
+                      await Promise.all([
+                        fetch('/api/admin/dimensions/stores', {
+                          method: 'PATCH',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ all: true, status: 'Not active' }),
+                        }),
+                        fetch('/api/admin/dimensions/models', {
+                          method: 'PATCH',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ all: true, status: 'Not active' }),
+                        }),
+                      ]);
+                      fetchBulkSummary();
+                    }}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-red-50 hover:text-red-700 border border-slate-200 active:scale-95 transition-all"
+                  >
+                    Deactivate All
+                  </button>
+                </>
+              )}
+
+              <button
+                type="button"
+                onClick={fetchBulkSummary}
+                className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 border border-slate-200 transition-colors"
+                title="Refresh"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
 
+          {/* Matrix Grid Table */}
           {loadingBulkStats ? (
-            <div className="py-16 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-              <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading customer & category breakdown...
+            <div className="py-20 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
+              <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading matrix table...
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* 1. Customer Stores Bulk Manager */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <div className="flex items-center gap-2">
-                    <StoreIcon className="w-5 h-5 text-blue-700" />
-                    <div>
-                      <h3 className="text-sm font-bold text-slate-900">Customer Stores Manager</h3>
-                      <p className="text-[11px] text-slate-500">{customerStats.length} Customers found</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={fetchBulkSummary}
-                    className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
-                    title="Refresh Stats"
-                  >
-                    <RotateCcw className="w-4 h-4" />
-                  </button>
-                </div>
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+              <div className="overflow-x-auto max-h-[70vh]">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead className="sticky top-0 z-20 bg-slate-50 border-b border-slate-200">
+                    <tr>
+                      {/* Top-Left Corner Header */}
+                      <th className="py-3 px-4 min-w-[220px] bg-slate-100/80 border-r border-slate-200 font-bold text-slate-900 sticky left-0 z-30 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
+                        <div className="flex items-center justify-between">
+                          <span className="uppercase text-[11px] tracking-wider text-slate-600">Customer (Rows) \ Category (Cols)</span>
+                        </div>
+                      </th>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs">
-                    <thead>
-                      <tr className="border-b border-slate-200 text-slate-500 font-semibold bg-slate-50/70">
-                        <th className="py-2.5 px-3">Customer</th>
-                        <th className="py-2.5 px-3 text-center">Active / Total</th>
-                        <th className="py-2.5 px-3 text-right">Bulk Action</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 font-medium">
-                      {customerStats.map((cs: any) => (
-                        <tr key={cs.customer} className="hover:bg-slate-50/50">
-                          <td className="py-3 px-3 font-bold text-slate-900">{cs.customer}</td>
-                          <td className="py-3 px-3 text-center">
-                            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                              {cs.active} Active
-                            </span>
-                            <span className="text-slate-400 mx-1">/</span>
-                            <span className="text-slate-600 font-mono">{cs.total} Stores</span>
-                          </td>
-                          <td className="py-3 px-3 text-right">
+                      {/* Category Column Headers */}
+                      {categoryStats.map((cat: any) => {
+                        const isAllActive = cat.active === cat.total && cat.total > 0;
+                        const isAllInactive = cat.active === 0;
+                        return (
+                          <th key={cat.category} className="py-3 px-3 min-w-[150px] border-r border-slate-200 text-center bg-slate-50">
+                            <div className="font-bold text-slate-900 leading-tight mb-1 truncate" title={cat.category}>
+                              {cat.category}
+                            </div>
+                            <div className="flex items-center justify-center gap-1 mb-1.5">
+                              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                                isAllActive
+                                  ? 'bg-emerald-100 text-emerald-800'
+                                  : isAllInactive
+                                  ? 'bg-slate-200 text-slate-600'
+                                  : 'bg-amber-100 text-amber-800'
+                              }`}>
+                                {cat.active}/{cat.total} Active
+                              </span>
+                            </div>
+
+                            {/* Column Toggle Button */}
                             {userRole === 'admin' ? (
-                              <div className="flex items-center justify-end gap-1.5">
-                                <button
-                                  type="button"
-                                  onClick={async () => {
-                                    await handleBulkUpdateStores('Active', 'customer', cs.customer);
-                                    fetchBulkSummary();
-                                  }}
-                                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-sm"
-                                >
-                                  Activate All
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={async () => {
-                                    await handleBulkUpdateStores('Not active', 'customer', cs.customer);
-                                    fetchBulkSummary();
-                                  }}
-                                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-red-50 hover:text-red-700 border border-slate-200 transition-colors"
-                                >
-                                  Deactivate
-                                </button>
-                              </div>
+                              <button
+                                type="button"
+                                onClick={async () => {
+                                  const nextStatus = isAllActive ? 'Not active' : 'Active';
+                                  await handleBulkUpdateModels(nextStatus, 'category', cat.category);
+                                  fetchBulkSummary();
+                                }}
+                                className={`w-full py-1 px-2 rounded-lg text-[10px] font-bold transition-all shadow-sm ${
+                                  isAllActive
+                                    ? 'bg-emerald-600 hover:bg-red-600 text-white'
+                                    : 'bg-slate-200 hover:bg-emerald-600 hover:text-white text-slate-700'
+                                }`}
+                              >
+                                {isAllActive ? 'Active (Turn Off)' : 'Turn On'}
+                              </button>
                             ) : (
-                              <span className="text-[11px] text-slate-400 italic">Read-only</span>
+                              <span className="text-[10px] text-slate-400 italic">Read-only</span>
                             )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                          </th>
+                        );
+                      })}
+                    </tr>
+                  </thead>
 
-              {/* 2. Category Models Bulk Manager */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <div className="flex items-center gap-2">
-                    <Tv className="w-5 h-5 text-blue-700" />
-                    <div>
-                      <h3 className="text-sm font-bold text-slate-900">Product Categories Manager</h3>
-                      <p className="text-[11px] text-slate-500">{categoryStats.length} Categories found</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={fetchBulkSummary}
-                    className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
-                    title="Refresh Stats"
-                  >
-                    <RotateCcw className="w-4 h-4" />
-                  </button>
-                </div>
+                  <tbody className="divide-y divide-slate-100 font-medium">
+                    {customerStats
+                      .filter((cs: any) =>
+                        !bulkCustomerSearch.trim() ||
+                        cs.customer.toLowerCase().includes(bulkCustomerSearch.toLowerCase().trim())
+                      )
+                      .map((cs: any) => {
+                        const isCustomerActive = cs.active === cs.total && cs.total > 0;
+                        const isCustomerInactive = cs.active === 0;
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs">
-                    <thead>
-                      <tr className="border-b border-slate-200 text-slate-500 font-semibold bg-slate-50/70">
-                        <th className="py-2.5 px-3">Category</th>
-                        <th className="py-2.5 px-3 text-center">Active / Total</th>
-                        <th className="py-2.5 px-3 text-right">Bulk Action</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 font-medium">
-                      {categoryStats.map((cat: any) => (
-                        <tr key={cat.category} className="hover:bg-slate-50/50">
-                          <td className="py-3 px-3 font-bold text-slate-900">{cat.category}</td>
-                          <td className="py-3 px-3 text-center">
-                            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                              {cat.active} Active
-                            </span>
-                            <span className="text-slate-400 mx-1">/</span>
-                            <span className="text-slate-600 font-mono">{cat.total} Models</span>
-                          </td>
-                          <td className="py-3 px-3 text-right">
-                            {userRole === 'admin' ? (
-                              <div className="flex items-center justify-end gap-1.5">
-                                <button
-                                  type="button"
-                                  onClick={async () => {
-                                    await handleBulkUpdateModels('Active', 'category', cat.category);
-                                    fetchBulkSummary();
-                                  }}
-                                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-white bg-blue-700 hover:bg-blue-800 transition-colors shadow-sm"
-                                >
-                                  Activate All
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={async () => {
-                                    await handleBulkUpdateModels('Not active', 'category', cat.category);
-                                    fetchBulkSummary();
-                                  }}
-                                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-red-50 hover:text-red-700 border border-slate-200 transition-colors"
-                                >
-                                  Deactivate
-                                </button>
+                        return (
+                          <tr key={cs.customer} className="hover:bg-slate-50/70 transition-colors">
+                            {/* Customer Row Header (Sticky on scroll) */}
+                            <td className="py-3 px-4 bg-white hover:bg-slate-50 border-r border-slate-200 sticky left-0 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
+                              <div className="flex items-center justify-between gap-2">
+                                <div className="min-w-0">
+                                  <div className="font-bold text-slate-900 truncate" title={cs.customer}>
+                                    {cs.customer}
+                                  </div>
+                                  <div className="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                                    <span className={`px-1.5 py-0.2 rounded font-bold ${
+                                      isCustomerActive
+                                        ? 'text-emerald-700 bg-emerald-50'
+                                        : isCustomerInactive
+                                        ? 'text-slate-500 bg-slate-100'
+                                        : 'text-amber-700 bg-amber-50'
+                                    }`}>
+                                      {cs.active}/{cs.total} Stores Active
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Row Toggle Button */}
+                                {userRole === 'admin' && (
+                                  <button
+                                    type="button"
+                                    onClick={async () => {
+                                      const nextStatus = isCustomerActive ? 'Not active' : 'Active';
+                                      await handleBulkUpdateStores(nextStatus, 'customer', cs.customer);
+                                      fetchBulkSummary();
+                                    }}
+                                    className={`px-2.5 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all shadow-sm ${
+                                      isCustomerActive
+                                        ? 'bg-emerald-600 hover:bg-red-600 text-white'
+                                        : 'bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 border border-slate-200'
+                                    }`}
+                                  >
+                                    {isCustomerActive ? 'Active' : 'Inactive'}
+                                  </button>
+                                )}
                               </div>
-                            ) : (
-                              <span className="text-[11px] text-slate-400 italic">Read-only</span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                            </td>
+
+                            {/* Matrix Intersecting Cells */}
+                            {categoryStats.map((cat: any) => {
+                              const isCatActive = cat.active > 0;
+                              const isStoreActive = cs.active > 0;
+                              const isEnabled = isCatActive && isStoreActive;
+
+                              return (
+                                <td key={`${cs.customer}_${cat.category}`} className="py-3 px-3 border-r border-slate-100 text-center">
+                                  <div
+                                    className={`inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all ${
+                                      isEnabled
+                                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200/80'
+                                        : 'bg-slate-100/80 text-slate-400 border border-slate-200/60'
+                                    }`}
+                                  >
+                                    <span className={`w-2 h-2 rounded-full ${isEnabled ? 'bg-emerald-500' : 'bg-slate-300'}`} />
+                                    <span>{isEnabled ? 'Active' : 'Disabled'}</span>
+                                  </div>
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
               </div>
             </div>
           )}
