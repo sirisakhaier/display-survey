@@ -54,7 +54,8 @@ export async function GET(req: NextRequest) {
         STORE_NAME,
         Store_Name_TH,
         Province_TH,
-        Region_TH
+        Region_TH,
+        Store_ID_Customer
       FROM stores 
       WHERE TRIM(Customer) = TRIM(?) COLLATE NOCASE 
         AND TRIM(Region_TH) = TRIM(?) COLLATE NOCASE 

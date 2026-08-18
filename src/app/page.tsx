@@ -40,6 +40,7 @@ interface StoreItem {
   Store_Name_TH: string;
   Province_TH: string;
   Region_TH: string;
+  Store_ID_Customer?: string;
 }
 
 interface ProductItem {
@@ -661,11 +662,10 @@ export default function UserSurveyPage() {
         </div>
       </header>
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6">
+      <main className="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-5">
         {/* Step Progress Tracker */}
         {step < 5 && (
-          <div className="mb-6 bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+          <div className="mb-4 bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200/80 shadow-xs">
             <div className="flex items-center justify-between relative">
               <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
               
@@ -674,18 +674,18 @@ export default function UserSurveyPage() {
                 <button
                   type="button"
                   onClick={() => step > 1 && setStep(1)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     step === 1
-                      ? 'text-white ring-4 ring-blue-200 shadow-md shadow-blue-700/20'
+                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
                       : step > 1
                       ? 'bg-emerald-600 text-white cursor-pointer'
                       : 'bg-slate-200 text-slate-600'
                   }`}
                   style={step === 1 ? { background: '#0060AF' } : {}}
                 >
-                  {step > 1 ? <CheckCircle2 className="w-4 h-4" /> : '1'}
+                  {step > 1 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '1'}
                 </button>
-                <span className={`text-[11px] mt-1 font-medium ${step === 1 ? 'text-blue-700' : 'text-slate-500'}`}>
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 1 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
                   เลือกร้านค้า
                 </span>
               </div>
@@ -695,18 +695,18 @@ export default function UserSurveyPage() {
                 <button
                   type="button"
                   onClick={() => step > 2 && setStep(2)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     step === 2
-                      ? 'text-white ring-4 ring-blue-200 shadow-md shadow-blue-700/20'
+                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
                       : step > 2
                       ? 'bg-emerald-600 text-white cursor-pointer'
                       : 'bg-slate-200 text-slate-600'
                   }`}
                   style={step === 2 ? { background: '#0060AF' } : {}}
                 >
-                  {step > 2 ? <CheckCircle2 className="w-4 h-4" /> : '2'}
+                  {step > 2 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '2'}
                 </button>
-                <span className={`text-[11px] mt-1 font-medium ${step === 2 ? 'text-blue-700' : 'text-slate-500'}`}>
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 2 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
                   ข้อมูลผู้กรอก
                 </span>
               </div>
@@ -716,18 +716,18 @@ export default function UserSurveyPage() {
                 <button
                   type="button"
                   onClick={() => step > 3 && setStep(3)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     step === 3
-                      ? 'text-white ring-4 ring-blue-200 shadow-md shadow-blue-700/20'
+                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
                       : step > 3
                       ? 'bg-emerald-600 text-white cursor-pointer'
                       : 'bg-slate-200 text-slate-600'
                   }`}
                   style={step === 3 ? { background: '#0060AF' } : {}}
                 >
-                  {step > 3 ? <CheckCircle2 className="w-4 h-4" /> : '3'}
+                  {step > 3 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '3'}
                 </button>
-                <span className={`text-[11px] mt-1 font-medium ${step === 3 ? 'text-blue-700' : 'text-slate-500'}`}>
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 3 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
                   นับสินค้า
                 </span>
               </div>
@@ -735,16 +735,16 @@ export default function UserSurveyPage() {
               {/* Step 4 */}
               <div className="relative z-10 flex flex-col items-center">
                 <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                     step === 4
-                      ? 'text-white ring-4 ring-blue-200 shadow-md shadow-blue-700/20'
+                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
                       : 'bg-slate-200 text-slate-600'
                   }`}
                   style={step === 4 ? { background: '#0060AF' } : {}}
                 >
                   4
                 </div>
-                <span className={`text-[11px] mt-1 font-medium ${step === 4 ? 'text-blue-700' : 'text-slate-500'}`}>
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 4 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
                   สรุปผล
                 </span>
               </div>
@@ -756,28 +756,28 @@ export default function UserSurveyPage() {
         {/* STEP 1: LANDING PAGE - STORE SELECTION VIA DROPDOWNS      */}
         {/* ========================================================= */}
         {step === 1 && (
-          <div className="max-w-xl mx-auto space-y-6 animate-fadeIn">
-            <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm space-y-5">
-              <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
-                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700">
-                  <Building2 className="w-6 h-6" />
+          <div className="max-w-xl mx-auto space-y-4 animate-fadeIn">
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-4">
+              <div className="flex items-center gap-2.5 pb-2.5 border-b border-slate-100">
+                <div className="p-2 rounded-xl bg-blue-50 text-blue-700">
+                  <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-slate-900">ขั้นตอนที่ 1: เลือกร้านค้า / สาขา</h2>
-                  <p className="text-xs text-slate-500">เลือกข้อมูลตามลำดับจาก Dropdown ด้านล่าง</p>
+                  <h2 className="text-base font-bold text-slate-900 leading-tight">ขั้นตอนที่ 1: เลือกร้านค้า / สาขา</h2>
+                  <p className="text-[11px] text-slate-500">เลือกข้อมูลตามลำดับจาก Dropdown ด้านล่าง</p>
                 </div>
               </div>
 
               {/* 1.1 Customer Dropdown */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                   1. เลือกลูกค้า / ห้างร้าน (Customer) <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
                     value={selectedCustomer}
                     onChange={(e) => setSelectedCustomer(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer"
+                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 pr-9 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer"
                   >
                     <option value="">-- กรุณาเลือกลูกค้า / ห้างร้าน --</option>
                     {customers.map((c) => (
@@ -786,13 +786,13 @@ export default function UserSurveyPage() {
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
               {/* 1.2 Region Dropdown */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                   2. เลือกภูมิภาค (Region) <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -800,7 +800,7 @@ export default function UserSurveyPage() {
                     value={selectedRegion}
                     onChange={(e) => setSelectedRegion(e.target.value)}
                     disabled={!selectedCustomer || loadingStores}
-                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 pr-9 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <option value="">
                       {!selectedCustomer
@@ -815,13 +815,13 @@ export default function UserSurveyPage() {
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
               {/* 1.3 Store Dropdown */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                   3. เลือกสาขา (Store) <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -829,7 +829,7 @@ export default function UserSurveyPage() {
                     value={selectedStoreId}
                     onChange={(e) => handleStoreDropdownChange(e.target.value)}
                     disabled={!selectedRegion || loadingStores}
-                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-sm rounded-xl px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm rounded-xl px-3.5 py-2.5 pr-9 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <option value="">
                       {!selectedRegion
@@ -840,16 +840,16 @@ export default function UserSurveyPage() {
                     </option>
                     {stores.map((s) => (
                       <option key={s.STORE_ID} value={s.STORE_ID}>
-                        {s.Store_Name_TH} (จ.{s.Province_TH}) - [{s.STORE_ID}]
+                        {s.Store_Name_TH} · จ.{s.Province_TH}{s.Store_ID_Customer ? ` · รหัสห้าง: ${s.Store_ID_Customer}` : ` · [${s.STORE_ID}]`}
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
               </div>
 
               {checkingPrevious && (
-                <div className="p-3 text-xs text-slate-500 flex items-center justify-center gap-2">
+                <div className="p-2.5 text-xs text-slate-500 flex items-center justify-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin text-blue-700" />
                   กำลังตรวจสอบประวัติการสำรวจของสาขานี้...
                 </div>
@@ -857,18 +857,32 @@ export default function UserSurveyPage() {
 
               {/* Store Preview Card & Next Action */}
               {selectedStore && !checkingPrevious && (
-                <div className="pt-2 animate-fadeIn space-y-3">
-                  <div className="p-4 bg-blue-50/70 border border-blue-200 rounded-2xl">
-                    <div className="text-xs font-semibold text-blue-700 uppercase mb-0.5">สาขาที่เลือก:</div>
-                    <div className="text-base font-bold text-slate-900">
-                      {selectedStore.Customer} - {selectedStore.Store_Name_TH}
+                <div className="pt-1 animate-fadeIn space-y-2.5">
+                  <div className="p-3.5 bg-blue-50/80 border border-blue-200 rounded-2xl space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold text-blue-700 uppercase tracking-wider">สาขาที่เลือก</span>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+                        {selectedStore.Customer}
+                      </span>
                     </div>
-                    <div className="text-xs text-slate-600 mt-1 flex items-center gap-2">
-                      <span>จังหวัด: {selectedStore.Province_TH}</span>
-                      <span>•</span>
-                      <span>ภูมิภาค: {selectedStore.Region_TH}</span>
-                      <span>•</span>
-                      <span className="font-mono text-slate-500">รหัส: {selectedStore.STORE_ID}</span>
+                    <div className="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">
+                      {selectedStore.Store_Name_TH}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1.5 text-[10px] sm:text-[11px] text-slate-600 pt-0.5">
+                      <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 font-semibold text-slate-700 shadow-xs">
+                        📍 จ.{selectedStore.Province_TH}
+                      </span>
+                      {selectedStore.Store_ID_Customer && (
+                        <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 font-mono font-medium text-slate-700 shadow-xs">
+                          🏢 รหัสห้าง: {selectedStore.Store_ID_Customer}
+                        </span>
+                      )}
+                      <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 font-mono text-slate-500 shadow-xs">
+                        ID: {selectedStore.STORE_ID}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-500 shadow-xs">
+                        ภาค{selectedStore.Region_TH}
+                      </span>
                     </div>
                   </div>
 
@@ -881,7 +895,7 @@ export default function UserSurveyPage() {
                         handleProceedToStaffInfo();
                       }
                     }}
-                    className="w-full py-3.5 px-6 rounded-xl text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20 flex items-center justify-center gap-2 touch-press"
+                    className="w-full py-2.5 sm:py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20 flex items-center justify-center gap-1.5 touch-press"
                   >
                     <span>ถัดไป: กรอกข้อมูลผู้บันทึก</span>
                     <ArrowRight className="w-4 h-4" />
@@ -896,108 +910,88 @@ export default function UserSurveyPage() {
         {/* PREVIOUS DATA WARNING & DECISION MODAL (Req 1)            */}
         {/* ========================================================= */}
         {showPreviousWarningModal && previousData && selectedStore && (
-          <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="bg-white w-full max-w-lg p-6 rounded-3xl shadow-2xl border border-slate-100 animate-scaleIn space-y-4 max-h-[90vh] overflow-y-auto">
-              {/* Header Warning */}
+          <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+            <div className="bg-white w-full max-w-md p-4 sm:p-5 rounded-2xl shadow-2xl border border-slate-100 animate-scaleIn space-y-3.5 max-h-[90vh] overflow-y-auto">
               <div className="flex items-start gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="w-6 h-6" />
+                <div className="p-2 rounded-xl bg-amber-100 text-amber-700 flex-shrink-0">
+                  <AlertTriangle className="w-5 h-5" />
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 leading-tight">
-                    แจ้งเตือน: สาขานี้เคยมีการบันทึกข้อมูล Display แล้ว
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-bold text-slate-900">
+                    พบประวัติการสำรวจของสาขานี้แล้ว
                   </h3>
-                  <p className="text-xs text-slate-500 mt-1">
-                    สาขา <span className="font-bold text-slate-800">{selectedStore.Store_Name_TH}</span> ({selectedStore.Customer})
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    สาขา: <span className="font-semibold text-slate-800">{selectedStore.Store_Name_TH}</span>
                   </p>
                 </div>
               </div>
 
-              {/* Submitter Details Banner */}
-              <div className="p-3.5 bg-amber-50/80 rounded-2xl border border-amber-200/80 text-xs space-y-1.5 text-amber-900">
-                <div className="flex justify-between">
-                  <span className="text-amber-700 font-medium">บันทึกครั้งล่าสุดโดย:</span>
-                  <span className="font-bold">{previousData.entry?.user_name} ({previousData.entry?.user_phone})</span>
+              {/* Previous Summary Box */}
+              <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-3 text-xs space-y-1.5">
+                <div className="flex justify-between items-center text-[11px] text-amber-900 border-b border-amber-200/60 pb-1.5">
+                  <span>ผู้บันทึกล่าสุด:</span>
+                  <span className="font-semibold">{previousData.entry?.user_name} ({previousData.entry?.user_phone})</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-amber-700 font-medium">วันเวลาที่บันทึก:</span>
-                  <span className="font-mono">
-                    {previousData.entry?.submitted_at &&
-                      new Date(previousData.entry.submitted_at).toLocaleDateString('th-TH', {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
+                <div className="flex justify-between items-center text-[11px] text-amber-900 border-b border-amber-200/60 pb-1.5">
+                  <span>วันเวลาที่บันทึก:</span>
+                  <span className="font-mono text-slate-700">
+                    {previousData.entry?.submitted_at
+                      ? new Date(previousData.entry.submitted_at).toLocaleString('th-TH', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short',
+                        })
+                      : '-'}
                   </span>
                 </div>
-                <div className="flex justify-between pt-1 border-t border-amber-200 text-sm font-bold text-amber-950">
-                  <span>ยอด Display ที่เคยบันทึกไว้:</span>
-                  <span className="font-mono text-blue-700">{previousData.totalQty} เครื่อง ({previousData.totalModels} รุ่น)</span>
+                <div className="flex justify-between items-center text-xs font-bold text-amber-950 pt-0.5">
+                  <span>ยอด Display รวม:</span>
+                  <span className="font-mono text-blue-800 text-xs">
+                    {previousData.totalQty} เครื่อง ({previousData.totalModels} รุ่น)
+                  </span>
                 </div>
               </div>
 
-              {/* Summary Breakdown Table of Previous Data */}
-              <div>
-                <div className="text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5">
-                  <FileSpreadsheet className="w-4 h-4 text-blue-700" />
-                  สรุปรายการสินค้าเดิมที่เคยบันทึกไว้:
-                </div>
-                <div className="max-h-48 overflow-y-auto border border-slate-200 rounded-xl divide-y divide-slate-100 text-xs">
-                  <table className="w-full text-left">
-                    <thead className="bg-slate-50 text-slate-500 font-semibold sticky top-0">
-                      <tr>
-                        <th className="py-2 px-3">หมวดหมู่ (Category)</th>
-                        <th className="py-2 px-3">แบรนด์ (Brand)</th>
-                        <th className="py-2 px-3 text-right">จำนวนรุ่น</th>
-                        <th className="py-2 px-3 text-right">จำนวน Display</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {previousData.categorySummary?.map((row, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50">
-                          <td className="py-2 px-3 font-semibold text-slate-800">{row.Category}</td>
-                          <td className="py-2 px-3 text-slate-600">{row.Brand}</td>
-                          <td className="py-2 px-3 text-right font-mono">{row.model_count} รุ่น</td>
-                          <td className="py-2 px-3 text-right font-mono font-bold text-blue-700">{row.total_qty} เครื่อง</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Action Decision Buttons */}
-              <div className="space-y-2 pt-2 border-t border-slate-100">
+              {/* Options */}
+              <div className="space-y-2 pt-1">
                 <button
                   type="button"
                   onClick={handleRevisePreviousData}
-                  className="w-full py-3 px-4 rounded-xl text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20 flex items-center justify-center gap-2 touch-press"
+                  className="w-full p-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-left transition-all shadow-xs flex items-center justify-between group"
                 >
-                  <ClipboardList className="w-4 h-4" />
-                  ดำเนินการแก้ไขข้อมูลเดิมต่อ (Revise Data)
+                  <div>
+                    <div className="font-bold text-xs flex items-center gap-1.5">
+                      <span>1. โหลดข้อมูลเดิมมาแก้ไข (Revise)</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <div className="text-[10px] text-blue-100 mt-0.5">
+                      ดึงตัวเลขเดิมขึ้นมา แล้วปรับแก้เฉพาะรุ่นที่เปลี่ยนแปลง
+                    </div>
+                  </div>
                 </button>
 
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={handleProceedToStaffInfo}
-                    className="py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center justify-center gap-1.5"
-                  >
-                    <RotateCcw className="w-3.5 h-3.5" />
-                    เริ่มนับใหม่จาก 0
-                  </button>
+                <button
+                  type="button"
+                  onClick={handleProceedToStaffInfo}
+                  className="w-full p-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-left transition-all border border-slate-200 flex items-center justify-between"
+                >
+                  <div>
+                    <div className="font-bold text-xs">2. เริ่มนับใหม่ทั้งหมด (Start Fresh)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">
+                      ตั้งค่าจำนวนทุกรุ่นเป็น 0 และเริ่มบันทึกใหม่
+                    </div>
+                  </div>
+                </button>
+              </div>
 
-                  <button
-                    type="button"
-                    onClick={handleChangeStore}
-                    className="py-2.5 px-3 rounded-xl text-xs font-semibold text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 transition-all flex items-center justify-center gap-1.5"
-                  >
-                    <Store className="w-3.5 h-3.5" />
-                    เปลี่ยนสาขา
-                  </button>
-                </div>
+              <div className="text-center pt-1">
+                <button
+                  type="button"
+                  onClick={() => setShowPreviousWarningModal(false)}
+                  className="text-[11px] font-semibold text-slate-500 hover:text-slate-700 hover:underline inline-flex items-center gap-1"
+                >
+                  <Store className="w-3.5 h-3.5" />
+                  เปลี่ยนสาขา
+                </button>
               </div>
             </div>
           </div>
@@ -1007,16 +1001,16 @@ export default function UserSurveyPage() {
         {/* STEP 2: STAFF INFO - ALWAYS STARTS BLANK (Req 2 & 3)       */}
         {/* ========================================================= */}
         {step === 2 && selectedStore && (
-          <div className="max-w-xl mx-auto space-y-6 animate-fadeIn">
+          <div className="max-w-lg mx-auto space-y-4 animate-fadeIn">
             {/* Selected Store Summary Pill */}
-            <div className="bg-blue-50/80 border border-blue-200 p-4 rounded-2xl flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-blue-700 text-white rounded-xl shadow-sm">
-                  <StoreIcon className="w-5 h-5" />
+            <div className="bg-blue-50/80 border border-blue-200 p-3 rounded-2xl flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-blue-700 text-white rounded-xl shadow-xs">
+                  <StoreIcon className="w-4 h-4" />
                 </div>
-                <div>
-                  <div className="text-xs font-semibold text-blue-700 uppercase">สาขาที่เลือก</div>
-                  <div className="text-sm font-bold text-slate-900">
+                <div className="min-w-0">
+                  <div className="text-[10px] font-semibold text-blue-700 uppercase">สาขาที่เลือก</div>
+                  <div className="text-xs font-bold text-slate-900 truncate">
                     {selectedStore.Customer} - {selectedStore.Store_Name_TH} ({selectedStore.Province_TH})
                   </div>
                 </div>
@@ -1024,39 +1018,39 @@ export default function UserSurveyPage() {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="text-xs font-semibold text-blue-700 hover:underline px-2 py-1"
+                className="text-xs font-semibold text-blue-700 hover:underline px-2 py-1 flex-shrink-0"
               >
                 เปลี่ยน
               </button>
             </div>
 
             {/* Staff Form */}
-            <div className="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700">
-                  <User className="w-6 h-6" />
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="p-2 rounded-xl bg-blue-50 text-blue-700">
+                  <User className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-slate-900">ขั้นตอนที่ 2: ข้อมูลผู้กรอก</h2>
-                  <p className="text-xs text-slate-500">กรุณากรอกชื่อและเบอร์โทรศัพท์ 10 หลัก</p>
+                  <h2 className="text-base font-bold text-slate-900 leading-tight">ขั้นตอนที่ 2: ข้อมูลผู้กรอก</h2>
+                  <p className="text-[11px] text-slate-500">กรุณากรอกชื่อและเบอร์โทรศัพท์ 10 หลัก</p>
                 </div>
               </div>
 
               {staffFormError && (
-                <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                <div className="mb-3 p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{staffFormError}</span>
                 </div>
               )}
 
-              <form onSubmit={handleStaffInfoSubmit} className="space-y-4">
+              <form onSubmit={handleStaffInfoSubmit} className="space-y-3.5">
                 <div>
-                  <label htmlFor="userName" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label htmlFor="userName" className="block text-[11px] font-semibold text-slate-700 mb-1">
                     ชื่อ-นามสกุล ผู้บันทึก <span className="text-red-500">*</span>
                   </label>
-                  <div className="relative rounded-xl shadow-sm">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                      <User className="w-5 h-5" />
+                  <div className="relative rounded-xl shadow-xs">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                      <User className="w-4 h-4" />
                     </div>
                     <input
                       id="userName"
@@ -1065,18 +1059,18 @@ export default function UserSurveyPage() {
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
                       placeholder="กรอกชื่อ-นามสกุล..."
-                      className="block w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-sm"
+                      className="block w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-xs sm:text-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="userPhone" className="block text-xs font-semibold text-slate-700 mb-1.5">
+                  <label htmlFor="userPhone" className="block text-[11px] font-semibold text-slate-700 mb-1">
                     เบอร์โทรศัพท์ (10 หลัก เริ่มต้นด้วย 0) <span className="text-red-500">*</span>
                   </label>
-                  <div className="relative rounded-xl shadow-sm">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                      <Phone className="w-5 h-5" />
+                  <div className="relative rounded-xl shadow-xs">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                      <Phone className="w-4 h-4" />
                     </div>
                     <input
                       id="userPhone"
@@ -1089,11 +1083,11 @@ export default function UserSurveyPage() {
                         setUserPhone(val);
                       }}
                       placeholder="08xxxxxxxx"
-                      className="block w-full pl-11 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-sm font-mono tracking-wider"
+                      className="block w-full pl-9 pr-9 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-xs sm:text-sm font-mono tracking-wider"
                     />
                     {userPhone.length === 10 && userPhone.startsWith('0') && (
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-emerald-600 pointer-events-none">
-                        <Check className="w-5 h-5" />
+                        <Check className="w-4 h-4" />
                       </div>
                     )}
                   </div>
@@ -1126,16 +1120,16 @@ export default function UserSurveyPage() {
         {/* STEP 3: HIERARCHY COUNTING WITH LIVE INPUT SUMMARY TABLE  */}
         {/* ========================================================= */}
         {step === 3 && selectedStore && (
-          <div className="space-y-4 animate-fadeIn">
+          <div className="space-y-3 animate-fadeIn">
             {/* Top Store Info Bar */}
-            <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between gap-2">
-              <div className="truncate">
-                <div className="text-[11px] font-semibold text-blue-700 flex items-center gap-1 truncate">
+            <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <div className="text-[10px] sm:text-[11px] font-semibold text-blue-700 flex items-center gap-1 truncate">
                   <span>{selectedStore.Customer}</span>
                   <span>•</span>
                   <span>{selectedStore.Store_Name_TH}</span>
                 </div>
-                <div className="text-xs text-slate-600 truncate mt-0.5">
+                <div className="text-[11px] text-slate-600 truncate mt-0.5">
                   ผู้บันทึก: <span className="font-medium text-slate-800">{userName}</span> ({userPhone})
                 </div>
               </div>
@@ -1149,49 +1143,49 @@ export default function UserSurveyPage() {
             </div>
 
             {/* LIVE INPUT SUMMARY TABLE ON TOP (Req 3) */}
-            <div className="bg-white rounded-2xl border border-blue-200 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-xl border border-blue-200 shadow-xs overflow-hidden">
               <div 
                 onClick={() => setShowLiveSummary(!showLiveSummary)}
-                className="bg-blue-50/80 px-4 py-2.5 flex items-center justify-between cursor-pointer hover:bg-blue-100/70 transition-colors"
+                className="bg-blue-50/80 px-3 py-2 flex items-center justify-between cursor-pointer hover:bg-blue-100/70 transition-colors"
               >
-                <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="w-4 h-4 text-blue-700" />
+                <div className="flex items-center gap-1.5">
+                  <FileSpreadsheet className="w-3.5 h-3.5 text-blue-700" />
                   <span className="text-xs font-bold text-blue-900">
                     ตารางสรุปยอดที่กำลังบันทึก (Input Summary)
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold font-mono text-blue-700 bg-white px-2.5 py-0.5 rounded-full border border-blue-200">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[11px] font-bold font-mono text-blue-700 bg-white px-2 py-0.5 rounded-full border border-blue-200">
                     รวม: {totalDisplayUnits} เครื่อง ({countedModelsCount} รุ่น)
                   </span>
-                  {showLiveSummary ? <ChevronUp className="w-4 h-4 text-blue-700" /> : <ChevronDown className="w-4 h-4 text-blue-700" />}
+                  {showLiveSummary ? <ChevronUp className="w-3.5 h-3.5 text-blue-700" /> : <ChevronDown className="w-3.5 h-3.5 text-blue-700" />}
                 </div>
               </div>
 
               {showLiveSummary && (
-                <div className="p-3">
+                <div className="p-2.5">
                   {liveSummaryRows.length === 0 ? (
-                    <div className="text-center py-3 text-slate-400 text-xs">
+                    <div className="text-center py-2.5 text-slate-400 text-xs">
                       ยังไม่มีการนับจำนวนสินค้า (แตะปุ่ม + หรือกรอกตัวเลขด้านล่างเพื่อเริ่มนับ)
                     </div>
                   ) : (
-                    <div className="max-h-40 overflow-y-auto border border-slate-100 rounded-xl">
-                      <table className="w-full text-left text-xs">
+                    <div className="max-h-36 overflow-y-auto border border-slate-100 rounded-lg">
+                      <table className="w-full text-left text-[11px]">
                         <thead className="bg-slate-50 text-slate-500 font-semibold sticky top-0">
                           <tr>
-                            <th className="py-1.5 px-3">หมวดหมู่ (Category)</th>
-                            <th className="py-1.5 px-3">แบรนด์ (Brand)</th>
-                            <th className="py-1.5 px-3 text-right">จำนวนรุ่น</th>
-                            <th className="py-1.5 px-3 text-right">ยอดรวม Display</th>
+                            <th className="py-1 px-2.5">หมวดหมู่</th>
+                            <th className="py-1 px-2.5">แบรนด์</th>
+                            <th className="py-1 px-2.5 text-right">จำนวนรุ่น</th>
+                            <th className="py-1 px-2.5 text-right">ยอดรวม Display</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100 font-medium">
                           {liveSummaryRows.map((row, idx) => (
                             <tr key={idx} className="hover:bg-blue-50/40">
-                              <td className="py-1.5 px-3 font-semibold text-slate-800">{row.category}</td>
-                              <td className="py-1.5 px-3 text-slate-600">{row.brand}</td>
-                              <td className="py-1.5 px-3 text-right font-mono text-slate-700">{row.modelsCount} รุ่น</td>
-                              <td className="py-1.5 px-3 text-right font-mono font-bold text-blue-700">{row.totalQty} เครื่อง</td>
+                              <td className="py-1 px-2.5 font-semibold text-slate-800">{row.category}</td>
+                              <td className="py-1 px-2.5 text-slate-600">{row.brand}</td>
+                              <td className="py-1 px-2.5 text-right font-mono text-slate-700">{row.modelsCount} รุ่น</td>
+                              <td className="py-1 px-2.5 text-right font-mono font-bold text-blue-700">{row.totalQty} เครื่อง</td>
                             </tr>
                           ))}
                         </tbody>
@@ -1203,8 +1197,8 @@ export default function UserSurveyPage() {
             </div>
 
             {/* Hierarchy Level 1: Category Scroll Tabs */}
-            <div className="bg-white p-2 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
-              <div className="flex gap-1.5 min-w-max">
+            <div className="bg-white p-1.5 rounded-xl border border-slate-200 shadow-xs overflow-x-auto">
+              <div className="flex gap-1 min-w-max">
                 {categories.map((cat) => {
                   const catUnits = getCategoryCountedUnits(cat);
                   const isActive = selectedCategory === cat;
@@ -1213,16 +1207,16 @@ export default function UserSurveyPage() {
                       key={cat}
                       type="button"
                       onClick={() => setSelectedCategory(cat)}
-                      className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 touch-press ${
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 touch-press ${
                         isActive
-                          ? 'bg-blue-700 text-white shadow-sm'
+                          ? 'bg-blue-700 text-white shadow-xs'
                           : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/60'
                       }`}
                     >
                       <span>{cat}</span>
                       {catUnits > 0 && (
                         <span
-                          className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                          className={`px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold ${
                             isActive ? 'bg-white text-blue-700' : 'bg-emerald-600 text-white'
                           }`}
                         >
@@ -1236,18 +1230,18 @@ export default function UserSurveyPage() {
             </div>
 
             {/* Hierarchy Level 2: Brand Selection Dropdown & SubCategory Filters */}
-            <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-xs space-y-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {/* Brand Dropdown */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase mb-0.5">
                     แบรนด์ (Brand) ในหมวด {selectedCategory}
                   </label>
                   <div className="relative">
                     <select
                       value={selectedBrand}
                       onChange={(e) => setSelectedBrand(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white appearance-none cursor-pointer"
+                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold rounded-lg px-2.5 py-2 pr-7 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white appearance-none cursor-pointer"
                     >
                       {brands.map((b) => {
                         const brandUnits = getBrandCountedUnits(selectedCategory, b);
@@ -1258,20 +1252,20 @@ export default function UserSurveyPage() {
                         );
                       })}
                     </select>
-                    <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                    <ChevronDown className="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
 
                 {/* SubCategory Dropdown */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[10px] font-bold text-slate-700 uppercase mb-0.5">
                     ประเภทย่อย (SubCategory)
                   </label>
                   <div className="relative">
                     <select
                       value={selectedSubCategory}
                       onChange={(e) => setSelectedSubCategory(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs rounded-xl px-3 py-2.5 pr-8 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white appearance-none cursor-pointer"
+                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 text-xs rounded-lg px-2.5 py-2 pr-7 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white appearance-none cursor-pointer"
                     >
                       <option value="all">ทุกประเภทย่อย (All SubCategories)</option>
                       {subcategories.map((sub) => (
@@ -1280,36 +1274,36 @@ export default function UserSurveyPage() {
                         </option>
                       ))}
                     </select>
-                    <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                    <ChevronDown className="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
               </div>
 
               {/* Quick Search */}
-              <div className="relative pt-1 border-t border-slate-100">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <div className="relative pt-0.5">
+                <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
                   value={modelSearch}
                   onChange={(e) => setModelSearch(e.target.value)}
                   placeholder={`ค้นหารหัสรุ่นของ ${selectedBrand}...`}
-                  className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
+                  className="w-full pl-8 pr-2.5 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white"
                 />
               </div>
             </div>
 
             {/* Model List with Input on Right */}
             {loadingModels ? (
-              <div className="py-16 text-center text-slate-400 text-xs flex items-center justify-center gap-2 bg-white rounded-2xl border border-slate-200">
-                <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> กำลังโหลดรายการรุ่นสินค้า...
+              <div className="py-12 text-center text-slate-400 text-xs flex items-center justify-center gap-2 bg-white rounded-xl border border-slate-200">
+                <Loader2 className="w-4 h-4 animate-spin text-blue-700" /> กำลังโหลดรายการรุ่นสินค้า...
               </div>
             ) : displayedModels.length === 0 ? (
-              <div className="py-12 text-center text-slate-400 text-xs bg-white rounded-2xl border border-slate-200">
+              <div className="py-10 text-center text-slate-400 text-xs bg-white rounded-xl border border-slate-200">
                 ไม่พบรุ่นสินค้าสำหรับแบรนด์ {selectedBrand} ในหมวดหมู่นี้
               </div>
             ) : (
-              <div className="space-y-2.5 pb-12">
-                <div className="text-[11px] font-bold text-slate-500 uppercase px-1">
+              <div className="space-y-1.5 pb-20">
+                <div className="text-[10px] font-bold text-slate-500 uppercase px-1">
                   รายการรุ่นสินค้า ({displayedModels.length} รุ่น):
                 </div>
 
@@ -1318,48 +1312,48 @@ export default function UserSurveyPage() {
                   return (
                     <div
                       key={item.Model}
-                      className={`p-3 sm:p-4 rounded-2xl border transition-all flex items-center justify-between gap-3 ${
+                      className={`p-2.5 sm:p-3 rounded-xl border transition-all flex items-center justify-between gap-2.5 ${
                         qty > 0
-                          ? 'bg-blue-50/50 border-blue-300 shadow-sm'
+                          ? 'bg-blue-50/60 border-blue-300 shadow-xs'
                           : 'bg-white border-slate-200 hover:border-slate-300'
                       }`}
                     >
-                      {/* Left Side: Model Info */}
+                      {/* Left Side: Model Info (Clean & Space Saving) */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-white">
+                        <div className="flex items-center gap-1 flex-wrap">
+                          <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-white">
                             {item.Brand}
                           </span>
                           {item.SubCategory && (
-                            <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                            <span className="text-[9px] font-medium px-1.5 py-0.2 rounded bg-slate-100 text-slate-600">
                               {item.SubCategory}
                             </span>
                           )}
                         </div>
-                        <div className="text-sm font-bold text-slate-900 font-mono mt-1 truncate">
+                        <div className="text-xs sm:text-sm font-bold text-slate-900 font-mono mt-0.5 truncate leading-tight">
                           {item.Model}
                         </div>
                       </div>
 
-                      {/* Right Side: Number Input & Controls */}
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                      {/* Right Side: Number Input & Stepper Controls */}
+                      <div className="flex items-center gap-1 flex-shrink-0">
                         <button
                           type="button"
                           onClick={() => decrementCount(item.Model)}
                           disabled={qty <= 0}
-                          className="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold hover:bg-slate-200 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all touch-press"
+                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold hover:bg-slate-200 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all touch-press"
                           aria-label="ลดจำนวน"
                         >
-                          <Minus className="w-4 h-4" />
+                          <Minus className="w-3.5 h-3.5" />
                         </button>
 
-                        <div className="w-14 text-center">
+                        <div className="w-11 sm:w-12 text-center">
                           <input
                             type="number"
                             min="0"
                             value={qty}
                             onChange={(e) => setCountDirect(item.Model, parseInt(e.target.value, 10) || 0)}
-                            className={`w-full py-1 text-center font-extrabold text-lg font-mono rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-600 ${
+                            className={`w-full py-0.5 text-center font-bold text-sm sm:text-base font-mono rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-600 ${
                               qty > 0
                                 ? 'bg-white text-blue-700 border-blue-300 shadow-inner'
                                 : 'bg-slate-50 text-slate-400 border-slate-200'
@@ -1370,10 +1364,10 @@ export default function UserSurveyPage() {
                         <button
                           type="button"
                           onClick={() => incrementCount(item.Model)}
-                          className="w-10 h-9 rounded-xl bg-blue-700 text-white flex items-center justify-center font-bold hover:bg-blue-800 active:scale-95 transition-all shadow-sm shadow-blue-700/20 touch-press"
+                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-700 text-white flex items-center justify-center font-bold hover:bg-blue-800 active:scale-95 transition-all shadow-xs touch-press"
                           aria-label="เพิ่มจำนวน"
                         >
-                          <Plus className="w-5 h-5" />
+                          <Plus className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -1388,38 +1382,41 @@ export default function UserSurveyPage() {
         {/* STEP 4: SUMMARY PAGE - SHOW ALL DETAILS (Req 4)           */}
         {/* ========================================================= */}
         {step === 4 && selectedStore && (
-          <div className="space-y-6 max-w-3xl mx-auto animate-fadeIn">
+          <div className="space-y-4 max-w-3xl mx-auto animate-fadeIn">
             {/* Header & Meta Summary */}
-            <div className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-blue-50 text-blue-700">
-                  <ClipboardList className="w-6 h-6" />
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3.5">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-blue-50 text-blue-700">
+                  <ClipboardList className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-slate-900">ขั้นตอนที่ 4: ตรวจสอบรายละเอียดทั้งหมดก่อนส่ง</h2>
-                  <p className="text-xs text-slate-500">กรุณาตรวจสอบข้อมูลสาขา ผู้บันทึก และรายการสินค้าทั้งหมด</p>
+                  <h2 className="text-base font-bold text-slate-900 leading-tight">ขั้นตอนที่ 4: ตรวจสอบรายละเอียดทั้งหมดก่อนส่ง</h2>
+                  <p className="text-[11px] text-slate-500">กรุณาตรวจสอบข้อมูลสาขา ผู้บันทึก และรายการสินค้าทั้งหมด</p>
                 </div>
               </div>
 
               {/* Store & Staff Detail Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                    <StoreIcon className="w-4 h-4 text-blue-700" /> ข้อมูลสาขา
+                    <StoreIcon className="w-3.5 h-3.5 text-blue-700" /> ข้อมูลสาขา
                   </div>
                   <div><span className="text-slate-500">ลูกค้า:</span> <span className="font-semibold text-slate-900">{selectedStore.Customer}</span></div>
                   <div><span className="text-slate-500">สาขา:</span> <span className="font-semibold text-slate-900">{selectedStore.Store_Name_TH}</span></div>
                   <div><span className="text-slate-500">จังหวัด:</span> <span className="text-slate-700">{selectedStore.Province_TH} ({selectedStore.Region_TH})</span></div>
+                  {selectedStore.Store_ID_Customer && (
+                    <div><span className="text-slate-500">รหัสสาขาห้าง:</span> <span className="font-mono text-slate-700">{selectedStore.Store_ID_Customer}</span></div>
+                  )}
                   <div><span className="text-slate-500">STORE_ID:</span> <span className="font-mono text-slate-700">{selectedStore.STORE_ID}</span></div>
                 </div>
 
-                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
                   <div className="font-bold text-slate-800 flex items-center gap-1.5">
-                    <User className="w-4 h-4 text-blue-700" /> ข้อมูลผู้บันทึก
+                    <User className="w-3.5 h-3.5 text-blue-700" /> ข้อมูลผู้บันทึก
                   </div>
                   <div><span className="text-slate-500">ชื่อ-นามสกุล:</span> <span className="font-bold text-slate-900">{userName}</span></div>
                   <div><span className="text-slate-500">เบอร์โทรศัพท์:</span> <span className="font-mono text-slate-900 font-semibold">{userPhone}</span></div>
-                  <div className="pt-2 border-t border-slate-200 text-sm font-bold text-blue-700 flex justify-between">
+                  <div className="pt-1.5 border-t border-slate-200 text-xs font-bold text-blue-700 flex justify-between">
                     <span>ยอด Display รวม:</span>
                     <span className="font-mono">{totalDisplayUnits} เครื่อง ({countedModelsCount} รุ่น)</span>
                   </div>
@@ -1428,32 +1425,32 @@ export default function UserSurveyPage() {
             </div>
 
             {/* Category & Brand Summary Table */}
-            <div className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+              <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                 <FileSpreadsheet className="w-4 h-4 text-blue-700" />
                 1. ตารางสรุปยอดแยกตามหมวดหมู่และแบรนด์
               </h3>
 
               {liveSummaryRows.length === 0 ? (
-                <div className="py-6 text-center text-slate-400 text-xs">ไม่มีรายการสินค้า</div>
+                <div className="py-5 text-center text-slate-400 text-xs">ไม่มีรายการสินค้า</div>
               ) : (
-                <div className="border border-slate-200 rounded-2xl overflow-hidden text-xs">
+                <div className="border border-slate-200 rounded-xl overflow-hidden text-[11px]">
                   <table className="w-full text-left">
                     <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                       <tr>
-                        <th className="py-2.5 px-3">หมวดหมู่ (Category)</th>
-                        <th className="py-2.5 px-3">แบรนด์ (Brand)</th>
-                        <th className="py-2.5 px-3 text-right">จำนวนรุ่น</th>
-                        <th className="py-2.5 px-3 text-right">ยอดรวม Display</th>
+                        <th className="py-2 px-2.5">หมวดหมู่</th>
+                        <th className="py-2 px-2.5">แบรนด์</th>
+                        <th className="py-2 px-2.5 text-right">จำนวนรุ่น</th>
+                        <th className="py-2 px-2.5 text-right">ยอดรวม Display</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-medium">
                       {liveSummaryRows.map((row, idx) => (
                         <tr key={idx} className="hover:bg-slate-50">
-                          <td className="py-2 px-3 font-semibold text-slate-900">{row.category}</td>
-                          <td className="py-2 px-3 text-slate-700">{row.brand}</td>
-                          <td className="py-2 px-3 text-right font-mono text-slate-600">{row.modelsCount} รุ่น</td>
-                          <td className="py-2 px-3 text-right font-mono font-bold text-blue-700">{row.totalQty} เครื่อง</td>
+                          <td className="py-1.5 px-2.5 font-semibold text-slate-900">{row.category}</td>
+                          <td className="py-1.5 px-2.5 text-slate-700">{row.brand}</td>
+                          <td className="py-1.5 px-2.5 text-right font-mono text-slate-600">{row.modelsCount} รุ่น</td>
+                          <td className="py-1.5 px-2.5 text-right font-mono font-bold text-blue-700">{row.totalQty} เครื่อง</td>
                         </tr>
                       ))}
                     </tbody>
@@ -1463,38 +1460,38 @@ export default function UserSurveyPage() {
             </div>
 
             {/* FULL DETAIL TABLE OF ALL MODELS (Req 4) */}
-            <div className="bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm space-y-4">
-              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+              <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-blue-700" />
                 2. ตารางรายละเอียดสินค้าทุกรุ่น ({fullDetailItems.length} รุ่น)
               </h3>
 
               {fullDetailItems.length === 0 ? (
-                <div className="py-8 text-center text-slate-400 text-xs">
+                <div className="py-6 text-center text-slate-400 text-xs">
                   ยังไม่ได้ระบุจำนวนสินค้าในรุ่นใด
                 </div>
               ) : (
-                <div className="border border-slate-200 rounded-2xl overflow-hidden text-xs max-h-96 overflow-y-auto">
+                <div className="border border-slate-200 rounded-xl overflow-hidden text-[11px] max-h-80 overflow-y-auto">
                   <table className="w-full text-left">
                     <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200 sticky top-0">
                       <tr>
-                        <th className="py-2.5 px-3">#</th>
-                        <th className="py-2.5 px-3">หมวดหมู่</th>
-                        <th className="py-2.5 px-3">แบรนด์</th>
-                        <th className="py-2.5 px-3">รหัสรุ่น (Model)</th>
-                        <th className="py-2.5 px-3">ประเภทย่อย</th>
-                        <th className="py-2.5 px-3 text-right">จำนวน (เครื่อง)</th>
+                        <th className="py-2 px-2.5">#</th>
+                        <th className="py-2 px-2.5">หมวดหมู่</th>
+                        <th className="py-2 px-2.5">แบรนด์</th>
+                        <th className="py-2 px-2.5">รหัสรุ่น (Model)</th>
+                        <th className="py-2 px-2.5">ประเภทย่อย</th>
+                        <th className="py-2 px-2.5 text-right">จำนวน (เครื่อง)</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
                       {fullDetailItems.map((item, idx) => (
                         <tr key={item.model} className="hover:bg-blue-50/30">
-                          <td className="py-2 px-3 font-mono text-slate-400">{idx + 1}</td>
-                          <td className="py-2 px-3 font-semibold text-slate-900">{item.category}</td>
-                          <td className="py-2 px-3 text-slate-700">{item.brand}</td>
-                          <td className="py-2 px-3 font-mono font-bold text-blue-800">{item.model}</td>
-                          <td className="py-2 px-3 text-slate-500">{item.subCategory || '-'}</td>
-                          <td className="py-2 px-3 text-right font-mono font-extrabold text-blue-700 text-sm">
+                          <td className="py-1.5 px-2.5 font-mono text-slate-400">{idx + 1}</td>
+                          <td className="py-1.5 px-2.5 font-semibold text-slate-900">{item.category}</td>
+                          <td className="py-1.5 px-2.5 text-slate-700">{item.brand}</td>
+                          <td className="py-1.5 px-2.5 font-mono font-bold text-blue-800 text-xs">{item.model}</td>
+                          <td className="py-1.5 px-2.5 text-slate-500">{item.subCategory || '-'}</td>
+                          <td className="py-1.5 px-2.5 text-right font-mono font-bold text-blue-700 text-xs sm:text-sm">
                             {item.qty}
                           </td>
                         </tr>
@@ -1505,20 +1502,20 @@ export default function UserSurveyPage() {
               )}
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-slate-100 flex gap-3">
+              <div className="pt-3 border-t border-slate-100 flex gap-2.5">
                 <button
                   type="button"
                   onClick={() => setStep(3)}
                   disabled={submitting}
-                  className="flex-1 py-3 px-4 rounded-xl text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center justify-center gap-1"
                 >
-                  <ArrowLeft className="w-4 h-4" /> กลับไปแก้ไข
+                  <ArrowLeft className="w-3.5 h-3.5" /> กลับไปแก้ไข
                 </button>
                 <button
                   type="button"
                   onClick={handleSubmitSurvey}
                   disabled={submitting}
-                  className="flex-2 py-3 px-6 rounded-xl text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-lg shadow-blue-700/25 flex items-center justify-center gap-2 disabled:opacity-60"
+                  className="flex-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20 flex items-center justify-center gap-1.5 disabled:opacity-60"
                 >
                   {submitting ? (
                     <>
@@ -1526,7 +1523,7 @@ export default function UserSurveyPage() {
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" /> ยืนยันและส่งข้อมูล
+                      <Send className="w-3.5 h-3.5" /> ยืนยันและส่งข้อมูล
                     </>
                   )}
                 </button>
@@ -1539,17 +1536,17 @@ export default function UserSurveyPage() {
         {/* STEP 5: SUCCESS CONFIRMATION SCREEN                       */}
         {/* ========================================================= */}
         {step === 5 && (
-          <div className="max-w-md mx-auto text-center py-8 animate-scaleIn">
-            <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/50">
-              <div className="w-20 h-20 rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-5 shadow-inner">
-                <CheckCircle2 className="w-12 h-12" />
+          <div className="max-w-md mx-auto text-center py-6 animate-scaleIn">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-200/40">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <CheckCircle2 className="w-10 h-10" />
               </div>
 
-              <h2 className="text-2xl font-bold text-slate-900 mb-1">บันทึกข้อมูลสำเร็จ!</h2>
-              <p className="text-xs text-slate-500 mb-6">ระบบได้บันทึกจำนวนสินค้าตั้งโชว์เรียบร้อยแล้ว</p>
+              <h2 className="text-xl font-bold text-slate-900 mb-1">บันทึกข้อมูลสำเร็จ!</h2>
+              <p className="text-xs text-slate-500 mb-5">ระบบได้บันทึกจำนวนสินค้าตั้งโชว์เรียบร้อยแล้ว</p>
 
               {selectedStore && (
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-left text-xs space-y-2 mb-6">
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left text-xs space-y-1.5 mb-5">
                   <div className="flex justify-between">
                     <span className="text-slate-500">สาขา:</span>
                     <span className="font-bold text-slate-900">{selectedStore.Store_Name_TH}</span>
@@ -1560,7 +1557,7 @@ export default function UserSurveyPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-500">ยอดรวม Display:</span>
-                    <span className="font-bold text-emerald-700 font-mono text-sm">
+                    <span className="font-bold text-emerald-700 font-mono text-xs sm:text-sm">
                       {totalDisplayUnits} เครื่อง ({countedModelsCount} รุ่น)
                     </span>
                   </div>
@@ -1580,7 +1577,7 @@ export default function UserSurveyPage() {
                   setCounts({});
                   setStep(1);
                 }}
-                className="w-full py-3.5 px-4 rounded-xl text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
+                className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
               >
                 บันทึกสาขาอื่นต่อไป
               </button>
@@ -1589,33 +1586,33 @@ export default function UserSurveyPage() {
         )}
 
         {/* Footer info & version */}
-        <footer className="mt-12 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">
+        <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">
           <div>Sell Out Team, Haier Thailand</div>
           <div className="font-mono text-[10px]">
-            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '0da8e9c'}
           </div>
         </footer>
       </main>
 
       {/* Sticky Bottom Summary Bar (Active during Step 3 Counting) */}
       {step === 3 && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-4 py-3 shadow-lg shadow-slate-900/10">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg shadow-slate-900/10">
           <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
             <div>
-              <div className="text-[11px] text-slate-500">ยอด Display รวม</div>
-              <div className="text-lg font-bold text-blue-700 font-mono leading-none">
+              <div className="text-[10px] text-slate-500">ยอด Display รวม</div>
+              <div className="text-base sm:text-lg font-bold text-blue-700 font-mono leading-tight">
                 {totalDisplayUnits} <span className="text-xs font-normal text-slate-600">เครื่อง</span>{' '}
-                <span className="text-xs font-normal text-slate-400 font-sans">({countedModelsCount} รุ่น)</span>
+                <span className="text-[11px] font-normal text-slate-400 font-sans">({countedModelsCount} รุ่น)</span>
               </div>
             </div>
 
             <button
               type="button"
               onClick={() => setStep(4)}
-              className="py-2.5 px-5 rounded-xl text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 active:scale-95 transition-all shadow-md shadow-blue-700/20 flex items-center gap-1.5 touch-press"
+              className="py-2 px-3.5 sm:py-2.5 sm:px-5 rounded-xl text-xs sm:text-sm font-bold text-white bg-blue-700 hover:bg-blue-800 active:scale-95 transition-all shadow-md shadow-blue-700/20 flex items-center gap-1.5 touch-press"
             >
-              <span>ดูสรุป / ส่งข้อมูล</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>ถัดไป: สรุปผล</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
