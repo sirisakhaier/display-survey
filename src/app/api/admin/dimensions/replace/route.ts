@@ -4,6 +4,8 @@ import { authorizeAdmin } from '@/lib/auth';
 import Papa from 'papaparse';
 import { normalizeCategory, cleanSubCategory } from '@/lib/normalize';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   // Enforce ADMIN ONLY at backend level (Viewer -> HTTP 403)
   const { user, errorResponse } = authorizeAdmin(req);

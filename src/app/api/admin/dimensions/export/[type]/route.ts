@@ -3,6 +3,8 @@ import { getDb } from '@/lib/db';
 import { authenticateUser } from '@/lib/auth';
 import Papa from 'papaparse';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { type: string } }
