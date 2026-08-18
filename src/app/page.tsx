@@ -1583,6 +1583,7 @@ export default function UserSurveyPage() {
                 className="w-full py-3.5 px-4 rounded-xl text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
               >
                 บันทึกสาขาอื่นต่อไป
+              </button>
             </div>
           </div>
         )}
