@@ -204,6 +204,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <LogOut className="w-4 h-4" />
           Log Out
         </button>
+
+        {/* Version info */}
+        <div className="pt-2 text-center text-[10px] text-slate-400 dark:text-slate-500">
+          <div>Sell Out Team, Haier Thailand</div>
+          <div className="font-mono text-[9px] text-slate-400/80">
+            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+          </div>
+        </div>
       </div>
     </>
   );
@@ -283,6 +291,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
           {children}
         </main>
+        <footer className="py-4 text-center text-xs text-slate-400 dark:text-slate-500 space-y-0.5">
+          <div>Sell Out Team, Haier Thailand</div>
+          <div className="font-mono text-[10px]">
+            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+          </div>
+        </footer>
       </div>
     </div>
   );

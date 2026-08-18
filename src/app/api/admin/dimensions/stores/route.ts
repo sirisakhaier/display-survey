@@ -20,6 +20,26 @@ export async function GET(req: NextRequest) {
     const offset = (page - 1) * limit;
 
     const db = getDb();
+    const isSummary = searchParams.get('summary') === 'true';
+
+    if (isSummary) {
+      const customerStats = db.prepare(`
+        SELECT 
+          Customer as customer,
+          COUNT(*) as total,
+          SUM(CASE WHEN Active_Inactive = 'Active' THEN 1 ELSE 0 END) as active,
+          SUM(CASE WHEN Active_Inactive != 'Active' THEN 1 ELSE 0 END) as inactive
+        FROM stores
+        WHERE Customer IS NOT NULL AND Customer != ''
+        GROUP BY Customer
+        ORDER BY Customer ASC
+      `).all();
+
+      return NextResponse.json({
+        success: true,
+        customerStats,
+      });
+    }
 
     let whereClause = "WHERE 1=1";
     const params: any[] = [];

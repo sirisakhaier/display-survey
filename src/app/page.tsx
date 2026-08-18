@@ -655,7 +655,7 @@ export default function UserSurveyPage() {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors whitespace-nowrap"
             >
               <Shield className="w-3.5 h-3.5" />
-              Admin
+              Admin/Viewer
             </Link>
           </div>
         </div>
@@ -1583,10 +1583,17 @@ export default function UserSurveyPage() {
                 className="w-full py-3.5 px-4 rounded-xl text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
               >
                 บันทึกสาขาอื่นต่อไป
-              </button>
             </div>
           </div>
         )}
+
+        {/* Footer info & version */}
+        <footer className="mt-12 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">
+          <div>Sell Out Team, Haier Thailand</div>
+          <div className="font-mono text-[10px]">
+            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+          </div>
+        </footer>
       </main>
 
       {/* Sticky Bottom Summary Bar (Active during Step 3 Counting) */}

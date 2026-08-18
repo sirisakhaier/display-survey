@@ -21,6 +21,26 @@ export async function GET(req: NextRequest) {
     const offset = (page - 1) * limit;
 
     const db = getDb();
+    const isSummary = searchParams.get('summary') === 'true';
+
+    if (isSummary) {
+      const categoryStats = db.prepare(`
+        SELECT 
+          Category as category,
+          COUNT(*) as total,
+          SUM(CASE WHEN Active_Inactive = 'Active' THEN 1 ELSE 0 END) as active,
+          SUM(CASE WHEN Active_Inactive != 'Active' THEN 1 ELSE 0 END) as inactive
+        FROM models
+        WHERE Category IS NOT NULL AND Category != ''
+        GROUP BY Category
+        ORDER BY Category ASC
+      `).all();
+
+      return NextResponse.json({
+        success: true,
+        categoryStats,
+      });
+    }
 
     let whereClause = "WHERE 1=1";
     const params: any[] = [];
