@@ -102,7 +102,12 @@ export default function UserSurveyPage() {
     }
   };
 
-  // Navigation Step:
+  // Mode / Section: 'survey' = นับจำนวนตัวโชว์ (Display Survey), 'request' = ขอสินค้าตัวโชว์ (Display Model Request)
+  const [appSection, setAppSection] = useState<'survey' | 'request'>('survey');
+  const [requestStep, setRequestStep] = useState<number>(1);
+  const [requestSubmitting, setRequestSubmitting] = useState<boolean>(false);
+
+  // Navigation Step for Survey:
   // 1 = Select Store (Dropdowns), 2 = Staff Info (Blank start, Validated Phone), 3 = Hierarchy Counting with Live Summary Table, 4 = Full Details Review, 5 = Success
   const [step, setStep] = useState<number>(1);
 
@@ -657,21 +662,6 @@ export default function UserSurveyPage() {
   const handleSubmitSurvey = async () => {
     if (!selectedStore || !userName.trim()) return;
 
-    // Validate Display Requests (if any added)
-    if (displayRequests.length > 0) {
-      for (let i = 0; i < displayRequests.length; i++) {
-        const reqItem = displayRequests[i];
-        if (!reqItem.model_name.trim()) {
-          alert(`กรุณาระบุชื่อรุ่นสำหรับรายการขอสินค้าตัวโชว์ที่ #${i + 1}`);
-          return;
-        }
-        if (!reqItem.picture_base64) {
-          alert(`กรุณาถ่ายรูปหรือแนบรูปพื้นที่ตั้งโชว์ สำหรับรุ่น [${reqItem.model_name}] (รายการที่ #${i + 1})`);
-          return;
-        }
-      }
-    }
-
     setSubmitting(true);
     try {
       const res = await fetch('/api/user/submit', {
@@ -682,12 +672,6 @@ export default function UserSurveyPage() {
           user_name: userName.trim(),
           user_phone: userPhone.replace(/\D/g, ''),
           items: counts,
-          display_requests: displayRequests.map((r) => ({
-            model_name: r.model_name.trim(),
-            quantity: Math.max(1, r.quantity || 1),
-            remark: (r.remark || '').trim(),
-            picture_base64: r.picture_base64,
-          })),
           is_draft: false,
         }),
       });
@@ -703,6 +687,72 @@ export default function UserSurveyPage() {
       alert('เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  // -------------------------------------------------------------
+  // 9. Dedicated Display Model Request Submission (ขอสินค้าตัวโชว์)
+  // -------------------------------------------------------------
+  const handleSubmitDedicatedRequest = async () => {
+    if (!selectedStore) {
+      alert('กรุณาเลือกสาขาก่อนดำเนินการ');
+      return;
+    }
+    if (!userName.trim()) {
+      alert('กรุณากรอกชื่อ-นามสกุลผู้ขอ');
+      return;
+    }
+    const cleanPhone = userPhone.replace(/\D/g, '');
+    if (!/^0[0-9]{9}$/.test(cleanPhone)) {
+      alert('เบอร์โทรศัพท์ต้องขึ้นต้นด้วย 0 และมีครบ 10 หลัก (เช่น 0812345678)');
+      return;
+    }
+    if (displayRequests.length === 0) {
+      alert('กรุณาเพิ่มรายการขอสินค้าตัวโชว์อย่างน้อย 1 รายการ');
+      return;
+    }
+
+    for (let i = 0; i < displayRequests.length; i++) {
+      const reqItem = displayRequests[i];
+      if (!reqItem.model_name.trim()) {
+        alert(`กรุณาระบุชื่อรุ่นสำหรับรายการที่ #${i + 1}`);
+        return;
+      }
+      if (!reqItem.picture_base64) {
+        alert(`กรุณาถ่ายรูปหรือแนบรูปถ่ายพื้นที่ตั้งโชว์ สำหรับรุ่น [${reqItem.model_name}] (รายการที่ #${i + 1})`);
+        return;
+      }
+    }
+
+    setRequestSubmitting(true);
+    try {
+      const res = await fetch('/api/user/requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          store_id: selectedStore.STORE_ID,
+          user_name: userName.trim(),
+          user_phone: cleanPhone,
+          requests: displayRequests.map((r) => ({
+            model_name: r.model_name.trim(),
+            quantity: Math.max(1, r.quantity || 1),
+            remark: (r.remark || '').trim(),
+            picture_base64: r.picture_base64,
+          })),
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setRequestStep(3); // Success step
+      } else {
+        alert(data.error || 'เกิดข้อผิดพลาดในการบันทึกคำขอ');
+      }
+    } catch (e) {
+      console.error(e);
+      alert('เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง');
+    } finally {
+      setRequestSubmitting(false);
     }
   };
 
@@ -770,32 +820,71 @@ export default function UserSurveyPage() {
       </header>
 
       <main className="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-5">
-        {/* Step Progress Tracker */}
-        {step < 5 && (
-          <div className="mb-4 bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200/80 shadow-xs">
-            <div className="flex items-center justify-between relative">
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
-              
-              {/* Step 1 */}
-              <div className="relative z-10 flex flex-col items-center">
-                <button
-                  type="button"
-                  onClick={() => step > 1 && setStep(1)}
-                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                    step === 1
-                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
-                      : step > 1
-                      ? 'bg-emerald-600 text-white cursor-pointer'
-                      : 'bg-slate-200 text-slate-600'
-                  }`}
-                  style={step === 1 ? { background: '#0060AF' } : {}}
-                >
-                  {step > 1 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '1'}
-                </button>
-                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 1 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
-                  เลือกร้านค้า
-                </span>
-              </div>
+        {/* Top Section Switcher: Separate Report Number of Display from Display Model Requests */}
+        <div className="mb-4 bg-white p-1 rounded-2xl border border-slate-200 shadow-xs grid grid-cols-2 gap-1.5">
+          <button
+            type="button"
+            onClick={() => setAppSection('survey')}
+            className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 touch-press ${
+              appSection === 'survey'
+                ? 'bg-blue-700 text-white shadow-xs'
+                : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+            }`}
+          >
+            <FileSpreadsheet className="w-4 h-4" />
+            <span>1. บันทึกจำนวนสินค้าตัวโชว์</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setAppSection('request');
+              if (displayRequests.length === 0) {
+                addDisplayRequest();
+              }
+            }}
+            className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 touch-press ${
+              appSection === 'request'
+                ? 'bg-orange-600 text-white shadow-xs'
+                : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+            }`}
+          >
+            <Camera className="w-4 h-4" />
+            <span>2. ขอสินค้าตัวโชว์ (Request Display)</span>
+          </button>
+        </div>
+
+        {/* ========================================================= */}
+        {/* SECTION A: REPORT NUMBER OF DISPLAY (Display Survey)       */}
+        {/* ========================================================= */}
+        {appSection === 'survey' && (
+          <>
+            {/* Step Progress Tracker */}
+            {step < 5 && (
+              <div className="mb-4 bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200/80 shadow-xs">
+                <div className="flex items-center justify-between relative">
+                  <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
+                  
+                  {/* Step 1 */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    <button
+                      type="button"
+                      onClick={() => step > 1 && setStep(1)}
+                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                        step === 1
+                          ? 'text-white ring-2 ring-blue-300 shadow-xs'
+                          : step > 1
+                          ? 'bg-emerald-600 text-white cursor-pointer'
+                          : 'bg-slate-200 text-slate-600'
+                      }`}
+                      style={step === 1 ? { background: '#0060AF' } : {}}
+                    >
+                      {step > 1 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '1'}
+                    </button>
+                    <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 1 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
+                      เลือกร้านค้า
+                    </span>
+                  </div>
 
               {/* Step 2 */}
               <div className="relative z-10 flex flex-col items-center">
@@ -1609,198 +1698,7 @@ export default function UserSurveyPage() {
               )}
             </div>
 
-            {/* ========================================================= */}
-            {/* 3. FUNCTION "ขอสินค้าตัวโชว์" (Request Display Model)       */}
-            {/* ========================================================= */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200/80 shadow-xs space-y-3.5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-2">
-                  <div className="p-2 rounded-xl bg-orange-50 text-orange-700">
-                    <Camera className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      3. ขอสินค้าตัวโชว์ (Request Display Model)
-                      <span className="text-[10px] font-normal text-slate-400">(ไม่บังคับ / Optional)</span>
-                    </h3>
-                    <p className="text-[11px] text-slate-500">
-                      ขอสินค้ารุ่นใหม่มาตั้งโชว์ในสาขานี้ พร้อมแนบรูปถ่ายพื้นที่และตำแหน่งที่ต้องการวางโชว์
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={addDisplayRequest}
-                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200 transition-all flex items-center gap-1.5 touch-press"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  <span>เพิ่มรายการขอตัวโชว์</span>
-                </button>
-              </div>
-
-              {displayRequests.length === 0 ? (
-                <div 
-                  onClick={addDisplayRequest}
-                  className="py-5 px-4 text-center border-2 border-dashed border-slate-200 rounded-xl hover:border-orange-300 hover:bg-orange-50/30 transition-colors cursor-pointer group"
-                >
-                  <div className="text-xs font-semibold text-slate-600 group-hover:text-orange-700">
-                    + แตะที่นี่เพื่อเพิ่มรายการขอสินค้าตัวโชว์ใหม่สำหรับสาขานี้
-                  </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">
-                    (สามารถระบุชื่อรุ่น จำนวน และถ่ายรูปพื้นที่/ตำแหน่งที่จะตั้งโชว์ได้มากกว่า 1 รายการ)
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-3 pt-1">
-                  {displayRequests.map((reqItem, idx) => (
-                    <div
-                      key={reqItem.id}
-                      className="p-3.5 rounded-xl border border-orange-200 bg-orange-50/30 space-y-3"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="px-2 py-0.5 rounded-md bg-orange-600 text-white text-[10px] font-bold font-mono">
-                          รายการขอตัวโชว์ #{idx + 1}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => removeDisplayRequest(reqItem.id)}
-                          className="p-1 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
-                          title="ลบรายการนี้"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                        {/* Model Name Input (Required) */}
-                        <div className="sm:col-span-2">
-                          <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                            ชื่อรุ่นที่ต้องการขอ (Model Name) <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={reqItem.model_name}
-                            onChange={(e) => updateDisplayRequest(reqItem.id, 'model_name', e.target.value)}
-                            placeholder="ระบุรหัสรุ่น เช่น HSU-12VNS, HRF-THM20NS..."
-                            className="w-full text-xs font-mono font-bold bg-white border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          />
-                        </div>
-
-                        {/* Quantity (Units) */}
-                        <div>
-                          <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                            จำนวนที่ขอ (เครื่อง) <span className="text-red-500">*</span>
-                          </label>
-                          <input
-                            type="number"
-                            min="1"
-                            value={reqItem.quantity}
-                            onChange={(e) => updateDisplayRequest(reqItem.id, 'quantity', parseInt(e.target.value, 10) || 1)}
-                            className="w-full text-xs font-mono font-bold bg-white border border-slate-200 rounded-lg px-2.5 py-2 text-center focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Display Location Picture Upload (Required) */}
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-700 mb-1">
-                          รูปถ่ายพื้นที่ / ตำแหน่งที่จะตั้งโชว์ (Display Location Photo) <span className="text-red-500">*</span>
-                        </label>
-
-                        {reqItem.picture_preview ? (
-                          <div className="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-slate-200">
-                            <div className="relative h-16 w-20 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100">
-                              <img
-                                src={reqItem.picture_preview}
-                                alt="Location preview"
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center gap-1 text-emerald-700 text-xs font-bold">
-                                <Check className="w-3.5 h-3.5" /> แนบรูปถ่ายพื้นที่แล้ว
-                              </div>
-                              <p className="text-[10px] text-slate-400 mt-0.5 truncate">
-                                พร้อมส่งไปยังผู้ดูแลระบบ
-                              </p>
-                              <div className="flex gap-2 mt-1.5">
-                                <label className="text-[11px] font-semibold text-blue-700 hover:underline cursor-pointer">
-                                  เปลี่ยนรูป
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    capture="environment"
-                                    className="hidden"
-                                    onChange={(e) => {
-                                      const file = e.target.files?.[0];
-                                      if (file) handleRequestImageUpload(reqItem.id, file);
-                                    }}
-                                  />
-                                </label>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    updateDisplayRequest(reqItem.id, 'picture_base64', '');
-                                    updateDisplayRequest(reqItem.id, 'picture_preview', '');
-                                  }}
-                                  className="text-[11px] font-semibold text-red-600 hover:underline"
-                                >
-                                  ลบรูป
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <label className="flex items-center justify-center gap-2 p-3 bg-white border-2 border-dashed border-orange-300 rounded-xl hover:bg-orange-50/50 cursor-pointer transition-all touch-press group">
-                            <Camera className="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform" />
-                            <span className="text-xs font-bold text-orange-700">
-                              ถ่ายรูป หรือเลือกรูปภาพพื้นที่ตั้งโชว์ (บังคับแนบรูป)
-                            </span>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              capture="environment"
-                              className="hidden"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) handleRequestImageUpload(reqItem.id, file);
-                              }}
-                            />
-                          </label>
-                        )}
-                      </div>
-
-                      {/* Remark / Details Input (Optional) */}
-                      <div>
-                        <label className="block text-[11px] font-semibold text-slate-600 mb-1">
-                          รายละเอียดตำแหน่งที่ตั้ง / เหตุผลที่ขอ (Optional)
-                        </label>
-                        <input
-                          type="text"
-                          value={reqItem.remark}
-                          onChange={(e) => updateDisplayRequest(reqItem.id, 'remark', e.target.value)}
-                          placeholder="เช่น โซนตู้เย็นฝั่งขวา ติดเสา, ลูกค้าถามหาบ่อย..."
-                          className="w-full text-xs bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                        />
-                      </div>
-                    </div>
-                  ))}
-
-                  <button
-                    type="button"
-                    onClick={addDisplayRequest}
-                    className="w-full py-2 rounded-xl text-xs font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200 transition-all flex items-center justify-center gap-1.5 touch-press"
-                  >
-                    <Plus className="w-3.5 h-3.5" />
-                    <span>เพิ่มรายการขอสินค้าตัวโชว์อีก</span>
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Bottom Action Submit Buttons */}
+            {/* Bottom Action Submit Buttons for Survey */}
             <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex gap-2.5">
               <button
                 type="button"
@@ -1822,7 +1720,7 @@ export default function UserSurveyPage() {
                   </>
                 ) : (
                   <>
-                    <Send className="w-3.5 h-3.5" /> ยืนยันและส่งข้อมูล
+                    <Send className="w-3.5 h-3.5" /> ยืนยันและส่งข้อมูลสำรวจ
                   </>
                 )}
               </button>
@@ -1859,12 +1757,6 @@ export default function UserSurveyPage() {
                       {totalDisplayUnits} เครื่อง ({countedModelsCount} รุ่น)
                     </span>
                   </div>
-                  {displayRequests.length > 0 && (
-                    <div className="flex justify-between pt-1 border-t border-slate-200 text-orange-700">
-                      <span className="font-medium">ขอสินค้าตัวโชว์:</span>
-                      <span className="font-bold font-mono">{displayRequests.length} รายการ</span>
-                    </div>
-                  )}
                 </div>
               )}
 
@@ -1879,7 +1771,6 @@ export default function UserSurveyPage() {
                   setUserName('');
                   setUserPhone('');
                   setCounts({});
-                  setDisplayRequests([]);
                   setStep(1);
                 }}
                 className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
@@ -1889,6 +1780,478 @@ export default function UserSurveyPage() {
             </div>
           </div>
         )}
+      </>
+    )}
+
+    {/* ========================================================= */}
+    {/* SECTION B: REQUEST DISPLAY MODEL (ขอสินค้าตัวโชว์)        */}
+    {/* ========================================================= */}
+    {appSection === 'request' && (
+      <div className="space-y-4">
+        {/* Request Step 1: Store & Staff Info */}
+        {requestStep === 1 && (
+          <div className="space-y-4 animate-fadeIn">
+            {/* Header Card */}
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200 shadow-xs">
+              <div className="flex items-center gap-2.5 mb-1">
+                <div className="p-2 rounded-xl bg-orange-100 text-orange-700">
+                  <Camera className="w-5 h-5" />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold text-slate-900">ขอสินค้าตัวโชว์ (Request Display Model)</h2>
+                  <p className="text-xs text-slate-500">ขั้นตอนที่ 1: เลือกร้านค้าและระบุข้อมูลผู้ขอ</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Store Selection Card */}
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+              <h3 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <StoreIcon className="w-4 h-4 text-orange-600" />
+                1. เลือกร้านค้าที่ต้องการขอสินค้าตัวโชว์
+              </h3>
+
+              <div className="space-y-3">
+                {/* Customer Dropdown */}
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    ห้าง / ลูกค้า (Customer) <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    value={selectedCustomer}
+                    onChange={(e) => setSelectedCustomer(e.target.value)}
+                    className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  >
+                    <option value="">-- เลือกห้าง / ลูกค้า --</option>
+                    {customers.map((c) => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Region Dropdown */}
+                {selectedCustomer && (
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                      ภูมิภาค (Region) <span className="text-red-500">*</span>
+                    </label>
+                    <select
+                      value={selectedRegion}
+                      onChange={(e) => setSelectedRegion(e.target.value)}
+                      className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    >
+                      <option value="">-- เลือกภูมิภาค --</option>
+                      {regions.map((r) => (
+                        <option key={r} value={r}>{r}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+
+                {/* Store Dropdown */}
+                {selectedCustomer && selectedRegion && (
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                      สาขา (Store) <span className="text-red-500">*</span>
+                    </label>
+                    {loadingStores ? (
+                      <div className="py-2.5 text-xs text-slate-400 flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin text-orange-600" /> กำลังโหลดรายชื่อสาขา...
+                      </div>
+                    ) : (
+                      <select
+                        value={selectedStoreId}
+                        onChange={(e) => handleStoreDropdownChange(e.target.value)}
+                        className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
+                      >
+                        <option value="">-- เลือกสาขา --</option>
+                        {stores.map((s) => (
+                          <option key={s.STORE_ID} value={s.STORE_ID}>
+                            {s.Store_Name_TH || s.STORE_NAME} ({s.Province_TH}) {s.Store_ID_Customer ? `[รหัสห้าง: ${s.Store_ID_Customer}]` : ''}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Store Preview Card */}
+              {selectedStore && (
+                <div className="p-3 bg-orange-50/50 rounded-xl border border-orange-200 text-xs space-y-1 mt-2">
+                  <div className="font-bold text-slate-900 flex items-center justify-between">
+                    <span>{selectedStore.Store_Name_TH || selectedStore.STORE_NAME}</span>
+                    <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 text-[10px] font-bold">
+                      {selectedStore.Customer}
+                    </span>
+                  </div>
+                  <div className="text-slate-600 text-[11px]">
+                    จังหวัด: <span className="font-semibold text-slate-800">{selectedStore.Province_TH} ({selectedStore.Region_TH})</span>
+                  </div>
+                  {selectedStore.Store_ID_Customer && (
+                    <div className="text-slate-600 text-[11px]">
+                      รหัสสาขาห้าง: <span className="font-mono font-semibold text-slate-800">{selectedStore.Store_ID_Customer}</span>
+                    </div>
+                  )}
+                  <div className="text-slate-500 text-[10px] font-mono">
+                    STORE_ID: {selectedStore.STORE_ID}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Staff Info Card */}
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
+              <h3 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <User className="w-4 h-4 text-orange-600" />
+                2. ข้อมูลผู้ขอสินค้าตัวโชว์
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    ชื่อ-นามสกุล <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="เช่น สมชาย ใจดี"
+                    className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    เบอร์โทรศัพท์มือถือ (10 หลัก) <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    maxLength={10}
+                    value={userPhone}
+                    onChange={(e) => setUserPhone(e.target.value.replace(/\D/g, ''))}
+                    placeholder="0812345678"
+                    className={`w-full text-xs font-mono font-bold bg-white border rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 ${
+                      userPhone && !/^0[0-9]{9}$/.test(userPhone)
+                        ? 'border-red-300 focus:ring-red-500 bg-red-50/20'
+                        : 'border-slate-200 focus:ring-orange-500'
+                    }`}
+                  />
+                  {userPhone && !/^0[0-9]{9}$/.test(userPhone) && (
+                    <p className="text-[10px] text-red-500 mt-1 font-medium">
+                      * ต้องขึ้นต้นด้วย 0 และมีครบ 10 หลัก (ปัจจุบัน {userPhone.length}/10 หลัก)
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Next Button */}
+            <button
+              type="button"
+              disabled={!selectedStore || !userName.trim() || !/^0[0-9]{9}$/.test(userPhone)}
+              onClick={() => {
+                if (displayRequests.length === 0) {
+                  addDisplayRequest();
+                }
+                setRequestStep(2);
+              }}
+              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 touch-press"
+            >
+              <span>ถัดไป: ระบุรุ่นที่ต้องการขอ & แนบรูปพื้นที่ตั้งโชว์</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        {/* Request Step 2: Add Requested Models */}
+        {requestStep === 2 && (
+          <div className="space-y-4 animate-fadeIn">
+            {/* Mini Store Header */}
+            {selectedStore && (
+              <div className="bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-2 flex-wrap text-xs">
+                <div>
+                  <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                    <StoreIcon className="w-3.5 h-3.5 text-orange-600" />
+                    <span>{selectedStore.Store_Name_TH}</span>
+                    <span className="text-[10px] font-normal text-slate-400">({selectedStore.Customer})</span>
+                  </div>
+                  <div className="text-[11px] text-slate-500 mt-0.5">
+                    ผู้ขอ: <span className="font-semibold text-slate-800">{userName}</span> ({userPhone})
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setRequestStep(1)}
+                  className="text-[11px] font-semibold text-orange-700 hover:underline flex items-center gap-1"
+                >
+                  <ArrowLeft className="w-3 h-3" /> เปลี่ยนสาขา/ข้อมูล
+                </button>
+              </div>
+            )}
+
+            {/* List of Requested Items */}
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200 shadow-xs space-y-3.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div>
+                  <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    <Camera className="w-4 h-4 text-orange-600" />
+                    รายการขอสินค้าตัวโชว์ ({displayRequests.length} รายการ)
+                  </h3>
+                  <p className="text-[11px] text-slate-500">
+                    กรุณาระบุชื่อรุ่นและถ่ายรูปพื้นที่ตั้งโชว์สำหรับทุกรายการ
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={addDisplayRequest}
+                  className="px-3 py-1.5 rounded-xl text-xs font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200 transition-all flex items-center gap-1.5 touch-press"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>เพิ่มรายการขอตัวโชว์</span>
+                </button>
+              </div>
+
+              <div className="space-y-3 pt-1">
+                {displayRequests.map((reqItem, idx) => (
+                  <div
+                    key={reqItem.id}
+                    className="p-3.5 rounded-xl border border-orange-200 bg-orange-50/30 space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded-md bg-orange-600 text-white text-[10px] font-bold font-mono">
+                        รายการที่ #{idx + 1}
+                      </span>
+                      {displayRequests.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeDisplayRequest(reqItem.id)}
+                          className="p-1 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                          title="ลบรายการนี้"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                      {/* Model Name */}
+                      <div className="sm:col-span-2">
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                          ชื่อรุ่นที่ต้องการขอ (Model Name) <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={reqItem.model_name}
+                          onChange={(e) => updateDisplayRequest(reqItem.id, 'model_name', e.target.value)}
+                          placeholder="ระบุชื่อรุ่น เช่น HSU-12VNS, HRF-THM20NS..."
+                          className="w-full text-xs font-mono font-bold bg-white border border-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                      </div>
+
+                      {/* Quantity */}
+                      <div>
+                        <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                          จำนวนที่ขอ (เครื่อง) <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          min="1"
+                          value={reqItem.quantity}
+                          onChange={(e) => updateDisplayRequest(reqItem.id, 'quantity', parseInt(e.target.value, 10) || 1)}
+                          className="w-full text-xs font-mono font-bold bg-white border border-slate-200 rounded-lg px-2.5 py-2 text-center focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Camera / Photo Upload */}
+                    <div>
+                      <label className="block text-[11px] font-bold text-slate-700 mb-1">
+                        รูปถ่ายพื้นที่ / ตำแหน่งที่จะตั้งโชว์ (Display Location Photo) <span className="text-red-500">*</span>
+                      </label>
+
+                      {reqItem.picture_preview ? (
+                        <div className="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-slate-200">
+                          <div className="relative h-16 w-20 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0 bg-slate-100">
+                            <img
+                              src={reqItem.picture_preview}
+                              alt="Location preview"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1 text-emerald-700 text-xs font-bold">
+                              <Check className="w-3.5 h-3.5" /> แนบรูปถ่ายพื้นที่แล้ว
+                            </div>
+                            <p className="text-[10px] text-slate-400 mt-0.5 truncate">
+                              พร้อมส่งไปยังผู้ดูแลระบบ
+                            </p>
+                            <div className="flex gap-2 mt-1.5">
+                              <label className="text-[11px] font-semibold text-orange-700 hover:underline cursor-pointer">
+                                เปลี่ยนรูป
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  capture="environment"
+                                  className="hidden"
+                                  onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) handleRequestImageUpload(reqItem.id, file);
+                                  }}
+                                />
+                              </label>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  updateDisplayRequest(reqItem.id, 'picture_base64', '');
+                                  updateDisplayRequest(reqItem.id, 'picture_preview', '');
+                                }}
+                                className="text-[11px] font-semibold text-red-600 hover:underline"
+                              >
+                                ลบรูป
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <label className="flex items-center justify-center gap-2 p-3.5 bg-white border-2 border-dashed border-orange-300 rounded-xl hover:bg-orange-50/50 cursor-pointer transition-all touch-press group">
+                          <Camera className="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform" />
+                          <span className="text-xs font-bold text-orange-700">
+                            ถ่ายรูป หรือเลือกรูปภาพพื้นที่ตั้งโชว์ (บังคับแนบรูป)
+                          </span>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            capture="environment"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleRequestImageUpload(reqItem.id, file);
+                            }}
+                          />
+                        </label>
+                      )}
+                    </div>
+
+                    {/* Remarks */}
+                    <div>
+                      <label className="block text-[11px] font-semibold text-slate-600 mb-1">
+                        รายละเอียดตำแหน่งที่ตั้ง / เหตุผลที่ขอ (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={reqItem.remark}
+                        onChange={(e) => updateDisplayRequest(reqItem.id, 'remark', e.target.value)}
+                        placeholder="เช่น โซนตู้เย็นฝั่งขวา ติดเสา, ลูกค้าถามหาบ่อย..."
+                        className="w-full text-xs bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      />
+                    </div>
+                  </div>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={addDisplayRequest}
+                  className="w-full py-2 rounded-xl text-xs font-bold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200 transition-all flex items-center justify-center gap-1.5 touch-press"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>เพิ่มรายการขอสินค้าตัวโชว์อีก</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex gap-2.5">
+              <button
+                type="button"
+                onClick={() => setRequestStep(1)}
+                disabled={requestSubmitting}
+                className="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center justify-center gap-1"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" /> ย้อนกลับ
+              </button>
+              <button
+                type="button"
+                onClick={handleSubmitDedicatedRequest}
+                disabled={requestSubmitting}
+                className="flex-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 flex items-center justify-center gap-1.5 disabled:opacity-60 touch-press"
+              >
+                {requestSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" /> กำลังส่งคำขอ...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-3.5 h-3.5" /> ยืนยันและส่งคำขอสินค้าตัวโชว์
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Request Step 3: Success Screen */}
+        {requestStep === 3 && (
+          <div className="max-w-md mx-auto text-center py-6 animate-scaleIn">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-orange-200/80 shadow-lg shadow-orange-200/40">
+              <div className="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <CheckCircle2 className="w-10 h-10" />
+              </div>
+
+              <h2 className="text-xl font-bold text-slate-900 mb-1">ส่งคำขอสินค้าตัวโชว์สำเร็จ!</h2>
+              <p className="text-xs text-slate-500 mb-5">
+                ระบบได้บันทึกคำขอและรูปถ่ายพื้นที่ตั้งโชว์เรียบร้อยแล้ว
+              </p>
+
+              {selectedStore && (
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-left text-xs space-y-1.5 mb-5">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">สาขา:</span>
+                    <span className="font-bold text-slate-900">{selectedStore.Store_Name_TH}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">ผู้ขอ:</span>
+                    <span className="font-semibold text-slate-900">{userName}</span>
+                  </div>
+                  <div className="flex justify-between text-orange-700 font-bold">
+                    <span>จำนวนรายการที่ขอ:</span>
+                    <span className="font-mono text-sm">{displayRequests.length} รายการ</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDisplayRequests([]);
+                    addDisplayRequest();
+                    setRequestStep(1);
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20"
+                >
+                  ขอสินค้ารุ่นอื่น / บันทึกสาขาอื่นต่อไป
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAppSection('survey');
+                    setStep(1);
+                  }}
+                  className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+                >
+                  กลับไปยังหน้ารายงานจำนวนตัวโชว์ (Display Survey)
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    )}
 
         {/* Footer info & version */}
         <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">

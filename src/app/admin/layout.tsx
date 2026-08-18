@@ -18,6 +18,7 @@ import {
   Loader2,
   Moon,
   Sun,
+  Camera,
 } from 'lucide-react';
 
 interface AuthUser {
@@ -100,7 +101,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Entries', href: '/admin/entries', icon: FileSpreadsheet },
+    { name: 'Recorded Entries', href: '/admin/entries', icon: FileSpreadsheet },
+    { name: 'Display Requests', href: '/admin/requests', icon: Camera },
     { name: 'Dimensions', href: '/admin/dimensions', icon: Database },
   ];
 

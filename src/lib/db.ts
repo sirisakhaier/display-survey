@@ -89,8 +89,10 @@ function initTables(db: Database.Database) {
 
     CREATE TABLE IF NOT EXISTS display_requests (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      entry_id INTEGER NOT NULL,
+      entry_id INTEGER,
       store_id TEXT NOT NULL,
+      user_name TEXT,
+      user_phone TEXT,
       model_name TEXT NOT NULL,
       quantity INTEGER NOT NULL DEFAULT 1,
       remark TEXT,
@@ -103,6 +105,7 @@ function initTables(db: Database.Database) {
 
     CREATE INDEX IF NOT EXISTS idx_requests_entry ON display_requests(entry_id);
     CREATE INDEX IF NOT EXISTS idx_requests_store ON display_requests(store_id);
+    CREATE INDEX IF NOT EXISTS idx_requests_status ON display_requests(status);
 
     CREATE TABLE IF NOT EXISTS admin_users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -121,6 +124,20 @@ function initTables(db: Database.Database) {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
+
+  // Migrate columns for display_requests if missing
+  try {
+    const tableInfo = db.prepare(`PRAGMA table_info(display_requests)`).all() as any[];
+    const colNames = tableInfo.map((c) => c.name);
+    if (!colNames.includes('user_name')) {
+      db.exec(`ALTER TABLE display_requests ADD COLUMN user_name TEXT;`);
+    }
+    if (!colNames.includes('user_phone')) {
+      db.exec(`ALTER TABLE display_requests ADD COLUMN user_phone TEXT;`);
+    }
+  } catch (e) {
+    console.error('Migration error on display_requests:', e);
+  }
 }
 
 function seedIfEmpty(db: Database.Database) {
