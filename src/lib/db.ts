@@ -1,8 +1,13 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
+import Papa from 'papaparse';
+import bcrypt from 'bcryptjs';
+import { normalizeCategory, cleanSubCategory } from './normalize';
 
 const DB_PATH = process.env.DATABASE_PATH || path.join(process.cwd(), 'data', 'display_survey.db');
+const STORE_CSV_PATH = path.join(process.cwd(), 'Dimension Store.csv');
+const MODEL_CSV_PATH = path.join(process.cwd(), 'Dimension Model.csv');
 
 // Ensure data directory exists
 const dataDir = path.dirname(DB_PATH);
@@ -18,6 +23,7 @@ export function getDb(): Database.Database {
     dbInstance.pragma('journal_mode = WAL');
     dbInstance.pragma('foreign_keys = ON');
     initTables(dbInstance);
+    seedIfEmpty(dbInstance);
   }
   return dbInstance;
 }
@@ -98,6 +104,101 @@ function initTables(db: Database.Database) {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
+}
+
+function seedIfEmpty(db: Database.Database) {
+  try {
+    // 1. Seed users if admin_users is empty
+    const userCount = db.prepare('SELECT COUNT(*) as count FROM admin_users').get() as { count: number };
+    if (!userCount || userCount.count === 0) {
+      const insertUser = db.prepare(`
+        INSERT INTO admin_users (username, password_hash, role)
+        VALUES (?, ?, ?)
+      `);
+      const adminHash = bcrypt.hashSync('admin1234', 10);
+      const viewerHash = bcrypt.hashSync('viewer1234', 10);
+      insertUser.run('admin', adminHash, 'admin');
+      insertUser.run('viewer', viewerHash, 'viewer');
+    }
+
+    // 2. Seed stores if empty
+    const storeCount = db.prepare('SELECT COUNT(*) as count FROM stores').get() as { count: number };
+    if ((!storeCount || storeCount.count === 0) && fs.existsSync(STORE_CSV_PATH)) {
+      const storeCsvContent = fs.readFileSync(STORE_CSV_PATH, 'utf8');
+      const parsedStores = Papa.parse(storeCsvContent, { header: true, skipEmptyLines: true });
+      const insertStore = db.prepare(`
+        INSERT INTO stores (
+          STORE_ID, Customer, Store_ID_Customer, STORE_NAME, Store_Name_TH, Province_TH, Region_TH, Active_Inactive
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(STORE_ID) DO UPDATE SET
+          Customer = excluded.Customer,
+          Store_ID_Customer = excluded.Store_ID_Customer,
+          STORE_NAME = excluded.STORE_NAME,
+          Store_Name_TH = excluded.Store_Name_TH,
+          Province_TH = excluded.Province_TH,
+          Region_TH = excluded.Region_TH,
+          Active_Inactive = excluded.Active_Inactive
+      `);
+
+      const insertManyStores = db.transaction((rows: any[]) => {
+        for (const row of rows) {
+          const storeId = (row['STORE_ID'] || '').trim();
+          const customer = (row['Customer'] || '').trim();
+          if (!storeId || !customer) continue;
+
+          const storeIdCustomer = (row['Store ID Customer'] || '').trim();
+          const storeName = (row['STORE_NAME'] || '').trim();
+          const storeNameTh = (row['Store Name TH'] || storeName || storeId).trim();
+          const provinceTh = (row['Province TH'] || '').trim();
+          const regionTh = (row['Region TH'] || '').trim();
+          const activeInactive = (row['Active-Inactive'] || 'Active').trim() === 'Active' ? 'Active' : 'Not active';
+
+          insertStore.run(storeId, customer, storeIdCustomer, storeName, storeNameTh, provinceTh, regionTh, activeInactive);
+        }
+      });
+      insertManyStores(parsedStores.data);
+    }
+
+    // 3. Seed models if empty
+    const modelCount = db.prepare('SELECT COUNT(*) as count FROM models').get() as { count: number };
+    if ((!modelCount || modelCount.count === 0) && fs.existsSync(MODEL_CSV_PATH)) {
+      const modelCsvContent = fs.readFileSync(MODEL_CSV_PATH, 'utf8');
+      const parsedModels = Papa.parse(modelCsvContent, { header: true, skipEmptyLines: true });
+      const insertModel = db.prepare(`
+        INSERT INTO models (
+          Model, Brand, Category, SubCategory, Active_Inactive, Remark, Update_by, Update_date
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(Model) DO UPDATE SET
+          Brand = excluded.Brand,
+          Category = excluded.Category,
+          SubCategory = excluded.SubCategory,
+          Active_Inactive = excluded.Active_Inactive,
+          Remark = excluded.Remark,
+          Update_by = excluded.Update_by,
+          Update_date = excluded.Update_date
+      `);
+
+      const insertManyModels = db.transaction((rows: any[]) => {
+        for (const row of rows) {
+          const model = (row['Model'] || '').trim();
+          const brand = (row['Brand'] || '').trim();
+          if (!model || !brand) continue;
+
+          const category = normalizeCategory(row['Category']);
+          const subCategory = cleanSubCategory(row['SubCategory']);
+          const activeInactive = (row['Active-Inactive'] || 'Active').trim() === 'Active' ? 'Active' : 'Not active';
+          const remark = (row['Remark'] || '').trim();
+          const updateBy = (row['Update by'] || 'system').trim();
+          const updateDate = (row['Update date'] || '').trim();
+
+          insertModel.run(model, brand, category, subCategory, activeInactive, remark, updateBy, updateDate);
+        }
+      });
+      insertManyModels(parsedModels.data);
+    }
+  } catch (err) {
+    console.error('Error in database seedIfEmpty:', err);
+  }
 }
 
 export default getDb;
