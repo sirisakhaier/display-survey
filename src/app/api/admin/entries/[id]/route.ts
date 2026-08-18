@@ -58,10 +58,26 @@ export async function GET(
       ORDER BY m.Category ASC, m.Brand ASC, dei.qty DESC, dei.model ASC
     `).all(entryId);
 
+    // 3. Get Display Model Requests (ขอสินค้าตัวโชว์)
+    const requests = db.prepare(`
+      SELECT 
+        id,
+        model_name,
+        quantity,
+        remark,
+        picture_url,
+        status,
+        created_at
+      FROM display_requests
+      WHERE entry_id = ?
+      ORDER BY id ASC
+    `).all(entryId);
+
     return NextResponse.json({
       success: true,
       entry,
       items,
+      requests,
     });
   } catch (error: any) {
     console.error('Error fetching entry details:', error);

@@ -46,6 +46,16 @@ interface ItemDetail {
   SubCategory: string;
 }
 
+interface DisplayRequestItem {
+  id: number;
+  model_name: string;
+  quantity: number;
+  remark: string;
+  picture_url: string;
+  status: string;
+  created_at: string;
+}
+
 export default function AdminEntriesPage() {
   const [userRole, setUserRole] = useState<'admin' | 'viewer'>('viewer');
   const [entries, setEntries] = useState<EntryItem[]>([]);
@@ -66,7 +76,14 @@ export default function AdminEntriesPage() {
   // Detail Modal State
   const [selectedEntry, setSelectedEntry] = useState<EntryItem | null>(null);
   const [entryItems, setEntryItems] = useState<ItemDetail[]>([]);
+  const [entryRequests, setEntryRequests] = useState<DisplayRequestItem[]>([]);
   const [loadingDetail, setLoadingDetail] = useState<boolean>(false);
+  const [modalTab, setModalTab] = useState<'items' | 'requests'>('items');
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+  // Export State
+  const [exportingExcelWithPics, setExportingExcelWithPics] = useState<boolean>(false);
+  const [exportingExcelNoPics, setExportingExcelNoPics] = useState<boolean>(false);
 
   // Delete State
   const [entryToDelete, setEntryToDelete] = useState<EntryItem | null>(null);
@@ -145,11 +162,13 @@ export default function AdminEntriesPage() {
   const handleViewDetail = async (entry: EntryItem) => {
     setSelectedEntry(entry);
     setLoadingDetail(true);
+    setModalTab('items');
     try {
       const res = await fetch(`/api/admin/entries/${entry.id}`);
       const data = await res.json();
       if (data.success) {
         setEntryItems(data.items || []);
+        setEntryRequests(data.requests || []);
       }
     } catch (e) {
       console.error(e);
@@ -181,7 +200,47 @@ export default function AdminEntriesPage() {
     }
   };
 
-  // 6. Export to CSV (Admin & Viewer)
+  // 6. Export to Excel (With Pictures)
+  const handleExportExcelWithPictures = async () => {
+    setExportingExcelWithPics(true);
+    try {
+      const params = new URLSearchParams();
+      params.append('with_pictures', 'true');
+      if (search.trim()) params.append('search', search.trim());
+      if (customer && customer !== 'all') params.append('customer', customer);
+      if (region && region !== 'all') params.append('region', region);
+      if (startDate) params.append('startDate', startDate);
+      if (endDate) params.append('endDate', endDate);
+
+      window.location.href = `/api/admin/entries/export?${params.toString()}`;
+    } catch (err) {
+      console.error('Export error:', err);
+    } finally {
+      setTimeout(() => setExportingExcelWithPics(false), 2000);
+    }
+  };
+
+  // 7. Export to Excel (Without Pictures)
+  const handleExportExcelWithoutPictures = async () => {
+    setExportingExcelNoPics(true);
+    try {
+      const params = new URLSearchParams();
+      params.append('with_pictures', 'false');
+      if (search.trim()) params.append('search', search.trim());
+      if (customer && customer !== 'all') params.append('customer', customer);
+      if (region && region !== 'all') params.append('region', region);
+      if (startDate) params.append('startDate', startDate);
+      if (endDate) params.append('endDate', endDate);
+
+      window.location.href = `/api/admin/entries/export?${params.toString()}`;
+    } catch (err) {
+      console.error('Export error:', err);
+    } finally {
+      setTimeout(() => setExportingExcelNoPics(false), 2000);
+    }
+  };
+
+  // 8. Export to CSV (Admin & Viewer)
   const handleExportCSV = async () => {
     try {
       const params = new URLSearchParams();
@@ -226,22 +285,49 @@ export default function AdminEntriesPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Recorded Entries</h1>
           <p className="text-xs text-slate-500 mt-1">
-            History of all display quantity entries from store staff
+            History of all display quantity entries and display requests from store staff
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={handleExportCSV}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:scale-95 transition-all shadow-sm self-start sm:self-auto"
-        >
-          <Download className="w-4 h-4" />
-          Export CSV
-        </button>
+        {/* Action Export Buttons */}
+        <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+          {/* Button 1: Excel With Pictures */}
+          <button
+            type="button"
+            onClick={handleExportExcelWithPictures}
+            disabled={exportingExcelWithPics}
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-95 transition-all shadow-sm disabled:opacity-50"
+            title="Export full Excel report with embedded photos of display locations"
+          >
+            {exportingExcelWithPics ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+            <span>Excel (With Pictures)</span>
+          </button>
+
+          {/* Button 2: Excel Without Pictures */}
+          <button
+            type="button"
+            onClick={handleExportExcelWithoutPictures}
+            disabled={exportingExcelNoPics}
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 active:scale-95 transition-all shadow-sm disabled:opacity-50"
+            title="Export clean fast Excel report without photos"
+          >
+            {exportingExcelNoPics ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileSpreadsheet className="w-4 h-4" />}
+            <span>Excel (Without Pictures)</span>
+          </button>
+
+          {/* Button 3: CSV */}
+          <button
+            type="button"
+            onClick={handleExportCSV}
+            className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 active:scale-95 transition-all"
+          >
+            CSV
+          </button>
+        </div>
       </div>
 
       {/* Filter & Search Bar */}
@@ -318,28 +404,29 @@ export default function AdminEntriesPage() {
             <button
               type="button"
               onClick={handleResetFilters}
-              className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5"
+              className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 flex items-center justify-center gap-1.5 transition-colors"
             >
-              <RotateCcw className="w-3.5 h-3.5" /> Clear Filters
+              <RotateCcw className="w-3.5 h-3.5" />
+              Clear Filters
             </button>
           </div>
         </div>
       </div>
 
-      {/* Sell List Table */}
+      {/* Entries Table */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         {loading ? (
           <div className="py-20 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
             <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading entries...
           </div>
         ) : entries.length === 0 ? (
-          <div className="py-16 text-center text-slate-400 text-sm">
+          <div className="py-16 text-center text-slate-400 text-xs">
             No entries match the search criteria
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50/80 border-b border-slate-200 text-slate-600 font-semibold">
+              <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
                 <tr>
                   <th className="py-3 px-4">Date / Time</th>
                   <th className="py-3 px-4">Customer</th>
@@ -351,21 +438,21 @@ export default function AdminEntriesPage() {
                   <th className="py-3 px-4 text-center">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 font-medium text-slate-800">
+              <tbody className="divide-y divide-slate-100 font-medium">
                 {entries.map((e) => (
-                  <tr key={e.id} className="hover:bg-blue-50/30 transition-colors">
-                    <td className="py-3 px-4 whitespace-nowrap text-slate-500 font-mono text-[11px]">
+                  <tr key={e.id} className="hover:bg-slate-50/60">
+                    <td className="py-3 px-4 text-slate-600 whitespace-nowrap">
                       {new Date(e.submitted_at).toLocaleDateString('th-TH', {
                         day: 'numeric',
                         month: 'short',
-                        year: 'numeric',
+                        year: '2-digit',
                         hour: '2-digit',
                         minute: '2-digit',
                       })}
                     </td>
                     <td className="py-3 px-4 font-semibold text-slate-900">{e.Customer}</td>
-                    <td className="py-3 px-4 font-semibold text-blue-700">
-                      {e.Store_Name_TH}
+                    <td className="py-3 px-4">
+                      <div className="font-semibold text-slate-900">{e.Store_Name_TH}</div>
                       <span className="block text-[10px] text-slate-400 font-mono">{e.store_id}</span>
                     </td>
                     <td className="py-3 px-4 text-slate-600">
@@ -376,10 +463,10 @@ export default function AdminEntriesPage() {
                       <div className="text-slate-400 font-mono text-[11px]">{e.user_phone}</div>
                     </td>
                     <td className="py-3 px-4 text-right font-mono font-bold text-slate-700">
-                      {e.total_models} model(s)
+                      {e.total_models}
                     </td>
-                    <td className="py-3 px-4 text-right font-mono font-extrabold text-blue-700 text-sm">
-                      {e.total_qty} unit(s)
+                    <td className="py-3 px-4 text-right font-mono font-extrabold text-blue-700">
+                      {e.total_qty}
                     </td>
                     <td className="py-3 px-4 text-center whitespace-nowrap">
                       <div className="flex items-center justify-center gap-1.5">
@@ -387,18 +474,15 @@ export default function AdminEntriesPage() {
                           type="button"
                           onClick={() => handleViewDetail(e)}
                           className="p-1.5 rounded-lg text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors"
-                          title="View detail by model"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         
-                        {/* Delete Button (Visible ONLY for Admin) */}
                         {userRole === 'admin' && (
                           <button
                             type="button"
                             onClick={() => setEntryToDelete(e)}
                             className="p-1.5 rounded-lg text-red-600 bg-red-50 hover:bg-red-100 transition-colors"
-                            title="Delete (Admin only)"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -442,11 +526,11 @@ export default function AdminEntriesPage() {
       </div>
 
       {/* ========================================================= */}
-      {/* DETAIL MODAL (Item breakdown for selected entry)         */}
+      {/* DETAIL MODAL (Item breakdown & Display Requests)          */}
       {/* ========================================================= */}
       {selectedEntry && (
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-2xl max-h-[85vh] rounded-3xl shadow-2xl border border-slate-100 flex flex-col animate-scaleIn overflow-hidden">
+          <div className="bg-white w-full max-w-2xl max-h-[88vh] rounded-3xl shadow-2xl border border-slate-100 flex flex-col animate-scaleIn overflow-hidden">
             {/* Modal Header */}
             <div className="p-5 border-b border-slate-100 flex items-center justify-between">
               <div>
@@ -473,49 +557,148 @@ export default function AdminEntriesPage() {
               </button>
             </div>
 
+            {/* Modal Tab Switcher */}
+            <div className="px-5 pt-3 pb-1 border-b border-slate-100 flex gap-2">
+              <button
+                type="button"
+                onClick={() => setModalTab('items')}
+                className={`pb-2 px-3 text-xs font-bold border-b-2 transition-all ${
+                  modalTab === 'items'
+                    ? 'border-blue-700 text-blue-700'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
+                }`}
+              >
+                Model Display List ({entryItems.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setModalTab('requests')}
+                className={`pb-2 px-3 text-xs font-bold border-b-2 transition-all flex items-center gap-1.5 ${
+                  modalTab === 'requests'
+                    ? 'border-orange-600 text-orange-600'
+                    : 'border-transparent text-slate-500 hover:text-slate-700'
+                }`}
+              >
+                <span>Display Requests (ขอสินค้าตัวโชว์)</span>
+                {entryRequests.length > 0 && (
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-orange-100 text-orange-700">
+                    {entryRequests.length}
+                  </span>
+                )}
+              </button>
+            </div>
+
             {/* Modal Body */}
             <div className="p-5 overflow-y-auto flex-1 space-y-4">
               {loadingDetail ? (
                 <div className="py-12 text-center text-slate-400 text-xs flex items-center justify-center gap-2">
-                  <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading items...
+                  <Loader2 className="w-5 h-5 animate-spin text-blue-700" /> Loading details...
                 </div>
-              ) : entryItems.length === 0 ? (
-                <div className="py-8 text-center text-slate-400 text-xs">
-                  No items available
-                </div>
-              ) : (
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center bg-blue-50/70 p-3 rounded-xl border border-blue-100 text-xs">
-                    <span className="font-semibold text-blue-900">Total:</span>
-                    <span className="font-bold text-blue-700 font-mono text-sm">
-                      {selectedEntry.total_qty} unit(s) ({selectedEntry.total_models} model(s))
-                    </span>
+              ) : modalTab === 'items' ? (
+                /* Tab 1: Surveyed Models */
+                entryItems.length === 0 ? (
+                  <div className="py-8 text-center text-slate-400 text-xs">
+                    No items recorded
                   </div>
+                ) : (
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center bg-blue-50/70 p-3 rounded-xl border border-blue-100 text-xs">
+                      <span className="font-semibold text-blue-900">Total Display Units:</span>
+                      <span className="font-bold text-blue-700 font-mono text-sm">
+                        {selectedEntry.total_qty} unit(s) ({selectedEntry.total_models} model(s))
+                      </span>
+                    </div>
 
-                  <div className="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">
-                    {entryItems.map((item) => (
-                      <div key={item.id} className="p-3 flex items-center justify-between text-xs hover:bg-slate-50/60">
-                        <div>
-                          <div className="font-bold text-slate-900 font-mono text-sm">{item.model}</div>
-                          <div className="text-slate-500 mt-0.5 flex items-center gap-2">
-                            <span className="font-semibold text-slate-700">{item.Brand}</span>
-                            <span className="text-slate-300">•</span>
-                            <span>{item.Category}</span>
-                            {item.SubCategory && (
-                              <>
-                                <span className="text-slate-300">•</span>
-                                <span>{item.SubCategory}</span>
-                              </>
-                            )}
+                    <div className="divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">
+                      {entryItems.map((item) => (
+                        <div key={item.id} className="p-3 flex items-center justify-between text-xs hover:bg-slate-50/60">
+                          <div>
+                            <div className="font-bold text-slate-900 font-mono text-sm">{item.model}</div>
+                            <div className="text-slate-500 mt-0.5 flex items-center gap-2">
+                              <span className="font-semibold text-slate-700">{item.Brand}</span>
+                              <span className="text-slate-300">•</span>
+                              <span>{item.Category}</span>
+                              {item.SubCategory && (
+                                <>
+                                  <span className="text-slate-300">•</span>
+                                  <span>{item.SubCategory}</span>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                          <div className="text-right font-mono font-bold text-blue-700 text-base">
+                            {item.qty} <span className="text-[10px] text-slate-400 font-sans font-normal">unit(s)</span>
                           </div>
                         </div>
-                        <div className="text-right font-mono font-bold text-blue-700 text-base">
-                          {item.qty} <span className="text-[10px] text-slate-400 font-sans font-normal">unit(s)</span>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )
+              ) : (
+                /* Tab 2: Display Model Requests (ขอสินค้าตัวโชว์) */
+                entryRequests.length === 0 ? (
+                  <div className="py-8 text-center text-slate-400 text-xs">
+                    ไม่มีรายการขอสินค้าตัวโชว์สำหรับสาขานี้
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <div className="bg-orange-50/80 p-3 rounded-xl border border-orange-200 text-xs text-orange-950 font-medium">
+                      รายการขอสินค้าตัวโชว์เพิ่มเติม พร้อมรูปถ่ายตำแหน่งและพื้นที่สำหรับวางโชว์
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {entryRequests.map((reqItem) => (
+                        <div
+                          key={reqItem.id}
+                          className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs space-y-2 text-xs"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <div className="font-mono font-bold text-sm text-slate-900">
+                                {reqItem.model_name}
+                              </div>
+                              <div className="text-slate-500 text-[11px]">
+                                จำนวนที่ขอ: <span className="font-bold text-orange-700 font-mono">{reqItem.quantity}</span> เครื่อง
+                              </div>
+                            </div>
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                              {reqItem.status || 'Pending'}
+                            </span>
+                          </div>
+
+                          {reqItem.remark && (
+                            <div className="text-slate-600 text-[11px] bg-slate-50 p-2 rounded-lg">
+                              <span className="font-semibold text-slate-700">หมายเหตุ:</span> {reqItem.remark}
+                            </div>
+                          )}
+
+                          {reqItem.picture_url ? (
+                            <div className="pt-1">
+                              <div className="text-[10px] font-semibold text-slate-500 mb-1">
+                                รูปถ่ายพื้นที่ตั้งโชว์:
+                              </div>
+                              <div 
+                                onClick={() => setPreviewImage(reqItem.picture_url)}
+                                className="relative h-28 w-full rounded-xl overflow-hidden border border-slate-200 cursor-pointer group bg-slate-100"
+                              >
+                                <img
+                                  src={reqItem.picture_url}
+                                  alt={reqItem.model_name}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                />
+                                <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold text-xs gap-1">
+                                  <Eye className="w-4 h-4" /> ดูรูปขนาดเต็ม
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="text-[11px] text-slate-400 italic">ไม่มีรูปภาพแนบ</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )
               )}
             </div>
 
@@ -529,6 +712,31 @@ export default function AdminEntriesPage() {
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================= */}
+      {/* IMAGE LIGHTBOX MODAL                                      */}
+      {/* ========================================================= */}
+      {previewImage && (
+        <div 
+          onClick={() => setPreviewImage(null)}
+          className="fixed inset-0 z-60 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
+        >
+          <div className="relative max-w-3xl max-h-[90vh] bg-black rounded-2xl overflow-hidden shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setPreviewImage(null)}
+              className="absolute top-3 right-3 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={previewImage}
+              alt="Location photo preview"
+              className="max-h-[85vh] w-auto object-contain rounded-2xl"
+            />
           </div>
         </div>
       )}

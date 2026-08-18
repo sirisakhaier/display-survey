@@ -87,6 +87,23 @@ function initTables(db: Database.Database) {
     CREATE INDEX IF NOT EXISTS idx_items_entry ON display_entry_items(entry_id);
     CREATE INDEX IF NOT EXISTS idx_items_model ON display_entry_items(model);
 
+    CREATE TABLE IF NOT EXISTS display_requests (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      entry_id INTEGER NOT NULL,
+      store_id TEXT NOT NULL,
+      model_name TEXT NOT NULL,
+      quantity INTEGER NOT NULL DEFAULT 1,
+      remark TEXT,
+      picture_url TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'Pending',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (entry_id) REFERENCES display_entries(id) ON DELETE CASCADE,
+      FOREIGN KEY (store_id) REFERENCES stores(STORE_ID) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_requests_entry ON display_requests(entry_id);
+    CREATE INDEX IF NOT EXISTS idx_requests_store ON display_requests(store_id);
+
     CREATE TABLE IF NOT EXISTS admin_users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       username TEXT UNIQUE NOT NULL,
