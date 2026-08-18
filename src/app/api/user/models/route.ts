@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       const allModels = db.prepare(`
         SELECT Model, Brand, Category, SubCategory, Active_Inactive
         FROM models 
-        WHERE Active_Inactive = 'Active'
+        WHERE LOWER(TRIM(Active_Inactive)) = 'active'
         ORDER BY Category ASC, Brand ASC, Model ASC
       `).all();
 
@@ -34,7 +34,9 @@ export async function GET(req: NextRequest) {
       const categories = db.prepare(`
         SELECT DISTINCT Category 
         FROM models 
-        WHERE Active_Inactive = 'Active' 
+        WHERE LOWER(TRIM(Active_Inactive)) = 'active'
+          AND Category IS NOT NULL 
+          AND TRIM(Category) != ''
         ORDER BY Category ASC
       `).all() as { Category: string }[];
 
@@ -49,7 +51,10 @@ export async function GET(req: NextRequest) {
       const subcategories = db.prepare(`
         SELECT DISTINCT SubCategory 
         FROM models 
-        WHERE Category = ? AND Active_Inactive = 'Active' AND SubCategory IS NOT NULL AND SubCategory != ''
+        WHERE TRIM(Category) = TRIM(?) COLLATE NOCASE 
+          AND LOWER(TRIM(Active_Inactive)) = 'active' 
+          AND SubCategory IS NOT NULL 
+          AND TRIM(SubCategory) != ''
         ORDER BY SubCategory ASC
       `).all(category) as { SubCategory: string }[];
 
@@ -64,12 +69,15 @@ export async function GET(req: NextRequest) {
       let query = `
         SELECT DISTINCT Brand 
         FROM models 
-        WHERE Category = ? AND Active_Inactive = 'Active'
+        WHERE TRIM(Category) = TRIM(?) COLLATE NOCASE 
+          AND LOWER(TRIM(Active_Inactive)) = 'active'
+          AND Brand IS NOT NULL
+          AND TRIM(Brand) != ''
       `;
       const params: any[] = [category];
 
       if (subcategory && subcategory !== 'all') {
-        query += ` AND SubCategory = ?`;
+        query += ` AND TRIM(SubCategory) = TRIM(?) COLLATE NOCASE`;
         params.push(subcategory);
       }
 
@@ -86,22 +94,22 @@ export async function GET(req: NextRequest) {
     let query = `
       SELECT Model, Brand, Category, SubCategory, Active_Inactive
       FROM models 
-      WHERE Active_Inactive = 'Active'
+      WHERE LOWER(TRIM(Active_Inactive)) = 'active'
     `;
     const params: any[] = [];
 
     if (category && category !== 'all') {
-      query += ` AND Category = ?`;
+      query += ` AND TRIM(Category) = TRIM(?) COLLATE NOCASE`;
       params.push(category);
     }
 
     if (subcategory && subcategory !== 'all') {
-      query += ` AND SubCategory = ?`;
+      query += ` AND TRIM(SubCategory) = TRIM(?) COLLATE NOCASE`;
       params.push(subcategory);
     }
 
     if (brand && brand !== 'all') {
-      query += ` AND Brand = ?`;
+      query += ` AND TRIM(Brand) = TRIM(?) COLLATE NOCASE`;
       params.push(brand);
     }
 
@@ -123,7 +131,10 @@ export async function GET(req: NextRequest) {
       const bRows = db.prepare(`
         SELECT DISTINCT Brand 
         FROM models 
-        WHERE Category = ? AND Active_Inactive = 'Active' 
+        WHERE TRIM(Category) = TRIM(?) COLLATE NOCASE 
+          AND LOWER(TRIM(Active_Inactive)) = 'active' 
+          AND Brand IS NOT NULL
+          AND TRIM(Brand) != ''
         ORDER BY Brand ASC
       `).all(category) as { Brand: string }[];
       availableBrands = bRows.map((b) => b.Brand);
@@ -131,7 +142,10 @@ export async function GET(req: NextRequest) {
       const sRows = db.prepare(`
         SELECT DISTINCT SubCategory 
         FROM models 
-        WHERE Category = ? AND Active_Inactive = 'Active' AND SubCategory IS NOT NULL AND SubCategory != ''
+        WHERE TRIM(Category) = TRIM(?) COLLATE NOCASE 
+          AND LOWER(TRIM(Active_Inactive)) = 'active' 
+          AND SubCategory IS NOT NULL 
+          AND TRIM(SubCategory) != ''
         ORDER BY SubCategory ASC
       `).all(category) as { SubCategory: string }[];
       availableSubCategories = sRows.map((s) => s.SubCategory);

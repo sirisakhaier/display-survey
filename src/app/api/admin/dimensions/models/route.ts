@@ -186,7 +186,7 @@ export async function PATCH(req: NextRequest) {
       const res = db.prepare(`
         UPDATE models 
         SET Active_Inactive = ?, Update_by = ?, Update_date = ? 
-        WHERE Brand = ?
+        WHERE TRIM(Brand) = TRIM(?) COLLATE NOCASE
       `).run(status, updatedBy, now, brand);
       updatedCount = res.changes;
       logDetail = `Bulk update all models for Brand [${brand}] to ${status} (${updatedCount} models)`;
@@ -196,7 +196,7 @@ export async function PATCH(req: NextRequest) {
       const res = db.prepare(`
         UPDATE models 
         SET Active_Inactive = ?, Update_by = ?, Update_date = ? 
-        WHERE Category = ?
+        WHERE TRIM(Category) = TRIM(?) COLLATE NOCASE
       `).run(status, updatedBy, now, category);
       updatedCount = res.changes;
       logDetail = `Bulk update all models in Category [${category}] to ${status} (${updatedCount} models)`;

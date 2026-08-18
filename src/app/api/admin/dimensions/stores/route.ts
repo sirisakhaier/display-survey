@@ -158,13 +158,13 @@ export async function PATCH(req: NextRequest) {
     }
     // 3. By Customer
     else if (customer) {
-      const res = db.prepare('UPDATE stores SET Active_Inactive = ? WHERE Customer = ?').run(status, customer);
+      const res = db.prepare('UPDATE stores SET Active_Inactive = ? WHERE TRIM(Customer) = TRIM(?) COLLATE NOCASE').run(status, customer);
       updatedCount = res.changes;
       logDetail = `Bulk update all stores for Customer [${customer}] to ${status} (${updatedCount} stores)`;
     }
     // 4. By Region
     else if (region) {
-      const res = db.prepare('UPDATE stores SET Active_Inactive = ? WHERE Region_TH = ?').run(status, region);
+      const res = db.prepare('UPDATE stores SET Active_Inactive = ? WHERE TRIM(Region_TH) = TRIM(?) COLLATE NOCASE').run(status, region);
       updatedCount = res.changes;
       logDetail = `Bulk update all stores in Region [${region}] to ${status} (${updatedCount} stores)`;
     }

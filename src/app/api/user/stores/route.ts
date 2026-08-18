@@ -16,7 +16,9 @@ export async function GET(req: NextRequest) {
       const customers = db.prepare(`
         SELECT DISTINCT Customer 
         FROM stores 
-        WHERE Active_Inactive = 'Active' 
+        WHERE LOWER(TRIM(Active_Inactive)) = 'active'
+          AND Customer IS NOT NULL 
+          AND TRIM(Customer) != ''
         ORDER BY Customer ASC
       `).all() as { Customer: string }[];
 
@@ -31,7 +33,10 @@ export async function GET(req: NextRequest) {
       const regions = db.prepare(`
         SELECT DISTINCT Region_TH 
         FROM stores 
-        WHERE Customer = ? AND Active_Inactive = 'Active' 
+        WHERE TRIM(Customer) = TRIM(?) COLLATE NOCASE 
+          AND LOWER(TRIM(Active_Inactive)) = 'active'
+          AND Region_TH IS NOT NULL 
+          AND TRIM(Region_TH) != ''
         ORDER BY Region_TH ASC
       `).all(customer) as { Region_TH: string }[];
 
@@ -51,7 +56,9 @@ export async function GET(req: NextRequest) {
         Province_TH,
         Region_TH
       FROM stores 
-      WHERE Customer = ? AND Region_TH = ? AND Active_Inactive = 'Active' 
+      WHERE TRIM(Customer) = TRIM(?) COLLATE NOCASE 
+        AND TRIM(Region_TH) = TRIM(?) COLLATE NOCASE 
+        AND LOWER(TRIM(Active_Inactive)) = 'active' 
       ORDER BY Province_TH ASC, Store_Name_TH ASC
     `).all(customer, region);
 
