@@ -34,7 +34,8 @@ import {
   Camera,
   Trash2,
   Image as ImageIcon,
-  Edit
+  Edit,
+  Home
 } from 'lucide-react';
 
 interface StoreItem {
@@ -760,6 +761,20 @@ export default function UserSurveyPage() {
     } finally {
       setRequestSubmitting(false);
     }
+  };
+
+  const handleEndInputAndReset = () => {
+    setSelectedStore(null);
+    setSelectedStoreId('');
+    setSelectedCustomer('');
+    setSelectedRegion('');
+    setPreviousData(null);
+    setUserName('');
+    setUserPhone('');
+    setCounts({});
+    setDisplayRequests([]);
+    setStep(1);
+    setAppSection('survey');
   };
 
   return (
@@ -1512,77 +1527,79 @@ export default function UserSurveyPage() {
                 ไม่พบรุ่นสินค้าสำหรับแบรนด์ {selectedBrand} ในหมวดหมู่นี้
               </div>
             ) : (
-              <div className="space-y-1.5 pb-20">
+              <div className="space-y-1.5 pb-24">
                 <div className="text-[10px] font-bold text-slate-500 uppercase px-1">
                   รายการรุ่นสินค้า ({displayedModels.length} รุ่น):
                 </div>
 
-                {displayedModels.map((item) => {
-                  const qty = counts[item.Model] || 0;
-                  return (
-                    <div
-                      key={item.Model}
-                      className={`p-2.5 sm:p-3 rounded-xl border transition-all flex items-center justify-between gap-2.5 ${
-                        qty > 0
-                          ? 'bg-blue-50/60 border-blue-300 shadow-xs'
-                          : 'bg-white border-slate-200 hover:border-slate-300'
-                      }`}
-                    >
-                      {/* Left Side: Model Info (Clean & Space Saving) */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1 flex-wrap">
-                          <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-white">
-                            {item.Brand}
-                          </span>
-                          {item.SubCategory && (
-                            <span className="text-[9px] font-medium px-1.5 py-0.2 rounded bg-slate-100 text-slate-600">
-                              {item.SubCategory}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {displayedModels.map((item) => {
+                    const qty = counts[item.Model] || 0;
+                    return (
+                      <div
+                        key={item.Model}
+                        className={`p-2.5 rounded-xl border transition-all flex items-center justify-between gap-2 ${
+                          qty > 0
+                            ? 'bg-blue-50/70 border-blue-300 shadow-xs ring-1 ring-blue-200'
+                            : 'bg-white border-slate-200 hover:border-slate-300'
+                        }`}
+                      >
+                        {/* Left Side: Model Info (Compact & Clear) */}
+                        <div className="flex-1 min-w-0 pr-1">
+                          <div className="flex items-center gap-1 flex-wrap mb-0.5">
+                            <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-white leading-none">
+                              {item.Brand}
                             </span>
-                          )}
+                            {item.SubCategory && (
+                              <span className="text-[9px] font-medium px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 truncate max-w-[90px] leading-none">
+                                {item.SubCategory}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-xs sm:text-sm font-bold text-slate-900 font-mono truncate leading-tight" title={item.Model}>
+                            {item.Model}
+                          </div>
                         </div>
-                        <div className="text-xs sm:text-sm font-bold text-slate-900 font-mono mt-0.5 truncate leading-tight">
-                          {item.Model}
+
+                        {/* Right Side: Stepper Counter Controls */}
+                        <div className="flex items-center gap-1 flex-shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => decrementCount(item.Model)}
+                            disabled={qty <= 0}
+                            className="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold hover:bg-slate-200 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all touch-press"
+                            aria-label="ลดจำนวน"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+
+                          <div className="w-9 sm:w-10 text-center">
+                            <input
+                              type="number"
+                              min="0"
+                              value={qty}
+                              onChange={(e) => setCountDirect(item.Model, parseInt(e.target.value, 10) || 0)}
+                              className={`w-full py-0.5 text-center font-bold text-xs sm:text-sm font-mono rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-600 ${
+                                qty > 0
+                                  ? 'bg-white text-blue-700 border-blue-300 shadow-inner'
+                                  : 'bg-slate-50 text-slate-400 border-slate-200'
+                              }`}
+                            />
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => incrementCount(item.Model)}
+                            className="w-7 h-7 rounded-lg bg-blue-700 text-white flex items-center justify-center font-bold hover:bg-blue-800 active:scale-95 transition-all shadow-xs touch-press"
+                            aria-label="เพิ่มจำนวน"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
                         </div>
                       </div>
-
-                      {/* Right Side: Number Input & Stepper Controls */}
-                      <div className="flex items-center gap-1 flex-shrink-0">
-                        <button
-                          type="button"
-                          onClick={() => decrementCount(item.Model)}
-                          disabled={qty <= 0}
-                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center font-bold hover:bg-slate-200 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all touch-press"
-                          aria-label="ลดจำนวน"
-                        >
-                          <Minus className="w-3.5 h-3.5" />
-                        </button>
-
-                        <div className="w-11 sm:w-12 text-center">
-                          <input
-                            type="number"
-                            min="0"
-                            value={qty}
-                            onChange={(e) => setCountDirect(item.Model, parseInt(e.target.value, 10) || 0)}
-                            className={`w-full py-0.5 text-center font-bold text-sm sm:text-base font-mono rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-600 ${
-                              qty > 0
-                                ? 'bg-white text-blue-700 border-blue-300 shadow-inner'
-                                : 'bg-slate-50 text-slate-400 border-slate-200'
-                            }`}
-                          />
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => incrementCount(item.Model)}
-                          className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-700 text-white flex items-center justify-center font-bold hover:bg-blue-800 active:scale-95 transition-all shadow-xs touch-press"
-                          aria-label="เพิ่มจำนวน"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -1774,7 +1791,7 @@ export default function UserSurveyPage() {
                 </div>
               )}
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 pt-1">
                 <button
                   type="button"
                   onClick={() => {
@@ -1784,28 +1801,26 @@ export default function UserSurveyPage() {
                     }
                     setStep(3);
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 flex items-center justify-center gap-1.5 touch-press"
                 >
                   <Camera className="w-4 h-4" />
                   <span>ขอสินค้าตัวโชว์สำหรับสาขานี้ต่อ (Request Display)</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setSelectedStore(null);
-                    setSelectedStoreId('');
-                    setSelectedCustomer('');
-                    setSelectedRegion('');
-                    setPreviousData(null);
-                    setUserName('');
-                    setUserPhone('');
-                    setCounts({});
-                    setDisplayRequests([]);
-                    setStep(1);
-                  }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all"
+                  onClick={handleEndInputAndReset}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all flex items-center justify-center gap-1.5 touch-press"
                 >
-                  บันทึกสาขาอื่นต่อไป
+                  <Store className="w-4 h-4" />
+                  <span>บันทึกสาขาอื่นต่อไป (Next Store)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleEndInputAndReset}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all flex items-center justify-center gap-1.5 touch-press"
+                >
+                  <Home className="w-4 h-4 text-slate-600" />
+                  <span>จบการบันทึก / กลับสู่หน้าหลัก (End Input & Back to Home)</span>
                 </button>
               </div>
             </div>
@@ -2078,7 +2093,7 @@ export default function UserSurveyPage() {
                 </div>
               )}
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 pt-1">
                 <button
                   type="button"
                   onClick={() => {
@@ -2086,9 +2101,10 @@ export default function UserSurveyPage() {
                     addDisplayRequest();
                     setStep(3);
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 flex items-center justify-center gap-1.5 touch-press"
                 >
-                  + ขอสินค้ารุ่นอื่นเพิ่มเติมสำหรับสาขานี้
+                  <Plus className="w-4 h-4" />
+                  <span>ขอสินค้ารุ่นอื่นเพิ่มเติมสำหรับสาขานี้</span>
                 </button>
                 <button
                   type="button"
@@ -2097,28 +2113,26 @@ export default function UserSurveyPage() {
                     loadProductCategories();
                     setStep(3);
                   }}
-                  className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors flex items-center justify-center gap-1.5"
+                  className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors flex items-center justify-center gap-1.5 touch-press"
                 >
                   <FileSpreadsheet className="w-3.5 h-3.5" />
                   <span>สลับไปบันทึกจำนวนตัวโชว์สาขานี้ (Survey Count)</span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    setSelectedStore(null);
-                    setSelectedStoreId('');
-                    setSelectedCustomer('');
-                    setSelectedRegion('');
-                    setPreviousData(null);
-                    setUserName('');
-                    setUserPhone('');
-                    setCounts({});
-                    setDisplayRequests([]);
-                    setStep(1);
-                  }}
-                  className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-500 hover:bg-slate-100 transition-colors"
+                  onClick={handleEndInputAndReset}
+                  className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors flex items-center justify-center gap-1.5 touch-press"
                 >
-                  บันทึกสาขาอื่นต่อไป
+                  <Store className="w-4 h-4" />
+                  <span>บันทึกสาขาอื่นต่อไป (Next Store)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleEndInputAndReset}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all flex items-center justify-center gap-1.5 touch-press"
+                >
+                  <Home className="w-4 h-4 text-slate-600" />
+                  <span>จบการบันทึก / กลับสู่หน้าหลัก (End Input & Back to Home)</span>
                 </button>
               </div>
             </div>
