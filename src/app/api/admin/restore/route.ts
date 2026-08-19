@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { getDb, REQUESTS_UPLOADS_DIR } from '@/lib/db';
 import { authorizeAdmin } from '@/lib/auth';
+import fs from 'fs';
+import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,6 +19,14 @@ export async function POST(req: NextRequest) {
         { success: false, error: 'ไฟล์สำรองข้อมูลไม่ถูกต้อง (ไม่พบข้อมูล stores หรือ models)' },
         { status: 400 }
       );
+    }
+
+    const publicRequestsDir = path.join(process.cwd(), 'public', 'uploads', 'requests');
+    if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
+      fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(publicRequestsDir)) {
+      fs.mkdirSync(publicRequestsDir, { recursive: true });
     }
 
     const db = getDb();
@@ -106,7 +116,7 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      // 4. Restore Requests
+      // 4. Restore Requests and write pictures to disk
       if (Array.isArray(requests)) {
         db.exec('DELETE FROM display_requests');
         const insertReq = db.prepare(`
@@ -114,7 +124,27 @@ export async function POST(req: NextRequest) {
             id, entry_id, store_id, user_name, user_phone, model_name, quantity, remark, picture_url, status, created_at
           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `);
+
         for (const r of requests) {
+          let pictureUrl = r.picture_url;
+
+          // If picture_base64 is present, write image file to disk
+          if (r.picture_base64 && typeof r.picture_base64 === 'string') {
+            try {
+              let filename = r.picture_url ? path.basename(r.picture_url) : `req_${r.id || Date.now()}_restored.jpg`;
+              if (!filename.includes('.')) filename += '.jpg';
+
+              const base64Data = r.picture_base64.replace(/^data:image\/\w+;base64,/, '');
+              const buffer = Buffer.from(base64Data, 'base64');
+
+              fs.writeFileSync(path.join(REQUESTS_UPLOADS_DIR, filename), buffer);
+              fs.writeFileSync(path.join(publicRequestsDir, filename), buffer);
+              pictureUrl = `/uploads/requests/${filename}`;
+            } catch (err) {
+              console.error('Error writing restored picture to disk:', err);
+            }
+          }
+
           insertReq.run(
             r.id,
             r.entry_id || null,
@@ -124,7 +154,7 @@ export async function POST(req: NextRequest) {
             r.model_name,
             r.quantity || 1,
             r.remark || null,
-            r.picture_url || null,
+            pictureUrl || null,
             r.status || 'Pending',
             r.created_at || new Date().toISOString()
           );
@@ -136,7 +166,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'กู้คืนข้อมูลทั้งหมดสำเร็จสมบูรณ์!',
+      message: 'กู้คืนข้อมูลและรูปภาพทั้งหมดสำเร็จสมบูรณ์!',
       restored: {
         stores: stores?.length || 0,
         models: models?.length || 0,
