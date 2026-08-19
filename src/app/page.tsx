@@ -59,7 +59,7 @@ interface ProductItem {
 interface DisplayRequestInput {
   id: string;
   model_name: string;
-  quantity: number;
+  quantity: number | string;
   remark: string;
   picture_base64: string;
   picture_preview: string;
@@ -813,7 +813,7 @@ export default function UserSurveyPage() {
           user_phone: cleanPhone,
           requests: displayRequests.map((r) => ({
             model_name: r.model_name.trim(),
-            quantity: Math.max(1, r.quantity || 1),
+            quantity: Math.max(1, parseInt(String(r.quantity), 10) || 1),
             remark: (r.remark || '').trim(),
             picture_base64: r.picture_base64,
           })),
@@ -2126,8 +2126,21 @@ export default function UserSurveyPage() {
                         <input
                           type="number"
                           min="1"
-                          value={reqItem.quantity}
-                          onChange={(e) => updateDisplayRequest(reqItem.id, 'quantity', parseInt(e.target.value, 10) || 1)}
+                          value={reqItem.quantity === '' ? '' : reqItem.quantity}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            if (val === '') {
+                              updateDisplayRequest(reqItem.id, 'quantity', '');
+                            } else {
+                              const parsed = parseInt(val, 10);
+                              updateDisplayRequest(reqItem.id, 'quantity', isNaN(parsed) ? '' : Math.max(1, parsed));
+                            }
+                          }}
+                          onBlur={() => {
+                            if (reqItem.quantity === '' || Number(reqItem.quantity) < 1) {
+                              updateDisplayRequest(reqItem.id, 'quantity', 1);
+                            }
+                          }}
                           className="w-full text-xs font-mono font-bold bg-white border border-slate-200 rounded-lg px-2.5 py-2 text-center focus:outline-none focus:ring-2 focus:ring-orange-500"
                         />
                       </div>
