@@ -5,7 +5,35 @@ import Papa from 'papaparse';
 import bcrypt from 'bcryptjs';
 import { normalizeCategory, cleanSubCategory } from './normalize';
 
-export const DATA_DIR = process.env.DATA_DIR || (process.env.DATABASE_PATH ? path.dirname(process.env.DATABASE_PATH) : path.join(process.cwd(), 'data'));
+function resolveDataDir(): string {
+  if (process.env.DATA_DIR && process.env.DATA_DIR.trim()) {
+    return process.env.DATA_DIR.trim();
+  }
+  if (process.env.DATABASE_PATH && process.env.DATABASE_PATH.trim()) {
+    return path.dirname(process.env.DATABASE_PATH.trim());
+  }
+  // Check if standard persistent mount /data exists (standard Railway / Docker volume mount)
+  if (fs.existsSync('/data')) {
+    try {
+      fs.accessSync('/data', fs.constants.W_OK);
+      return '/data';
+    } catch {
+      // not writable
+    }
+  }
+  // Check /app/data
+  if (fs.existsSync('/app/data')) {
+    try {
+      fs.accessSync('/app/data', fs.constants.W_OK);
+      return '/app/data';
+    } catch {
+      // not writable
+    }
+  }
+  return path.join(process.cwd(), 'data');
+}
+
+export const DATA_DIR = resolveDataDir();
 export const DB_PATH = process.env.DATABASE_PATH || path.join(DATA_DIR, 'display_survey.db');
 export const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(DATA_DIR, 'uploads');
 export const REQUESTS_UPLOADS_DIR = path.join(UPLOADS_DIR, 'requests');
@@ -14,20 +42,25 @@ const STORE_CSV_PATH = path.join(process.cwd(), 'Dimension Store.csv');
 const MODEL_CSV_PATH = path.join(process.cwd(), 'Dimension Model.csv');
 
 // Ensure persistent data and upload directories exist
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-if (!fs.existsSync(UPLOADS_DIR)) {
-  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
-}
-if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
-  fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(UPLOADS_DIR)) {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
+    fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
+  }
+} catch (e) {
+  console.error('[DB Storage] Directory creation warning:', e);
 }
 
 let dbInstance: Database.Database | null = null;
 
 export function getDb(): Database.Database {
   if (!dbInstance) {
+    console.log(`[DB Init] Initializing SQLite database at: ${DB_PATH}`);
     dbInstance = new Database(DB_PATH);
     dbInstance.pragma('journal_mode = WAL');
     dbInstance.pragma('foreign_keys = ON');

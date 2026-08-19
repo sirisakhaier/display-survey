@@ -12,7 +12,10 @@ import {
   Building2, 
   MapPin, 
   Award,
-  Loader2
+  Loader2,
+  HardDrive,
+  ShieldCheck,
+  AlertTriangle
 } from 'lucide-react';
 import { 
   BarChart, 
@@ -42,6 +45,8 @@ export default function AdminDashboardPage() {
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
 
+  const [systemStatus, setSystemStatus] = useState<any>(null);
+
   const fetchDashboardData = async () => {
     setLoading(true);
     try {
@@ -63,7 +68,7 @@ export default function AdminDashboardPage() {
     }
   };
 
-  // Initial Load: Fetch filter options and dashboard stats
+  // Initial Load: Fetch filter options, dashboard stats and system storage status
   useEffect(() => {
     const loadFilterOptions = async () => {
       try {
@@ -78,7 +83,20 @@ export default function AdminDashboardPage() {
       }
     };
 
+    const loadSystemStatus = async () => {
+      try {
+        const res = await fetch('/api/admin/system-status');
+        const d = await res.json();
+        if (d.success) {
+          setSystemStatus(d);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
     loadFilterOptions();
+    loadSystemStatus();
   }, []);
 
   useEffect(() => {
@@ -119,6 +137,29 @@ export default function AdminDashboardPage() {
             Display Survey Analytics & Store Coverage Dashboard
           </p>
         </div>
+
+        {/* Persistent Storage Health Pill */}
+        {systemStatus && (
+          <div className="flex items-center gap-2">
+            {systemStatus.isPersistentVolume ? (
+              <div 
+                className="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2 shadow-xs"
+                title={`Database: ${systemStatus.dbPath} (${systemStatus.dbSizeFormatted})`}
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Storage: Persistent Volume Active ({systemStatus.dataDir})</span>
+              </div>
+            ) : (
+              <div 
+                className="px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold flex items-center gap-2 shadow-xs"
+                title="Please mount a Railway Volume to /data or /app/data to preserve SQLite data across deploys."
+              >
+                <AlertTriangle className="w-4 h-4 text-amber-600" />
+                <span>Storage: Ephemeral (No Railway Volume mounted to /data)</span>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Filter Control Bar */}
