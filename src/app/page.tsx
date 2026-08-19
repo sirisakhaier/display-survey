@@ -126,6 +126,8 @@ export default function UserSurveyPage() {
   const [checkingPrevious, setCheckingPrevious] = useState<boolean>(false);
   const [previousData, setPreviousData] = useState<PreviousDataResponse | null>(null);
   const [showPreviousWarningModal, setShowPreviousWarningModal] = useState<boolean>(false);
+  const [showPreviousRequestModal, setShowPreviousRequestModal] = useState<boolean>(false);
+  const [previousRequestsList, setPreviousRequestsList] = useState<any[]>([]);
 
   // 2. Staff Info State - ALWAYS START BLANK (Req 2)
   const [userName, setUserName] = useState<string>('');
@@ -265,6 +267,9 @@ export default function UserSurveyPage() {
     if (!storeId) {
       setSelectedStore(null);
       setPreviousData(null);
+      setPreviousRequestsList([]);
+      setShowPreviousWarningModal(false);
+      setShowPreviousRequestModal(false);
       return;
     }
 
@@ -276,11 +281,26 @@ export default function UserSurveyPage() {
       try {
         const res = await fetch(`/api/user/store-previous/${storeObj.STORE_ID}`);
         const data = await res.json();
-        if (data.success && data.hasPrevious && data.entry) {
+        if (data.success) {
           setPreviousData(data);
-          setShowPreviousWarningModal(true); // Open warning dialog with details
+
+          if (appSection === 'request') {
+            if (data.previousRequests && data.previousRequests.length > 0) {
+              setPreviousRequestsList(data.previousRequests);
+              setShowPreviousRequestModal(true);
+            } else {
+              setPreviousRequestsList([]);
+              setShowPreviousRequestModal(false);
+            }
+          } else {
+            // Survey section
+            if (data.hasPrevious && data.entry) {
+              setShowPreviousWarningModal(true);
+            }
+          }
         } else {
           setPreviousData(null);
+          setPreviousRequestsList([]);
         }
       } catch (err) {
         console.error(err);
@@ -331,7 +351,58 @@ export default function UserSurveyPage() {
     setSelectedStoreId('');
     setSelectedStore(null);
     setPreviousData(null);
+    setPreviousRequestsList([]);
     setShowPreviousWarningModal(false);
+    setShowPreviousRequestModal(false);
+  };
+
+  // Request Section: Revise previous requests into form
+  const handleRevisePreviousRequests = () => {
+    if (previousRequestsList && previousRequestsList.length > 0) {
+      const items: DisplayRequestInput[] = previousRequestsList.map((r) => ({
+        id: 'req_' + (r.id || Date.now()) + '_' + Math.random().toString(36).slice(2, 6),
+        model_name: r.model_name || '',
+        quantity: r.quantity || 1,
+        remark: r.remark || '',
+        picture_base64: '',
+        picture_preview: r.picture_url || '',
+      }));
+      setDisplayRequests(items);
+
+      if (previousRequestsList[0]?.user_name) {
+        setUserName(previousRequestsList[0].user_name);
+      }
+      if (previousRequestsList[0]?.user_phone) {
+        setUserPhone(previousRequestsList[0].user_phone);
+      }
+    }
+    setShowPreviousRequestModal(false);
+    setStep(2);
+  };
+
+  // Request Section: Start fresh request
+  const handleProceedToNewRequest = () => {
+    setDisplayRequests([
+      {
+        id: 'req_' + Date.now(),
+        model_name: '',
+        quantity: 1,
+        remark: '',
+        picture_base64: '',
+        picture_preview: '',
+      },
+    ]);
+    setUserName('');
+    setUserPhone('');
+    setShowPreviousRequestModal(false);
+    setStep(2);
+  };
+
+  const handleCancelRequestStore = () => {
+    setSelectedStoreId('');
+    setSelectedStore(null);
+    setPreviousRequestsList([]);
+    setShowPreviousRequestModal(false);
   };
 
   // -------------------------------------------------------------
@@ -1213,6 +1284,133 @@ export default function UserSurveyPage() {
                   <Store className="w-3.5 h-3.5" />
                   เปลี่ยนสาขา
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Warning Modal: Store Already Has Display Requests (Req) */}
+        {showPreviousRequestModal && selectedStore && previousRequestsList.length > 0 && (
+          <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
+            <div className="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-amber-200 space-y-4 animate-scaleIn max-h-[90vh] flex flex-col">
+              {/* Header */}
+              <div className="flex items-start gap-3 pb-3 border-b border-slate-100 flex-shrink-0">
+                <div className="p-2.5 rounded-xl bg-amber-100 text-amber-700 flex-shrink-0 mt-0.5">
+                  <AlertTriangle className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-bold text-slate-900 leading-snug">
+                    สาขานี้เคยมีรายการขอสินค้าตัวโชว์แล้ว
+                  </h3>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    สาขา: <strong className="text-slate-900">{selectedStore.Store_Name_TH}</strong> ({selectedStore.Customer} - จ.{selectedStore.Province_TH})
+                  </p>
+                </div>
+              </div>
+
+              {/* Notice & Previous Requests Summary List */}
+              <div className="flex-1 overflow-y-auto space-y-3 pr-1 text-xs">
+                <div className="p-3 bg-amber-50/80 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-center justify-between">
+                  <span>ประวัติคำขอตัวโชว์เดิมของสาขานี้:</span>
+                  <span className="font-bold px-2 py-0.5 rounded-md bg-amber-200 text-amber-950 font-mono">
+                    {previousRequestsList.length} รายการ
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  {previousRequestsList.map((reqItem, idx) => (
+                    <div key={reqItem.id || idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="font-bold text-slate-900 text-xs flex items-center gap-1.5">
+                          <span className="text-slate-400 font-mono">#{idx + 1}</span>
+                          <span className="text-blue-800">{reqItem.model_name}</span>
+                          <span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-mono">
+                            {reqItem.quantity} เครื่อง
+                          </span>
+                        </div>
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          reqItem.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' :
+                          reqItem.status === 'Rejected' ? 'bg-red-100 text-red-800' :
+                          'bg-amber-100 text-amber-800'
+                        }`}>
+                          {reqItem.status || 'Pending'}
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-600">
+                        <div>
+                          <span className="text-slate-400">ผู้ขอ: </span>
+                          <strong className="text-slate-800">{reqItem.user_name || '-'}</strong>
+                          {reqItem.user_phone && <span className="font-mono text-slate-500"> ({reqItem.user_phone})</span>}
+                        </div>
+                        <div className="text-right text-slate-500 font-mono text-[10px]">
+                          {reqItem.created_at ? new Date(reqItem.created_at).toLocaleString('th-TH') : '-'}
+                        </div>
+                      </div>
+
+                      {reqItem.remark && (
+                        <div className="text-[11px] text-slate-600 bg-white p-2 rounded-lg border border-slate-100">
+                          <span className="text-slate-400">ตำแหน่ง / หมายเหตุ: </span>
+                          <span>{reqItem.remark}</span>
+                        </div>
+                      )}
+
+                      {reqItem.picture_url && (
+                        <div className="flex items-center gap-2 pt-1">
+                          <img
+                            src={reqItem.picture_url}
+                            alt={reqItem.model_name}
+                            className="w-16 h-12 object-cover rounded-lg border border-slate-200"
+                          />
+                          <span className="text-[11px] text-slate-500">มีรูปถ่ายพื้นที่ตั้งโชว์เดิม</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-2 pt-2 border-t border-slate-100 flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={handleRevisePreviousRequests}
+                  className="w-full p-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-left transition-all shadow-md shadow-blue-700/20 flex items-center justify-between group touch-press"
+                >
+                  <div>
+                    <div className="font-bold text-xs flex items-center gap-1.5">
+                      <span>1. ยืนยันแก้ไข / อัปเดตคำขอเดิม (Update Request)</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <div className="text-[10px] text-blue-100 mt-0.5">
+                      ดึงข้อมูลและรูปภาพเดิมขึ้นมา เพื่อแก้ไขจำนวน, เพิ่มรุ่นใหม่ หรือเปลี่ยนรูป
+                    </div>
+                  </div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleProceedToNewRequest}
+                  className="w-full p-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-left transition-all border border-slate-200 flex items-center justify-between touch-press"
+                >
+                  <div>
+                    <div className="font-bold text-xs">2. เริ่มสร้างคำขอใหม่ (Create New Request)</div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">
+                      สร้างรายการขอสินค้าตัวโชว์ชุดใหม่แบบว่างเปล่า
+                    </div>
+                  </div>
+                </button>
+
+                <div className="text-center pt-1">
+                  <button
+                    type="button"
+                    onClick={handleCancelRequestStore}
+                    className="text-[11px] font-semibold text-slate-500 hover:text-slate-700 hover:underline inline-flex items-center gap-1"
+                  >
+                    <Store className="w-3.5 h-3.5" />
+                    เปลี่ยนสาขา (Change Store)
+                  </button>
+                </div>
               </div>
             </div>
           </div>

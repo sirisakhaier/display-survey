@@ -24,6 +24,14 @@ export async function GET(
       LIMIT 1
     `).get(storeId) as any;
 
+    // Fetch previous display requests for this store
+    const previousRequests = db.prepare(`
+      SELECT id, model_name, quantity, remark, picture_url, status, user_name, user_phone, created_at
+      FROM display_requests
+      WHERE store_id = ?
+      ORDER BY created_at DESC
+    `).all(storeId) as any[];
+
     if (!latestEntry) {
       return NextResponse.json({
         success: true,
@@ -32,6 +40,8 @@ export async function GET(
         items: {},
         itemDetails: [],
         categorySummary: [],
+        previousRequests,
+        hasPreviousRequests: previousRequests.length > 0,
         totalQty: 0,
         totalModels: 0,
       });
@@ -85,6 +95,8 @@ export async function GET(
       items: itemMap,
       itemDetails: items,
       categorySummary,
+      previousRequests,
+      hasPreviousRequests: previousRequests.length > 0,
       totalQty,
       totalModels: items.length,
     });
