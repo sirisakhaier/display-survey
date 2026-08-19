@@ -66,6 +66,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           return;
         }
         setUser(data.user);
+        if (data.user.role === 'viewer' && pathname.startsWith('/admin/dimensions')) {
+          router.push('/admin/dashboard');
+        }
       } catch (err) {
         console.error(err);
         router.push('/login');
@@ -74,7 +77,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       }
     };
     checkAuth();
-  }, [router]);
+  }, [router, pathname]);
+
+  // Route guard: if viewer navigates to dimensions, redirect to dashboard
+  useEffect(() => {
+    if (user && user.role === 'viewer' && pathname.startsWith('/admin/dimensions')) {
+      router.push('/admin/dashboard');
+    }
+  }, [user, pathname, router]);
 
   const handleLogout = async () => {
     try {
@@ -103,7 +113,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Recorded Entries', href: '/admin/entries', icon: FileSpreadsheet },
     { name: 'Display Requests', href: '/admin/requests', icon: Camera },
-    { name: 'Dimensions', href: '/admin/dimensions', icon: Database },
+    ...(user.role === 'admin' ? [{ name: 'Dimensions', href: '/admin/dimensions', icon: Database }] : []),
   ];
 
   // Shared sidebar content

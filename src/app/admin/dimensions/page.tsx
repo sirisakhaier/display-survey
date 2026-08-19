@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   Database, 
   Store as StoreIcon, 
@@ -16,16 +17,17 @@ import {
   AlertTriangle, 
   CheckCircle2, 
   ShieldAlert, 
-  Loader2,
-  ChevronLeft,
-  ChevronRight,
-  Info,
-  SlidersHorizontal,
-  FileText
+  Loader2, 
+  ChevronLeft, 
+  ChevronRight, 
+  Info, 
+  SlidersHorizontal, 
+  FileText 
 } from 'lucide-react';
 import Papa from 'papaparse';
 
 export default function AdminDimensionsPage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<'store' | 'model' | 'bulk' | 'logs'>('store');
   const [userRole, setUserRole] = useState<'admin' | 'viewer'>('viewer');
 
@@ -90,16 +92,19 @@ export default function AdminDimensionsPage() {
   const [replacing, setReplacing] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // 1. Fetch current auth role
+  // 1. Fetch current auth role & enforce Admin only
   useEffect(() => {
     fetch('/api/auth/me')
       .then((res) => res.json())
       .then((d) => {
         if (d.authenticated && d.user) {
           setUserRole(d.user.role);
+          if (d.user.role === 'viewer') {
+            router.replace('/admin/dashboard');
+          }
         }
       });
-  }, []);
+  }, [router]);
 
   // 2. Fetch Stores
   const fetchStores = async () => {
