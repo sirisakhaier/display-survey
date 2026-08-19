@@ -166,7 +166,6 @@ export async function GET(req: NextRequest) {
       { header: 'Submitted Date', key: 'submitted_at', width: 20 },
       { header: 'Total Models', key: 'total_models', width: 14 },
       { header: 'Total Display Qty', key: 'total_qty', width: 16 },
-      { header: 'Display Requests Count', key: 'request_count', width: 22 },
     ];
 
     // Style Header Row
@@ -193,7 +192,6 @@ export async function GET(req: NextRequest) {
         submitted_at: e.submitted_at ? new Date(e.submitted_at).toLocaleString('th-TH') : '',
         total_models: e.total_models,
         total_qty: e.total_qty,
-        request_count: e.request_count || 0,
       });
     });
 
@@ -240,89 +238,10 @@ export async function GET(req: NextRequest) {
       });
     });
 
-    // -------------------------------------------------------------
-    // SHEET 3: Display Model Requests (ขอสินค้าตัวโชว์)
-    // -------------------------------------------------------------
-    const wsRequests = workbook.addWorksheet('Display Requests');
-    wsRequests.columns = [
-      { header: 'Request ID', key: 'request_id', width: 12 },
-      { header: 'Entry ID', key: 'entry_id', width: 10 },
-      { header: 'Customer', key: 'customer', width: 18 },
-      { header: 'Store ID', key: 'store_id', width: 14 },
-      { header: 'Store Name (TH)', key: 'store_name_th', width: 28 },
-      { header: 'Province', key: 'province', width: 16 },
-      { header: 'Requested Model', key: 'model_name', width: 22 },
-      { header: 'Qty Requested', key: 'quantity', width: 14 },
-      { header: 'Location Details / Remark', key: 'remark', width: 30 },
-      { header: 'Status', key: 'status', width: 14 },
-      { header: 'Requested By', key: 'user_name', width: 20 },
-      { header: 'Phone', key: 'user_phone', width: 15 },
-      { header: 'Request Date', key: 'created_at', width: 20 },
-      { header: 'Picture URL Link', key: 'picture_url', width: 35 },
-      ...(withPictures ? [{ header: 'Location Photo', key: 'photo', width: 26 }] : []),
-    ];
-
-    wsRequests.getRow(1).font = { bold: true, color: { argb: 'FFFFFFFF' } };
-    wsRequests.getRow(1).fill = {
-      type: 'pattern',
-      pattern: 'solid',
-      fgColor: { argb: 'FFC2410C' }, // Warm Orange/Bronze
-    };
-    wsRequests.getRow(1).alignment = { vertical: 'middle', horizontal: 'center' };
-    wsRequests.getRow(1).height = 24;
-
-    displayRequests.forEach((reqItem, index) => {
-      const rowNumber = index + 2; // Row 1 is header
-
-      const row = wsRequests.addRow({
-        request_id: reqItem.request_id,
-        entry_id: reqItem.entry_id,
-        customer: reqItem.Customer,
-        store_id: reqItem.STORE_ID,
-        store_name_th: reqItem.Store_Name_TH,
-        province: reqItem.Province_TH,
-        model_name: reqItem.model_name,
-        quantity: reqItem.quantity,
-        remark: reqItem.remark || '-',
-        status: reqItem.status || 'Pending',
-        user_name: reqItem.user_name,
-        user_phone: reqItem.user_phone,
-        created_at: reqItem.created_at ? new Date(reqItem.created_at).toLocaleString('th-TH') : '',
-        picture_url: reqItem.picture_url || '-',
-      });
-
-      // If withPictures is requested, embed the image directly into column 15 (Location Photo)
-      if (withPictures && reqItem.picture_url) {
-        row.height = 90; // Set row height for photo cell
-
-        try {
-          const relativePath = reqItem.picture_url.replace(/^\//, '');
-          const localPath = path.join(process.cwd(), 'public', relativePath);
-
-          if (fs.existsSync(localPath)) {
-            const imageBuffer = fs.readFileSync(localPath);
-            const imageId = workbook.addImage({
-              buffer: imageBuffer as any,
-              extension: 'jpeg',
-            });
-
-            wsRequests.addImage(imageId, {
-              tl: { col: 14, row: rowNumber - 1 + 0.1 },
-              ext: { width: 110, height: 80 },
-            });
-          }
-        } catch (imgErr) {
-          console.error('Error embedding image in Excel row:', imgErr);
-        }
-      }
-    });
-
     // Write to buffer
     const buffer = await workbook.xlsx.writeBuffer();
     const dateStr = new Date().toISOString().split('T')[0];
-    const filename = withPictures
-      ? `Display_Survey_With_Pictures_${dateStr}.xlsx`
-      : `Display_Survey_Report_${dateStr}.xlsx`;
+    const filename = `Display_Survey_Report_${dateStr}.xlsx`;
 
     return new NextResponse(new Uint8Array(buffer as any), {
       status: 200,

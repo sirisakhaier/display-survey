@@ -82,8 +82,7 @@ export default function AdminEntriesPage() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   // Export State
-  const [exportingExcelWithPics, setExportingExcelWithPics] = useState<boolean>(false);
-  const [exportingExcelNoPics, setExportingExcelNoPics] = useState<boolean>(false);
+  const [exportingExcel, setExportingExcel] = useState<boolean>(false);
 
   // Delete State
   const [entryToDelete, setEntryToDelete] = useState<EntryItem | null>(null);
@@ -200,12 +199,11 @@ export default function AdminEntriesPage() {
     }
   };
 
-  // 6. Export to Excel (With Pictures)
-  const handleExportExcelWithPictures = async () => {
-    setExportingExcelWithPics(true);
+  // 6. Export to Excel
+  const handleExportExcel = async () => {
+    setExportingExcel(true);
     try {
       const params = new URLSearchParams();
-      params.append('with_pictures', 'true');
       if (search.trim()) params.append('search', search.trim());
       if (customer && customer !== 'all') params.append('customer', customer);
       if (region && region !== 'all') params.append('region', region);
@@ -216,116 +214,32 @@ export default function AdminEntriesPage() {
     } catch (err) {
       console.error('Export error:', err);
     } finally {
-      setTimeout(() => setExportingExcelWithPics(false), 2000);
-    }
-  };
-
-  // 7. Export to Excel (Without Pictures)
-  const handleExportExcelWithoutPictures = async () => {
-    setExportingExcelNoPics(true);
-    try {
-      const params = new URLSearchParams();
-      params.append('with_pictures', 'false');
-      if (search.trim()) params.append('search', search.trim());
-      if (customer && customer !== 'all') params.append('customer', customer);
-      if (region && region !== 'all') params.append('region', region);
-      if (startDate) params.append('startDate', startDate);
-      if (endDate) params.append('endDate', endDate);
-
-      window.location.href = `/api/admin/entries/export?${params.toString()}`;
-    } catch (err) {
-      console.error('Export error:', err);
-    } finally {
-      setTimeout(() => setExportingExcelNoPics(false), 2000);
-    }
-  };
-
-  // 8. Export to CSV (Admin & Viewer)
-  const handleExportCSV = async () => {
-    try {
-      const params = new URLSearchParams();
-      params.append('export', 'true');
-      if (search.trim()) params.append('search', search.trim());
-      if (customer && customer !== 'all') params.append('customer', customer);
-      if (region && region !== 'all') params.append('region', region);
-      if (startDate) params.append('startDate', startDate);
-      if (endDate) params.append('endDate', endDate);
-
-      const res = await fetch(`/api/admin/entries?${params.toString()}`);
-      const data = await res.json();
-      if (data.success && data.entries) {
-        const rows = data.entries.map((e: EntryItem) => ({
-          'ID': e.id,
-          'Customer': e.Customer,
-          'STORE_ID': e.store_id,
-          'Store Name TH': e.Store_Name_TH,
-          'Province TH': e.Province_TH,
-          'Region TH': e.Region_TH,
-          'User Name': e.user_name,
-          'User Phone': e.user_phone,
-          'Submitted Date': e.submitted_at,
-          'Total Models': e.total_models,
-          'Total Display Qty': e.total_qty,
-        }));
-
-        const csv = Papa.unparse(rows);
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `Sell_List_Export_${new Date().toISOString().split('T')[0]}.csv`;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-    } catch (err) {
-      console.error('Export error:', err);
+      setTimeout(() => setExportingExcel(false), 2000);
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Recorded Entries</h1>
+          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Display Report</h1>
           <p className="text-xs text-slate-500 mt-1">
-            History of all display quantity entries and display requests from store staff
+            Store display quantity survey reports & data export
           </p>
         </div>
 
-        {/* Action Export Buttons */}
-        <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
-          {/* Button 1: Excel With Pictures */}
+        {/* Single Action Export Button */}
+        <div>
           <button
             type="button"
-            onClick={handleExportExcelWithPictures}
-            disabled={exportingExcelWithPics}
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-95 transition-all shadow-sm disabled:opacity-50"
-            title="Export full Excel report with embedded photos of display locations"
+            onClick={handleExportExcel}
+            disabled={exportingExcel}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 active:scale-95 transition-all shadow-md shadow-emerald-700/20 disabled:opacity-50"
+            title="Export full survey report to Excel (.xlsx)"
           >
-            {exportingExcelWithPics ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-            <span>Excel (With Pictures)</span>
-          </button>
-
-          {/* Button 2: Excel Without Pictures */}
-          <button
-            type="button"
-            onClick={handleExportExcelWithoutPictures}
-            disabled={exportingExcelNoPics}
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-teal-600 hover:bg-teal-700 active:scale-95 transition-all shadow-sm disabled:opacity-50"
-            title="Export clean fast Excel report without photos"
-          >
-            {exportingExcelNoPics ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileSpreadsheet className="w-4 h-4" />}
-            <span>Excel (Without Pictures)</span>
-          </button>
-
-          {/* Button 3: CSV */}
-          <button
-            type="button"
-            onClick={handleExportCSV}
-            className="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200 active:scale-95 transition-all"
-          >
-            CSV
+            {exportingExcel ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileSpreadsheet className="w-4 h-4" />}
+            <span>Export Excel</span>
           </button>
         </div>
       </div>

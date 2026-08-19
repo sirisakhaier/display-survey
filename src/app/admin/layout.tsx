@@ -112,7 +112,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Recorded Entries', href: '/admin/entries', icon: FileSpreadsheet },
+    { name: 'Display Report', href: '/admin/entries', icon: FileSpreadsheet },
     { name: 'Display Requests', href: '/admin/requests', icon: Camera },
     ...(user.role === 'admin' ? [
       { name: 'Dimensions', href: '/admin/dimensions', icon: Database },
