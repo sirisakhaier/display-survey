@@ -2139,13 +2139,15 @@ export default function UserSurveyPage() {
           </div>
         )}
 
-        {/* Footer info & version */}
-        <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">
-          <div>Sell Out Team, Haier Thailand</div>
-          <div className="font-mono text-[10px]">
-            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '0da8e9c'}
-          </div>
-        </footer>
+        {/* Footer info & commit hash (Shown only on first landing page and ending confirmation pages) */}
+        {(step === 1 || (appSection === 'survey' && step === 5) || (appSection === 'request' && step === 4)) && (
+          <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-0.5 pb-4">
+            <div>Sell Out Team, Haier Thailand</div>
+            <div className="font-mono text-[10px]">
+              Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT || 'b0f8e20'}
+            </div>
+          </footer>
+        )}
       </main>
 
       {/* Sticky Bottom Summary Bar (Active during Step 3 Counting) */}

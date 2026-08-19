@@ -19,6 +19,7 @@ import {
   Moon,
   Sun,
   Camera,
+  HardDrive,
 } from 'lucide-react';
 
 interface AuthUser {
@@ -66,7 +67,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           return;
         }
         setUser(data.user);
-        if (data.user.role === 'viewer' && pathname.startsWith('/admin/dimensions')) {
+        if (data.user.role === 'viewer' && (pathname.startsWith('/admin/dimensions') || pathname.startsWith('/admin/backup'))) {
           router.push('/admin/dashboard');
         }
       } catch (err) {
@@ -79,9 +80,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     checkAuth();
   }, [router, pathname]);
 
-  // Route guard: if viewer navigates to dimensions, redirect to dashboard
+  // Route guard: if viewer navigates to dimensions or backup/data-management, redirect to dashboard
   useEffect(() => {
-    if (user && user.role === 'viewer' && pathname.startsWith('/admin/dimensions')) {
+    if (user && user.role === 'viewer' && (pathname.startsWith('/admin/dimensions') || pathname.startsWith('/admin/backup'))) {
       router.push('/admin/dashboard');
     }
   }, [user, pathname, router]);
@@ -113,7 +114,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
     { name: 'Recorded Entries', href: '/admin/entries', icon: FileSpreadsheet },
     { name: 'Display Requests', href: '/admin/requests', icon: Camera },
-    ...(user.role === 'admin' ? [{ name: 'Dimensions', href: '/admin/dimensions', icon: Database }] : []),
+    ...(user.role === 'admin' ? [
+      { name: 'Dimensions', href: '/admin/dimensions', icon: Database },
+      { name: 'Data Management', href: '/admin/backup', icon: HardDrive },
+    ] : []),
   ];
 
   // Shared sidebar content
@@ -217,11 +221,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           Log Out
         </button>
 
-        {/* Version info */}
+        {/* Version & Commit info */}
         <div className="pt-2 text-center text-[10px] text-slate-400 dark:text-slate-500">
           <div>Sell Out Team, Haier Thailand</div>
           <div className="font-mono text-[9px] text-slate-400/80">
-            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+            Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT || 'b0f8e20'}
           </div>
         </div>
       </div>

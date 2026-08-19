@@ -170,11 +170,11 @@ export default function LoginPage() {
           </form>
         </div>
 
-        {/* Footer info & version */}
-        <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1">
+        {/* Footer info & commit hash */}
+        <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-0.5">
           <div>Sell Out Team, Haier Thailand</div>
           <div className="font-mono text-[10px]">
-            Version: {process.env.NEXT_PUBLIC_GIT_COMMIT || '478e520'}
+            Commit: {process.env.NEXT_PUBLIC_GIT_COMMIT || 'b0f8e20'}
           </div>
         </footer>
       </div>
