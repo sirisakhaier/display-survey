@@ -5,14 +5,23 @@ import Papa from 'papaparse';
 import bcrypt from 'bcryptjs';
 import { normalizeCategory, cleanSubCategory } from './normalize';
 
-const DB_PATH = process.env.DATABASE_PATH || path.join(process.cwd(), 'data', 'display_survey.db');
+export const DATA_DIR = process.env.DATA_DIR || (process.env.DATABASE_PATH ? path.dirname(process.env.DATABASE_PATH) : path.join(process.cwd(), 'data'));
+export const DB_PATH = process.env.DATABASE_PATH || path.join(DATA_DIR, 'display_survey.db');
+export const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(DATA_DIR, 'uploads');
+export const REQUESTS_UPLOADS_DIR = path.join(UPLOADS_DIR, 'requests');
+
 const STORE_CSV_PATH = path.join(process.cwd(), 'Dimension Store.csv');
 const MODEL_CSV_PATH = path.join(process.cwd(), 'Dimension Model.csv');
 
-// Ensure data directory exists
-const dataDir = path.dirname(DB_PATH);
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
+// Ensure persistent data and upload directories exist
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+if (!fs.existsSync(UPLOADS_DIR)) {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+}
+if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
+  fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
 }
 
 let dbInstance: Database.Database | null = null;

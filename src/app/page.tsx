@@ -33,7 +33,8 @@ import {
   Sun,
   Camera,
   Trash2,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Edit
 } from 'lucide-react';
 
 interface StoreItem {
@@ -104,7 +105,6 @@ export default function UserSurveyPage() {
 
   // Mode / Section: 'survey' = นับจำนวนตัวโชว์ (Display Survey), 'request' = ขอสินค้าตัวโชว์ (Display Model Request)
   const [appSection, setAppSection] = useState<'survey' | 'request'>('survey');
-  const [requestStep, setRequestStep] = useState<number>(1);
   const [requestSubmitting, setRequestSubmitting] = useState<boolean>(false);
 
   // Navigation Step for Survey:
@@ -352,7 +352,13 @@ export default function UserSurveyPage() {
     }
 
     setStaffFormError(null);
-    loadProductCategories();
+    if (appSection === 'survey') {
+      loadProductCategories();
+    } else {
+      if (displayRequests.length === 0) {
+        addDisplayRequest();
+      }
+    }
     setStep(3);
   };
 
@@ -744,7 +750,7 @@ export default function UserSurveyPage() {
 
       const data = await res.json();
       if (data.success) {
-        setRequestStep(3); // Success step
+        setStep(4); // Success step for display request
       } else {
         alert(data.error || 'เกิดข้อผิดพลาดในการบันทึกคำขอ');
       }
@@ -824,7 +830,12 @@ export default function UserSurveyPage() {
         <div className="mb-4 bg-white p-1 rounded-2xl border border-slate-200 shadow-xs grid grid-cols-2 gap-1.5">
           <button
             type="button"
-            onClick={() => setAppSection('survey')}
+            onClick={() => {
+              setAppSection('survey');
+              if (step >= 3 && categories.length === 0) {
+                loadProductCategories();
+              }
+            }}
             className={`py-2.5 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 touch-press ${
               appSection === 'survey'
                 ? 'bg-blue-700 text-white shadow-xs'
@@ -855,38 +866,35 @@ export default function UserSurveyPage() {
         </div>
 
         {/* ========================================================= */}
-        {/* SECTION A: REPORT NUMBER OF DISPLAY (Display Survey)       */}
+        {/* UNIFIED STEP PROGRESS TRACKER                             */}
         {/* ========================================================= */}
-        {appSection === 'survey' && (
-          <>
-            {/* Step Progress Tracker */}
-            {step < 5 && (
-              <div className="mb-4 bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200/80 shadow-xs">
-                <div className="flex items-center justify-between relative">
-                  <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
-                  
-                  {/* Step 1 */}
-                  <div className="relative z-10 flex flex-col items-center">
-                    <button
-                      type="button"
-                      onClick={() => step > 1 && setStep(1)}
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                        step === 1
-                          ? 'text-white ring-2 ring-blue-300 shadow-xs'
-                          : step > 1
-                          ? 'bg-emerald-600 text-white cursor-pointer'
-                          : 'bg-slate-200 text-slate-600'
-                      }`}
-                      style={step === 1 ? { background: '#0060AF' } : {}}
-                    >
-                      {step > 1 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '1'}
-                    </button>
-                    <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 1 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
-                      เลือกร้านค้า
-                    </span>
-                  </div>
+        {((appSection === 'survey' && step < 5) || (appSection === 'request' && step < 4)) && (
+          <div className="mb-4 bg-white p-2.5 sm:p-3 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="flex items-center justify-between relative">
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
+              
+              {/* Step 1: เลือกร้านค้า */}
+              <div className="relative z-10 flex flex-col items-center">
+                <button
+                  type="button"
+                  onClick={() => step > 1 && setStep(1)}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                    step === 1
+                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
+                      : step > 1
+                      ? 'bg-emerald-600 text-white cursor-pointer'
+                      : 'bg-slate-200 text-slate-600'
+                  }`}
+                  style={step === 1 ? { background: appSection === 'survey' ? '#0060AF' : '#EA580C' } : {}}
+                >
+                  {step > 1 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '1'}
+                </button>
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 1 ? (appSection === 'survey' ? 'text-blue-700 font-bold' : 'text-orange-600 font-bold') : 'text-slate-500'}`}>
+                  เลือกร้านค้า
+                </span>
+              </div>
 
-              {/* Step 2 */}
+              {/* Step 2: ข้อมูลผู้กรอก / ข้อมูลผู้ขอ */}
               <div className="relative z-10 flex flex-col items-center">
                 <button
                   type="button"
@@ -898,16 +906,16 @@ export default function UserSurveyPage() {
                       ? 'bg-emerald-600 text-white cursor-pointer'
                       : 'bg-slate-200 text-slate-600'
                   }`}
-                  style={step === 2 ? { background: '#0060AF' } : {}}
+                  style={step === 2 ? { background: appSection === 'survey' ? '#0060AF' : '#EA580C' } : {}}
                 >
                   {step > 2 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '2'}
                 </button>
-                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 2 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
-                  ข้อมูลผู้กรอก
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 2 ? (appSection === 'survey' ? 'text-blue-700 font-bold' : 'text-orange-600 font-bold') : 'text-slate-500'}`}>
+                  {appSection === 'survey' ? 'ข้อมูลผู้กรอก' : 'ข้อมูลผู้ขอ'}
                 </span>
               </div>
 
-              {/* Step 3 */}
+              {/* Step 3: นับสินค้า / ระบุรุ่นที่ขอ */}
               <div className="relative z-10 flex flex-col items-center">
                 <button
                   type="button"
@@ -919,31 +927,33 @@ export default function UserSurveyPage() {
                       ? 'bg-emerald-600 text-white cursor-pointer'
                       : 'bg-slate-200 text-slate-600'
                   }`}
-                  style={step === 3 ? { background: '#0060AF' } : {}}
+                  style={step === 3 ? { background: appSection === 'survey' ? '#0060AF' : '#EA580C' } : {}}
                 >
                   {step > 3 ? <CheckCircle2 className="w-3.5 h-3.5" /> : '3'}
                 </button>
-                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 3 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
-                  นับสินค้า
+                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 3 ? (appSection === 'survey' ? 'text-blue-700 font-bold' : 'text-orange-600 font-bold') : 'text-slate-500'}`}>
+                  {appSection === 'survey' ? 'นับสินค้า' : 'ระบุรุ่นที่ขอ'}
                 </span>
               </div>
 
-              {/* Step 4 */}
-              <div className="relative z-10 flex flex-col items-center">
-                <div
-                  className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                    step === 4
-                      ? 'text-white ring-2 ring-blue-300 shadow-xs'
-                      : 'bg-slate-200 text-slate-600'
-                  }`}
-                  style={step === 4 ? { background: '#0060AF' } : {}}
-                >
-                  4
+              {/* Step 4: สรุปผล (สำหรับ Survey Flow) */}
+              {appSection === 'survey' && (
+                <div className="relative z-10 flex flex-col items-center">
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                      step === 4
+                        ? 'text-white ring-2 ring-blue-300 shadow-xs'
+                        : 'bg-slate-200 text-slate-600'
+                    }`}
+                    style={step === 4 ? { background: '#0060AF' } : {}}
+                  >
+                    4
+                  </div>
+                  <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 4 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
+                    สรุปผล
+                  </span>
                 </div>
-                <span className={`text-[10px] sm:text-[11px] mt-0.5 font-medium ${step === 4 ? 'text-blue-700 font-bold' : 'text-slate-500'}`}>
-                  สรุปผล
-                </span>
-              </div>
+              )}
             </div>
           </div>
         )}
@@ -1302,9 +1312,13 @@ export default function UserSurveyPage() {
                   </button>
                   <button
                     type="submit"
-                    className="flex-2 py-3 px-6 rounded-xl text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20 flex items-center justify-center gap-1.5"
+                    className={`flex-2 py-3 px-6 rounded-xl text-sm font-semibold text-white transition-all shadow-md flex items-center justify-center gap-1.5 ${
+                      appSection === 'survey'
+                        ? 'bg-blue-700 hover:bg-blue-800 shadow-blue-700/20'
+                        : 'bg-orange-600 hover:bg-orange-700 shadow-orange-600/20'
+                    }`}
                   >
-                    ถัดไป: นับสินค้า <ArrowRight className="w-4 h-4" />
+                    {appSection === 'survey' ? 'ถัดไป: นับสินค้า' : 'ถัดไป: ระบุรุ่นที่ขอตัวโชว์'} <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </form>
@@ -1313,9 +1327,9 @@ export default function UserSurveyPage() {
         )}
 
         {/* ========================================================= */}
-        {/* STEP 3: HIERARCHY COUNTING WITH LIVE INPUT SUMMARY TABLE  */}
+        {/* STEP 3 (Survey): HIERARCHY COUNTING WITH LIVE SUMMARY     */}
         {/* ========================================================= */}
-        {step === 3 && selectedStore && (
+        {step === 3 && appSection === 'survey' && selectedStore && (
           <div className="space-y-3 animate-fadeIn">
             {/* Top Store Info Bar */}
             <div className="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200 shadow-xs flex items-center justify-between gap-2">
@@ -1575,9 +1589,9 @@ export default function UserSurveyPage() {
         )}
 
         {/* ========================================================= */}
-        {/* STEP 4: SUMMARY PAGE - SHOW ALL DETAILS (Req 4)           */}
+        {/* STEP 4 (Survey): SUMMARY PAGE - SHOW ALL DETAILS (Req 4)  */}
         {/* ========================================================= */}
-        {step === 4 && selectedStore && (
+        {step === 4 && appSection === 'survey' && selectedStore && (
           <div className="space-y-4 max-w-3xl mx-auto animate-fadeIn">
             {/* Header & Meta Summary */}
             <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3.5">
@@ -1729,9 +1743,9 @@ export default function UserSurveyPage() {
         )}
 
         {/* ========================================================= */}
-        {/* STEP 5: SUCCESS CONFIRMATION SCREEN                       */}
+        {/* STEP 5 (Survey): SUCCESS CONFIRMATION SCREEN              */}
         {/* ========================================================= */}
-        {step === 5 && (
+        {step === 5 && appSection === 'survey' && (
           <div className="max-w-md mx-auto text-center py-6 animate-scaleIn">
             <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/80 shadow-lg shadow-slate-200/40">
               <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
@@ -1760,248 +1774,86 @@ export default function UserSurveyPage() {
                 </div>
               )}
 
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedStore(null);
-                  setSelectedStoreId('');
-                  setSelectedCustomer('');
-                  setSelectedRegion('');
-                  setPreviousData(null);
-                  setUserName('');
-                  setUserPhone('');
-                  setCounts({});
-                  setStep(1);
-                }}
-                className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-md shadow-blue-700/20"
-              >
-                บันทึกสาขาอื่นต่อไป
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAppSection('request');
+                    if (displayRequests.length === 0) {
+                      addDisplayRequest();
+                    }
+                    setStep(3);
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 flex items-center justify-center gap-1.5"
+                >
+                  <Camera className="w-4 h-4" />
+                  <span>ขอสินค้าตัวโชว์สำหรับสาขานี้ต่อ (Request Display)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedStore(null);
+                    setSelectedStoreId('');
+                    setSelectedCustomer('');
+                    setSelectedRegion('');
+                    setPreviousData(null);
+                    setUserName('');
+                    setUserPhone('');
+                    setCounts({});
+                    setDisplayRequests([]);
+                    setStep(1);
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all"
+                >
+                  บันทึกสาขาอื่นต่อไป
+                </button>
+              </div>
             </div>
           </div>
         )}
-      </>
-    )}
 
-    {/* ========================================================= */}
-    {/* SECTION B: REQUEST DISPLAY MODEL (ขอสินค้าตัวโชว์)        */}
-    {/* ========================================================= */}
-    {appSection === 'request' && (
-      <div className="space-y-4">
-        {/* Request Step 1: Store & Staff Info */}
-        {requestStep === 1 && (
+        {/* ========================================================= */}
+        {/* SECTION B (Step 3): REQUEST DISPLAY MODELS FORM           */}
+        {/* ========================================================= */}
+        {step === 3 && appSection === 'request' && selectedStore && (
           <div className="space-y-4 animate-fadeIn">
-            {/* Header Card */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200 shadow-xs">
-              <div className="flex items-center gap-2.5 mb-1">
+            {/* Active Store & Staff Header Pill */}
+            <div className="bg-white p-3.5 rounded-2xl border border-orange-200 shadow-xs flex items-center justify-between gap-2 flex-wrap text-xs">
+              <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-orange-100 text-orange-700">
-                  <Camera className="w-5 h-5" />
+                  <StoreIcon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold text-slate-900">ขอสินค้าตัวโชว์ (Request Display Model)</h2>
-                  <p className="text-xs text-slate-500">ขั้นตอนที่ 1: เลือกร้านค้าและระบุข้อมูลผู้ขอ</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Store Selection Card */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
-              <h3 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                <StoreIcon className="w-4 h-4 text-orange-600" />
-                1. เลือกร้านค้าที่ต้องการขอสินค้าตัวโชว์
-              </h3>
-
-              <div className="space-y-3">
-                {/* Customer Dropdown */}
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                    ห้าง / ลูกค้า (Customer) <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    value={selectedCustomer}
-                    onChange={(e) => setSelectedCustomer(e.target.value)}
-                    className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  >
-                    <option value="">-- เลือกห้าง / ลูกค้า --</option>
-                    {customers.map((c) => (
-                      <option key={c} value={c}>{c}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Region Dropdown */}
-                {selectedCustomer && (
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      ภูมิภาค (Region) <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      value={selectedRegion}
-                      onChange={(e) => setSelectedRegion(e.target.value)}
-                      className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    >
-                      <option value="">-- เลือกภูมิภาค --</option>
-                      {regions.map((r) => (
-                        <option key={r} value={r}>{r}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
-
-                {/* Store Dropdown */}
-                {selectedCustomer && selectedRegion && (
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      สาขา (Store) <span className="text-red-500">*</span>
-                    </label>
-                    {loadingStores ? (
-                      <div className="py-2.5 text-xs text-slate-400 flex items-center gap-2">
-                        <Loader2 className="w-4 h-4 animate-spin text-orange-600" /> กำลังโหลดรายชื่อสาขา...
-                      </div>
-                    ) : (
-                      <select
-                        value={selectedStoreId}
-                        onChange={(e) => handleStoreDropdownChange(e.target.value)}
-                        className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
-                      >
-                        <option value="">-- เลือกสาขา --</option>
-                        {stores.map((s) => (
-                          <option key={s.STORE_ID} value={s.STORE_ID}>
-                            {s.Store_Name_TH || s.STORE_NAME} ({s.Province_TH}) {s.Store_ID_Customer ? `[รหัสห้าง: ${s.Store_ID_Customer}]` : ''}
-                          </option>
-                        ))}
-                      </select>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* Store Preview Card */}
-              {selectedStore && (
-                <div className="p-3 bg-orange-50/50 rounded-xl border border-orange-200 text-xs space-y-1 mt-2">
-                  <div className="font-bold text-slate-900 flex items-center justify-between">
-                    <span>{selectedStore.Store_Name_TH || selectedStore.STORE_NAME}</span>
-                    <span className="px-2 py-0.5 rounded-full bg-orange-100 text-orange-800 text-[10px] font-bold">
+                  <div className="font-bold text-slate-900 flex items-center gap-1.5">
+                    <span>{selectedStore.Store_Name_TH}</span>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-800">
                       {selectedStore.Customer}
                     </span>
                   </div>
-                  <div className="text-slate-600 text-[11px]">
-                    จังหวัด: <span className="font-semibold text-slate-800">{selectedStore.Province_TH} ({selectedStore.Region_TH})</span>
-                  </div>
-                  {selectedStore.Store_ID_Customer && (
-                    <div className="text-slate-600 text-[11px]">
-                      รหัสสาขาห้าง: <span className="font-mono font-semibold text-slate-800">{selectedStore.Store_ID_Customer}</span>
-                    </div>
-                  )}
-                  <div className="text-slate-500 text-[10px] font-mono">
-                    STORE_ID: {selectedStore.STORE_ID}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Staff Info Card */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs space-y-3">
-              <h3 className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
-                <User className="w-4 h-4 text-orange-600" />
-                2. ข้อมูลผู้ขอสินค้าตัวโชว์
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                    ชื่อ-นามสกุล <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    placeholder="เช่น สมชาย ใจดี"
-                    className="w-full text-xs bg-white border border-slate-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                    เบอร์โทรศัพท์มือถือ (10 หลัก) <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    maxLength={10}
-                    value={userPhone}
-                    onChange={(e) => setUserPhone(e.target.value.replace(/\D/g, ''))}
-                    placeholder="0812345678"
-                    className={`w-full text-xs font-mono font-bold bg-white border rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 ${
-                      userPhone && !/^0[0-9]{9}$/.test(userPhone)
-                        ? 'border-red-300 focus:ring-red-500 bg-red-50/20'
-                        : 'border-slate-200 focus:ring-orange-500'
-                    }`}
-                  />
-                  {userPhone && !/^0[0-9]{9}$/.test(userPhone) && (
-                    <p className="text-[10px] text-red-500 mt-1 font-medium">
-                      * ต้องขึ้นต้นด้วย 0 และมีครบ 10 หลัก (ปัจจุบัน {userPhone.length}/10 หลัก)
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Next Button */}
-            <button
-              type="button"
-              disabled={!selectedStore || !userName.trim() || !/^0[0-9]{9}$/.test(userPhone)}
-              onClick={() => {
-                if (displayRequests.length === 0) {
-                  addDisplayRequest();
-                }
-                setRequestStep(2);
-              }}
-              className="w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 touch-press"
-            >
-              <span>ถัดไป: ระบุรุ่นที่ต้องการขอ & แนบรูปพื้นที่ตั้งโชว์</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        )}
-
-        {/* Request Step 2: Add Requested Models */}
-        {requestStep === 2 && (
-          <div className="space-y-4 animate-fadeIn">
-            {/* Mini Store Header */}
-            {selectedStore && (
-              <div className="bg-white p-3.5 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-2 flex-wrap text-xs">
-                <div>
-                  <div className="font-bold text-slate-900 flex items-center gap-1.5">
-                    <StoreIcon className="w-3.5 h-3.5 text-orange-600" />
-                    <span>{selectedStore.Store_Name_TH}</span>
-                    <span className="text-[10px] font-normal text-slate-400">({selectedStore.Customer})</span>
-                  </div>
                   <div className="text-[11px] text-slate-500 mt-0.5">
-                    ผู้ขอ: <span className="font-semibold text-slate-800">{userName}</span> ({userPhone})
+                    ผู้ขอ: <span className="font-semibold text-slate-800">{userName}</span> ({userPhone}) • จ.{selectedStore.Province_TH} ({selectedStore.Region_TH})
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setRequestStep(1)}
-                  className="text-[11px] font-semibold text-orange-700 hover:underline flex items-center gap-1"
-                >
-                  <ArrowLeft className="w-3 h-3" /> เปลี่ยนสาขา/ข้อมูล
-                </button>
               </div>
-            )}
+              <button
+                type="button"
+                onClick={() => setStep(2)}
+                className="text-[11px] font-semibold text-orange-700 hover:underline px-2 py-1 rounded hover:bg-orange-50 transition-colors flex items-center gap-1"
+              >
+                <Edit className="w-3 h-3" /> แก้ไขข้อมูลผู้ขอ / เปลี่ยนสาขา
+              </button>
+            </div>
 
             {/* List of Requested Items */}
             <div className="bg-white p-4 sm:p-5 rounded-2xl border border-orange-200 shadow-xs space-y-3.5">
-              <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-orange-100">
                 <div>
-                  <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                  <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                     <Camera className="w-4 h-4 text-orange-600" />
                     รายการขอสินค้าตัวโชว์ ({displayRequests.length} รายการ)
                   </h3>
                   <p className="text-[11px] text-slate-500">
-                    กรุณาระบุชื่อรุ่นและถ่ายรูปพื้นที่ตั้งโชว์สำหรับทุกรายการ
+                    ระบุรุ่นและถ่ายรูปพื้นที่ตั้งโชว์สำหรับทุกรายการ (บังคับแนบรูป)
                   </p>
                 </div>
 
@@ -2168,7 +2020,7 @@ export default function UserSurveyPage() {
             <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex gap-2.5">
               <button
                 type="button"
-                onClick={() => setRequestStep(1)}
+                onClick={() => setStep(2)}
                 disabled={requestSubmitting}
                 className="flex-1 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-all flex items-center justify-center gap-1"
               >
@@ -2194,8 +2046,10 @@ export default function UserSurveyPage() {
           </div>
         )}
 
-        {/* Request Step 3: Success Screen */}
-        {requestStep === 3 && (
+        {/* ========================================================= */}
+        {/* SECTION B (Step 4): REQUEST SUCCESS CONFIRMATION SCREEN    */}
+        {/* ========================================================= */}
+        {step === 4 && appSection === 'request' && (
           <div className="max-w-md mx-auto text-center py-6 animate-scaleIn">
             <div className="bg-white p-6 sm:p-7 rounded-2xl border border-orange-200/80 shadow-lg shadow-orange-200/40">
               <div className="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
@@ -2230,28 +2084,46 @@ export default function UserSurveyPage() {
                   onClick={() => {
                     setDisplayRequests([]);
                     addDisplayRequest();
-                    setRequestStep(1);
+                    setStep(3);
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20"
+                  className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all shadow-md shadow-orange-600/20"
                 >
-                  ขอสินค้ารุ่นอื่น / บันทึกสาขาอื่นต่อไป
+                  + ขอสินค้ารุ่นอื่นเพิ่มเติมสำหรับสาขานี้
                 </button>
                 <button
                   type="button"
                   onClick={() => {
                     setAppSection('survey');
+                    loadProductCategories();
+                    setStep(3);
+                  }}
+                  className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors flex items-center justify-center gap-1.5"
+                >
+                  <FileSpreadsheet className="w-3.5 h-3.5" />
+                  <span>สลับไปบันทึกจำนวนตัวโชว์สาขานี้ (Survey Count)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedStore(null);
+                    setSelectedStoreId('');
+                    setSelectedCustomer('');
+                    setSelectedRegion('');
+                    setPreviousData(null);
+                    setUserName('');
+                    setUserPhone('');
+                    setCounts({});
+                    setDisplayRequests([]);
                     setStep(1);
                   }}
-                  className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+                  className="w-full py-2 px-3 rounded-xl text-xs font-semibold text-slate-500 hover:bg-slate-100 transition-colors"
                 >
-                  กลับไปยังหน้ารายงานจำนวนตัวโชว์ (Display Survey)
+                  บันทึกสาขาอื่นต่อไป
                 </button>
               </div>
             </div>
           </div>
         )}
-      </div>
-    )}
 
         {/* Footer info & version */}
         <footer className="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 space-y-1 pb-4">
@@ -2263,7 +2135,7 @@ export default function UserSurveyPage() {
       </main>
 
       {/* Sticky Bottom Summary Bar (Active during Step 3 Counting) */}
-      {step === 3 && (
+      {step === 3 && appSection === 'survey' && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-3 py-2 sm:px-4 sm:py-2.5 shadow-lg shadow-slate-900/10">
           <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
             <div>

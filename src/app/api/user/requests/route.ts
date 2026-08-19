@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { getDb, REQUESTS_UPLOADS_DIR } from '@/lib/db';
 import fs from 'fs';
 import path from 'path';
 
@@ -58,10 +58,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'ไม่พบรหัสสาขาในระบบ' }, { status: 404 });
     }
 
-    // Ensure uploads directory exists
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'requests');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    // Ensure uploads directories exist
+    const publicUploadsDir = path.join(process.cwd(), 'public', 'uploads', 'requests');
+    if (!fs.existsSync(publicUploadsDir)) {
+      fs.mkdirSync(publicUploadsDir, { recursive: true });
+    }
+    if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
+      fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
     }
 
     const insertRequest = db.prepare(`
@@ -80,8 +83,18 @@ export async function POST(req: NextRequest) {
           try {
             const base64Data = reqItem.picture_base64.replace(/^data:image\/\w+;base64,/, '');
             const filename = `req_standalone_${Date.now()}_${idx + 1}_${Math.random().toString(36).slice(2, 6)}.jpg`;
-            const filePath = path.join(uploadsDir, filename);
-            fs.writeFileSync(filePath, Buffer.from(base64Data, 'base64'));
+            const imageBuffer = Buffer.from(base64Data, 'base64');
+            
+            // Save to persistent storage directory
+            fs.writeFileSync(path.join(REQUESTS_UPLOADS_DIR, filename), imageBuffer);
+            
+            // Also write to public uploads directory if different
+            try {
+              if (path.resolve(publicUploadsDir) !== path.resolve(REQUESTS_UPLOADS_DIR)) {
+                fs.writeFileSync(path.join(publicUploadsDir, filename), imageBuffer);
+              }
+            } catch {}
+
             pictureUrl = `/uploads/requests/${filename}`;
           } catch (err) {
             console.error('Error saving standalone request picture:', err);

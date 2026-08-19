@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { getDb, REQUESTS_UPLOADS_DIR } from '@/lib/db';
 import fs from 'fs';
 import path from 'path';
 
@@ -63,10 +63,13 @@ export async function POST(req: NextRequest) {
 
     const submittedAt = is_draft ? null : new Date().toISOString();
 
-    // Prepare upload directory
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'requests');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    // Prepare upload directories
+    const publicUploadsDir = path.join(process.cwd(), 'public', 'uploads', 'requests');
+    if (!fs.existsSync(publicUploadsDir)) {
+      fs.mkdirSync(publicUploadsDir, { recursive: true });
+    }
+    if (!fs.existsSync(REQUESTS_UPLOADS_DIR)) {
+      fs.mkdirSync(REQUESTS_UPLOADS_DIR, { recursive: true });
     }
 
     const saveTransaction = db.transaction(() => {
@@ -98,8 +101,8 @@ export async function POST(req: NextRequest) {
 
       // 3. Insert display model requests (ขอสินค้าตัวโชว์)
       const insertRequest = db.prepare(`
-        INSERT INTO display_requests (entry_id, store_id, model_name, quantity, remark, picture_url)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO display_requests (entry_id, store_id, user_name, user_phone, model_name, quantity, remark, picture_url)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       let requestCount = 0;
@@ -112,8 +115,18 @@ export async function POST(req: NextRequest) {
             try {
               const base64Data = reqItem.picture_base64.replace(/^data:image\/\w+;base64,/, '');
               const filename = `req_${entryId}_${idx + 1}_${Date.now()}.jpg`;
-              const filePath = path.join(uploadsDir, filename);
-              fs.writeFileSync(filePath, Buffer.from(base64Data, 'base64'));
+              const imageBuffer = Buffer.from(base64Data, 'base64');
+              
+              // Save to persistent storage directory
+              fs.writeFileSync(path.join(REQUESTS_UPLOADS_DIR, filename), imageBuffer);
+
+              // Also write to public uploads directory if different
+              try {
+                if (path.resolve(publicUploadsDir) !== path.resolve(REQUESTS_UPLOADS_DIR)) {
+                  fs.writeFileSync(path.join(publicUploadsDir, filename), imageBuffer);
+                }
+              } catch {}
+
               pictureUrl = `/uploads/requests/${filename}`;
             } catch (err) {
               console.error('Error saving uploaded picture:', err);
@@ -124,6 +137,8 @@ export async function POST(req: NextRequest) {
           insertRequest.run(
             entryId,
             store_id,
+            user_name.trim(),
+            cleanPhone,
             reqItem.model_name.trim(),
             qty,
             (reqItem.remark || '').trim(),
